@@ -15,7 +15,7 @@ const ButtonSubmit = ({label,onclick,color,backgroundColor,margin,padding,height
         >
             {
                 label &&
-                <span>{label}</span>
+                <Sspan>{label}</Sspan>
             }
         </Sbutton>
     )
@@ -23,9 +23,20 @@ const ButtonSubmit = ({label,onclick,color,backgroundColor,margin,padding,height
 
 
 const Sbutton = styled.button`
-
   background-color: ${(props) => props.backgroundColor};
   color: ${(props) => props.color};
-
+  width: 504px;
+  height: 37px;
+  margin: 0 auto;
+  border-radius: 5px;
 `
+
+const Sspan = styled.span`
+  font-family: 'Inter';
+  font-weight: 700;
+  font-size: 20px;
+  cursor: pointer;
+`
+
+
 export default ButtonSubmit

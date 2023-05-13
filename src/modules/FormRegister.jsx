@@ -6,7 +6,7 @@ import Checkbox from "../components/Checkbox";
 import {Link} from "react-router-dom";
 import ButtonSubmit from "../components/ButtonSubmit";
 
-const FormRegister = ({width}) => {
+const FormRegister = ({width, margin}) => {
 
     const [checked,setChecked] = useState(false)
 
@@ -15,7 +15,7 @@ const FormRegister = ({width}) => {
     }
 
     return(
-        <Sdiv className="container" width={width}>
+        <Sdiv className="container" margin={margin} width={width}>
             <TitleForm name={"INFORMACION PERSONAL"} />
             <Sdiv className="nameAndSurname">
                 <Input
@@ -47,15 +47,16 @@ const FormRegister = ({width}) => {
             />
             <Input
                 label={"Contraseña"}
+                type={"password"}
                 height="37px"
                 width="980px"
             />
             <Input
                 label={"Confirmar contraseña"}
                 height="37px"
-                width="980px"
+                width="974px"
             />
-            <SLink to={"#"}>¿ Ya tienes cuenta ?</SLink>
+            <SLink to={"/login"}>¿ Ya tienes cuenta ?</SLink>
             <ButtonSubmit
                 label={"CREAR CUENTA"}
                 backgroundColor={"black"}
@@ -81,6 +82,7 @@ const Sdiv = styled.div`
     flex-direction: column;
     margin: 0 auto;
     width: ${(props) => props.width || "1200px"};
+    margin: ${(props) => props.margin || "0px"};
   }
 `
 

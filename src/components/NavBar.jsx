@@ -13,7 +13,7 @@ const NavBar = () => {
                 <nav>
                     <SUlOrdenador>
                         <SLiOrdenador><SNavLink to={"#"}>JOYAS</SNavLink></SLiOrdenador>
-                        <SLiOrdenador><SNavLink to={"#"}>CONTACTO</SNavLink></SLiOrdenador>
+                        <SLiOrdenador><SNavLink to={"/contact"}>CONTACTO</SNavLink></SLiOrdenador>
                         <SLiOrdenador><SNavLink to={"#"}><SFaShoppingCart /></SNavLink></SLiOrdenador>
                         <SLiOrdenador><SNavLink to={"/register"}><FaUserAlt /></SNavLink></SLiOrdenador>
                     </SUlOrdenador>
