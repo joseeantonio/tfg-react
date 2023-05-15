@@ -1,14 +1,14 @@
 import React, {useState} from "react";
 import styled from "styled-components";
 
-const Checkbox = ({label,onClick,marginBottom}) => {
+const Checkbox = ({label,onClick,marginBottom,fontSize}) => {
 
 
     return(
         <Slabel htmlFor={label} marginBottom={marginBottom}>
             <Sinput type={"checkbox"} onClick={onClick} />
             {
-                label && <Sspan>{label}</Sspan>
+                label && <Sspan fontSize={fontSize}>{label}</Sspan>
             }
         </Slabel>
     )
@@ -29,7 +29,8 @@ const Sspan = styled.span`
   font-family: 'Inter';
   font-style: normal;
   font-weight: 400;
-  font-size: 15px;
+  font-size: ${(props) => props.fontSize}; 
+  //15px
   align-items: center;
 `
 

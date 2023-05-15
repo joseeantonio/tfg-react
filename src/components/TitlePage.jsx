@@ -14,7 +14,8 @@ const Sh1 = styled.h1`
   font-weight: 400;
   font-size: 40px;
   line-height: 48px;
-  margin: 60px;
+  padding: 60px;
+  margin: 0px;
   display: flex;
   justify-content: center;
 

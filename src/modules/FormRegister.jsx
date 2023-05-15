@@ -32,12 +32,14 @@ const FormRegister = ({width, margin}) => {
             <Checkbox
                 label={"He leido y acepto el aviso legal y la politica de privacidad."}
                 onClick={function1}
+                fontSize={"15px"}
             />
             <Checkbox
                 className="lastCheckbox"
                 label={"Quiero recibir notificaciones sobre promociones y productos."}
                 onClick={function1}
                 marginBottom={"50px"}
+                fontSize={"15px"}
             />
             <TitleForm name={"INFORMACION INICIO DE SESION"} />
             <Input
