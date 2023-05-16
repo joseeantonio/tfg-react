@@ -3,10 +3,10 @@ import styled from "styled-components";
 import {BsSearch} from "react-icons/bs";
 
 
-const Input = ({label,type,height,width, onChange,placeholder, marginBottom,searchIcon,widthSearch,borderRadius}) => {
+const Input = ({label,type,height,width, onChange,placeholder, margin,searchIcon,widthSearch,borderRadius}) => {
 
     return(
-        <Slabel marginBottom={marginBottom} searchIcon={searchIcon}>
+        <Slabel margin={margin} searchIcon={searchIcon}>
             {label && <Sspan>{label}</Sspan>}
             <Sinput type={type} height={height} width={width} placeholder={placeholder} onChange={onChange} borderRadius={borderRadius} />
             {
@@ -56,8 +56,7 @@ const Slabel = styled.label`
 
   display: flex;
   flex-direction: column;
-  margin: 3px;
-  margin-bottom: ${(props) => props.marginBottom};
+  margin: ${(props) => props.margin ?? "3px"};
 
   ${(props) =>
           props.searchIcon && `

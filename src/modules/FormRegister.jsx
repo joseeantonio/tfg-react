@@ -22,11 +22,13 @@ const FormRegister = ({width, margin}) => {
                     label={"Nombre"}
                     height="37px"
                     width="450px"
+                    borderRadius={"5px"}
                 />
                 <Input
                     label={"Apellidos"}
                     height="37px"
                     width="450px"
+                    borderRadius={"5px"}
                 />
             </Sdiv>
             <Checkbox
@@ -46,17 +48,20 @@ const FormRegister = ({width, margin}) => {
                 label={"Correo electronico"}
                 height="37px"
                 width="980px"
+                borderRadius={"5px"}
             />
             <Input
                 label={"Contraseña"}
                 type={"password"}
                 height="37px"
                 width="980px"
+                borderRadius={"5px"}
             />
             <Input
                 label={"Confirmar contraseña"}
                 height="37px"
                 width="974px"
+                borderRadius={"5px"}
             />
             <SLink to={"/login"}>¿ Ya tienes cuenta ?</SLink>
             <ButtonSubmit

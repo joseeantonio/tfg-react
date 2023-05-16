@@ -13,17 +13,19 @@ const FormContact = ({margin,width}) => {
                 label={"Correo electronico"}
                 height="37px"
                 width="980px"
+                borderRadius={"5px"}
             />
             <Input
                 label={"Asunto"}
                 height="37px"
                 width="980px"
+                borderRadius={"5px"}
             />
             <TextTarea
                 label={"Mensaje"}
                 height={"74px"}
                 width={"980px"}
-                marginBottom={"50px"}
+                margin={"0px 0px 45px 0px"}
             />
             <ButtonSubmit
                 label={"ENVIAR"}

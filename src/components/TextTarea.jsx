@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 
-const TextTarea = ({ label, height, width, onChange, placeholder, marginBottom }) => {
+const TextTarea = ({ label, height, width, onChange, placeholder, margin }) => {
     return (
-        <Slabel marginBottom={marginBottom}>
+        <Slabel margin={margin}>
             {label && <Sspan>{label}</Sspan>}
             <Stextarea height={height} width={width} placeholder={placeholder} onChange={onChange} />
         </Slabel>
@@ -29,7 +29,7 @@ const Slabel = styled.label`
   display: flex;
   flex-direction: column;
   margin: 3px;
-  margin-bottom: ${(props) => props.marginBottom};
+  margin: ${(props) => props.margin};
 `;
 
 export default TextTarea;

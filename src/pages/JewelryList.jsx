@@ -17,14 +17,22 @@ const JewelryList = () => {
                 searchIcon={"true"}
                 marginBottom={"50px"}
                 widthSearch={"51.59px"}
-                borderRadius={"5px"} />
-            <Filters />
-            <LinkSectionGroup width={"1050px"} />
+                borderRadius={"5px"}
+            />
+            <Sdiv>
+                <Filters />
+                <LinkSectionGroup width={"900px"} />
+            </Sdiv>
         </Sbody>
     )
 }
 
 const Sbody = styled.body`
   background-color: #DFDFDF;
+`
+
+const Sdiv = styled.div`
+  display: flex;
+  justify-content: space-around;
 `
 export default JewelryList

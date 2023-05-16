@@ -13,12 +13,14 @@ const FormLogin = ({margin,width}) => {
                 label={"Correo electronico"}
                 height="37px"
                 width="980px"
+                borderRadius={"5px"}
             />
             <Input
                 label={"Contraseña"}
                 type={"password"}
                 height="37px"
                 width="980px"
+                borderRadius={"5px"}
             />
             <SLink to={"/register"}>¿ No tienes cuenta todavía ?</SLink>
             <ButtonSubmit
