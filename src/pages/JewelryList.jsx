@@ -18,10 +18,13 @@ const JewelryList = () => {
                 marginBottom={"50px"}
                 widthSearch={"51.59px"}
                 borderRadius={"5px"}
+                margin={"0px 0px 40px 0px"}
             />
             <Sdiv>
-                <Filters />
-                <LinkSectionGroup width={"900px"} />
+                <Filters margin={"0px 0px 40px 0px"} />
+                <div>
+                    <LinkSectionGroup width={"900px"} />
+                </div>
             </Sdiv>
         </Sbody>
     )

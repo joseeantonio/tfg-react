@@ -38,8 +38,8 @@ const Sbutton = styled.button`
   height: ${(props) => props.height};
   width: ${(props) => props.widthSearch};
   background-color: white;
-  //border-radius: 0px 5px 5px 0px;
   border-radius: 0px ${(props) => props.borderRadius} ${(props) => props.borderRadius} 0px;
+  cursor: pointer;
 `
 
 
@@ -55,6 +55,7 @@ const Sspan = styled.span`
 const Slabel = styled.label`
 
   display: flex;
+  justify-content: center;
   flex-direction: column;
   margin: ${(props) => props.margin ?? "3px"};
 
