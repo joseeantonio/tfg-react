@@ -4,6 +4,7 @@ import Filters from "../modules/Filters";
 import Input from "../components/Input";
 import styled from "styled-components";
 import LinkSectionGroup from "../modules/LinkSectionGroup";
+import JewelCard from "../components/JewelCard";
 
 const JewelryList = () => {
     return(
@@ -24,6 +25,7 @@ const JewelryList = () => {
                 <Filters margin={"0px 0px 40px 0px"} />
                 <div>
                     <LinkSectionGroup width={"900px"} />
+                    <JewelCard />
                 </div>
             </Sdiv>
         </Sbody>
