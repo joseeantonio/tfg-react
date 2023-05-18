@@ -12,7 +12,7 @@ const NavBar = () => {
                 <SNavLink to={"#"}><h1>LOGO</h1></SNavLink>
                 <nav>
                     <SUlOrdenador>
-                        <SLiOrdenador><SNavLink to={"/jewelryList"}>JOYAS</SNavLink></SLiOrdenador>
+                        <SLiOrdenador><SNavLink to={"/jewelry"}>JOYAS</SNavLink></SLiOrdenador>
                         <SLiOrdenador><SNavLink to={"/contact"}>CONTACTO</SNavLink></SLiOrdenador>
                         <SLiOrdenador><SNavLink to={"#"}><SFaShoppingCart /></SNavLink></SLiOrdenador>
                         <SLiOrdenador><SNavLink to={"/register"}><FaUserAlt /></SNavLink></SLiOrdenador>

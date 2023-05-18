@@ -4,9 +4,9 @@ import Filters from "../modules/Filters";
 import Input from "../components/Input";
 import styled from "styled-components";
 import LinkSectionGroup from "../modules/LinkSectionGroup";
-import JewelCard from "../components/JewelCard";
+import JewelryList from "../modules/JewelryList";
 
-const JewelryList = () => {
+const Jewelry = () => {
     return(
         <Sbody>
             <TitlePage name={"JOYAS"} />
@@ -25,7 +25,7 @@ const JewelryList = () => {
                 <Filters margin={"0px 0px 40px 0px"} />
                 <div>
                     <LinkSectionGroup width={"900px"} />
-                    <JewelCard />
+                    <JewelryList width={"900px"} margin={"5px 0 30px 0"} />
                 </div>
             </Sdiv>
         </Sbody>
@@ -40,4 +40,4 @@ const Sdiv = styled.div`
   display: flex;
   justify-content: space-around;
 `
-export default JewelryList
+export default Jewelry

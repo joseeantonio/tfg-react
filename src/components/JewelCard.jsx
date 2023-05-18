@@ -1,11 +1,9 @@
 import React from "react";
 import {Link} from "react-router-dom";
-import productos from "../assets/json/productosPrueba.json"
 import styled from "styled-components";
 
-const JewelCard = () => {
+const JewelCard = ({producto}) => {
 
-    const producto = productos.productos[0]
 
     return(
         <Sdiv>
@@ -70,7 +68,7 @@ const Sdiv = styled.div`
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  margin: 0px 10px 10px 10px;
+  margin: 25px 10px 10px 10px;
   border-radius: 5px;
 `
 

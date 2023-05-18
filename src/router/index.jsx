@@ -5,7 +5,7 @@ import LayoutPublic from "../layouts/LayoutPublic";
 import Register from "../pages/Register";
 import Login from "../pages/Login";
 import Contact from "../pages/Contact";
-import JewelryList from "../pages/JewelryList";
+import Jewelry from "../pages/Jewelry";
 
 
 export const router = createBrowserRouter([
@@ -32,9 +32,9 @@ export const router = createBrowserRouter([
                 index: true,
                 element: <Contact />,
             },{
-                path: '/jewelryList',
+                path: '/jewelry',
                 index: true,
-                element: <JewelryList />,
+                element: <Jewelry />,
             },
         ],
     },

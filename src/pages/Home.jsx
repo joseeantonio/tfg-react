@@ -20,7 +20,7 @@ const Home = () => {
                 <ImgSeccion name="Ver Relojes" img={img_portada_relojes} />
                 <ImgSeccion name="Ver Collares" img={img_portada_anillos} />
             </SdivContenedor>
-            <SLink><Sdiv><Sh1>Todas las joyas</Sh1></Sdiv></SLink>
+            <SLink to={"/jewelry"}><Sdiv><Sh1>Todas las joyas</Sh1></Sdiv></SLink>
         </Sbody>
     )
 }
