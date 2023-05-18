@@ -60,11 +60,6 @@ const Sh1 = styled.h1`
   }
 `
 
-const Simg = styled.img`
-  width: 302px;
-  height: 218px;
-`
-
 const SimgHome = styled.img`
   width: 100%;
   height: 598px;
@@ -90,12 +85,6 @@ const SdivContenedor = styled.div`
   display: flex;
   justify-content: space-around;
   padding-bottom: 40px;
-`
-
-const SdivCarta = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 `
 
 const SLink = styled(Link)`
