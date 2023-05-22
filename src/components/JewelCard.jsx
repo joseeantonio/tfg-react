@@ -10,9 +10,7 @@ const JewelCard = ({producto}) => {
             <Simg src={producto.url_img}/>
             <Sh1>{producto.nombre}</Sh1>
             <Sh2>{producto.precio} €</Sh2>
-            <SLinkContainer>
-                <SLink>Añadir al carrito</SLink>
-            </SLinkContainer>
+            <SLink to={`/jewel/${producto.id}`}>Añadir al carrito</SLink>
         </Sdiv>
     )
 }
@@ -27,9 +25,6 @@ const SLink = styled(Link)`
   color: white;
   text-decoration: none;
   font-size: 18px;
-`
-
-const SLinkContainer = styled(Link)`
   width: 225px;
   height: 40px;
   background-color: #283747;
@@ -38,7 +33,8 @@ const SLinkContainer = styled(Link)`
   justify-content: center;
   align-items: center;
   margin: 0px 10px 10px 10px;
-
+  cursor: pointer;
+  
   &:hover {
     background-color: #213075;
     font-size: 17px;
