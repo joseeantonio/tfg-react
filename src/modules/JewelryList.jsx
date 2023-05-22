@@ -1,9 +1,8 @@
 import React from "react";
-import productos from "../assets/json/productosPrueba.json"
 import JewelCard from "../components/JewelCard";
 import styled from "styled-components";
 
-const JewelryList = ({margin,width}) => {
+const JewelryList = ({margin,width,productos}) => {
 
 
     return(

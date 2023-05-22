@@ -5,6 +5,7 @@ import Input from "../components/Input";
 import styled from "styled-components";
 import LinkSectionGroup from "../modules/LinkSectionGroup";
 import JewelryList from "../modules/JewelryList";
+import productos from "../assets/json/productosPrueba.json"
 
 const Jewelry = () => {
     return(
@@ -25,7 +26,7 @@ const Jewelry = () => {
                 <Filters margin={"0px 0px 40px 0px"} />
                 <div>
                     <LinkSectionGroup width={"900px"} />
-                    <JewelryList width={"900px"} margin={"5px 0 30px 0"} />
+                    <JewelryList productos={productos} width={"900px"} margin={"5px 0 30px 0"} />
                 </div>
             </Sdiv>
         </Sbody>
