@@ -20,8 +20,8 @@ const Sdiv = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  align-items: flex-start; /* Alineación vertical hacia arriba */
-  margin-top: 20px; /* Puedes ajustar el margen superior según sea necesario */
+  align-items: flex-start;
+  margin-top: 20px;
   width: ${(props) => props.width};
   margin: ${(props) => props.margin};
 `
