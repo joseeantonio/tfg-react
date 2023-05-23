@@ -7,6 +7,7 @@ import Login from "../pages/Login";
 import Contact from "../pages/Contact";
 import Jewelry from "../pages/Jewelry";
 import Jewel from "../pages/Jewel";
+import Profile from "../pages/Profile";
 
 
 export const router = createBrowserRouter([
@@ -39,6 +40,10 @@ export const router = createBrowserRouter([
                 path: '/jewel/:id',
                 index: true,
                 element: <Jewel />,
+            },{
+                path: '/profile',
+                index: true,
+                element: <Profile />,
             },
         ],
     },

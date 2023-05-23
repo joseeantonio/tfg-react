@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const ButtonSubmit = ({label,onclick,color,backgroundColor,margin,padding,height,width,borderRadius}) => {
+const ButtonSubmit = ({label,onclick,color,backgroundColor,margin,padding,height,width,borderRadius,fontSize}) => {
     return(
         <Sbutton
             type="submit"
@@ -15,7 +15,7 @@ const ButtonSubmit = ({label,onclick,color,backgroundColor,margin,padding,height
         >
             {
                 label &&
-                <Sspan>{label}</Sspan>
+                <Sspan fontSize={fontSize}>{label}</Sspan>
             }
         </Sbutton>
     )
@@ -25,16 +25,16 @@ const ButtonSubmit = ({label,onclick,color,backgroundColor,margin,padding,height
 const Sbutton = styled.button`
   background-color: ${(props) => props.backgroundColor};
   color: ${(props) => props.color};
-  width: 504px;
+  width: ${(props) => props.width ? props.width : "504px"};
   height: 37px;
   margin: 0 auto;
-  border-radius: 5px;
+  border-radius: ${(props) => props.borderRadius ? props.borderRadius : "5px"};
 `
 
 const Sspan = styled.span`
   font-family: 'Inter';
   font-weight: 700;
-  font-size: 20px;
+  font-size: ${(props) => props.fontSize ? props.fontSize : "20px"};
   cursor: pointer;
 `
 
