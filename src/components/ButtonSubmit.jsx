@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
-const ButtonSubmit = ({label,onclick,color,backgroundColor,margin,padding,height,width,borderRadius,fontSize}) => {
+const ButtonSubmit = ({label,onclick,color,backgroundColor,margin,padding,height,width,borderRadius,fontSize,type}) => {
     return(
         <Sbutton
-            type="submit"
+            type={type ?? "submit"}
             color={color}
             onClick={onclick}
             backgroundColor={backgroundColor}
