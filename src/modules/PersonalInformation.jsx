@@ -3,8 +3,15 @@ import {FaUserAlt} from "react-icons/fa";
 import styled from "styled-components";
 import ShowInformation from "../components/ShowInformation";
 import ButtonSubmit from "../components/ButtonSubmit";
+import {useNavigate} from "react-router-dom";
 
 const PersonalInformation = () => {
+
+    const navigate = useNavigate();
+
+    const cerrarSesion = () => {
+        navigate("/login");
+    }
 
     return(
         <Sdiv>
@@ -34,6 +41,7 @@ const PersonalInformation = () => {
                     height={"31px"}
                     backgroundColor={"#CB4335"}
                     borderRadius={"10px"}
+                    onclick={cerrarSesion}
                 />
             </Sdiv>
         </Sdiv>
