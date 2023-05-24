@@ -13,6 +13,7 @@
       "diametro" : null,
       "materialCaja" : null,
       "materialCorrea" : null,
+      "colorCorrea" : null,
       "tipoMovimiento" : null,
       "resistenteAgua" : null,
 

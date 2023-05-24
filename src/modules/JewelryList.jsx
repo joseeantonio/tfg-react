@@ -8,7 +8,7 @@ const JewelryList = ({margin,width,productos}) => {
     return(
         <Sdiv width={width} margin={margin}>
             {
-                productos.productos.map((producto) => (
+                productos.map((producto) => (
                     <JewelCard producto={producto} />
                 ))
             }
