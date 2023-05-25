@@ -19,7 +19,6 @@ const Input = ({label,type,height,width, onChange,placeholder, margin,searchIcon
             {error && <Sdiv>{error}</Sdiv>}
         </Slabel>
     )
-
 }
 
 const Sinput = styled.input`
@@ -47,7 +46,6 @@ const Sbutton = styled.button`
   border-radius: 0px ${(props) => props.borderRadius} ${(props) => props.borderRadius} 0px;
   cursor: pointer;
 `
-
 
 const Sspan = styled.span`
 
