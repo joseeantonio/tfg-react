@@ -3,7 +3,7 @@ import styled from "styled-components";
 import {BsSearch} from "react-icons/bs";
 
 
-const Input = ({label,type,height,width, onChange,placeholder, margin,searchIcon,widthSearch,borderRadius}) => {
+const Input = ({label,type,height,width, onChange,placeholder, margin,searchIcon,widthSearch,borderRadius,error}) => {
 
     return(
         <Slabel margin={margin} searchIcon={searchIcon}>
@@ -16,6 +16,7 @@ const Input = ({label,type,height,width, onChange,placeholder, margin,searchIcon
                     </Sbutton>
                 )
             }
+            {error && <Sdiv>{error}</Sdiv>}
         </Slabel>
     )
 
@@ -31,7 +32,12 @@ const Sinput = styled.input`
           props.searchIcon ? `
       border-radius: ${props.borderRadius} 0px 0px ${props.borderRadius};
     ` : `border-radius: ${props.borderRadius}`}
-  
+`
+
+const Sdiv = styled.div`
+  color: red;
+  margin-top: 5px;
+  font-size: 14px;
 `
 
 const Sbutton = styled.button`
