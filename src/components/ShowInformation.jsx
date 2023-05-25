@@ -1,18 +1,24 @@
 import React from "react";
 import styled from "styled-components";
 
-const ShowInformation = ({name,value}) => {
+const ShowInformation = ({name,value,property,width}) => {
 
     return(
-        <Sdiv>
-            <Sp className={"name"}>{name} :</Sp>
-            <Sp className={"value"}>{value}</Sp>
+        <Sdiv className={property ? "property" : "profile"} width={width}>
+            <Sp className="name">{property ? name : `${name} :`}</Sp>
+            <Sp className="value">{value}</Sp>
         </Sdiv>
     )
 }
 
 const Sdiv = styled.div`
   display: flex;
+  
+  &.property{
+    border-bottom: 1px solid black;
+    width: ${(props) => props.width};
+  }
+  
 `
 
 const Sp = styled.p`
