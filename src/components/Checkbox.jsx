@@ -23,6 +23,7 @@ const Slabel = styled.label`
 
 const Sinput = styled.input`
   margin: 10px;
+  cursor: pointer;
 `
 
 const Sspan = styled.span`
