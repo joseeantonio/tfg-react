@@ -24,6 +24,7 @@ const Jewel = () => {
         fetchDataApi()
     },[])
 
+
     return(
         <body>
             <TitlePage name={jewel.nombre} />
