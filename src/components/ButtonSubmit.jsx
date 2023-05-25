@@ -29,13 +29,13 @@ const Sbutton = styled.button`
   height: 37px;
   margin: 0 auto;
   border-radius: ${(props) => props.borderRadius ? props.borderRadius : "5px"};
+  cursor: pointer;
 `
 
 const Sspan = styled.span`
   font-family: 'Inter';
   font-weight: 700;
   font-size: ${(props) => props.fontSize ? props.fontSize : "20px"};
-  cursor: pointer;
 `
 
 

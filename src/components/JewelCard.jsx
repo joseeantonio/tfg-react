@@ -1,6 +1,7 @@
 import React from "react";
 import {Link} from "react-router-dom";
 import styled from "styled-components";
+import ButtonSubmit from "./ButtonSubmit";
 
 const JewelCard = ({producto}) => {
 
@@ -11,6 +12,15 @@ const JewelCard = ({producto}) => {
             <Sh1>{producto.nombre}</Sh1>
             <Sh2>{producto.precio} €</Sh2>
             <SLink to={`/jewel/${producto.id}`}>Añadir al carrito</SLink>
+            {/*<ButtonSubmit label={"Añadir al carrito"}*/}
+            {/*              width={"225px"}*/}
+            {/*              color={"white"}*/}
+            {/*              height={"40px"}*/}
+            {/*              backgroundColor={"#283747"}*/}
+            {/*              fontSize={"18px"}*/}
+            {/*              borderRadius={"0px"}*/}
+            {/*              margin={"10px"}*/}
+            {/*/>*/}
         </Sdiv>
     )
 }
