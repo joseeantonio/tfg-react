@@ -55,6 +55,10 @@ const FormRegister = ({width, margin}) => {
             errors.password_rep = "Por favor, completa la contraseña";
         }
 
+        if (!isNaN(data.name)) {
+            errors.name = "El nombre no debe de tener numeros";
+        }
+
         setErrors(errors);
 
     };
@@ -73,6 +77,7 @@ const FormRegister = ({width, margin}) => {
                     width="450px"
                     borderRadius={"5px"}
                     error={errors.name}
+                    onChange={(e) => handleData(e)}
                 />
                 <Input
                     label={"Apellidos"}
@@ -80,6 +85,7 @@ const FormRegister = ({width, margin}) => {
                     width="450px"
                     borderRadius={"5px"}
                     error={errors.surname}
+                    onChange={(e) => handleData(e)}
                 />
             </Sdiv>
             <Checkbox
@@ -101,6 +107,7 @@ const FormRegister = ({width, margin}) => {
                 width="980px"
                 borderRadius={"5px"}
                 error={errors.email}
+                onChange={(e) => handleData(e)}
             />
             <Input
                 label={"Contraseña"}
@@ -109,6 +116,7 @@ const FormRegister = ({width, margin}) => {
                 width="980px"
                 borderRadius={"5px"}
                 error={errors.password}
+                onChange={(e) => handleData(e)}
             />
             <Input
                 label={"Confirmar contraseña"}
@@ -116,6 +124,7 @@ const FormRegister = ({width, margin}) => {
                 width="974px"
                 borderRadius={"5px"}
                 error={errors.password_rep}
+                onChange={(e) => handleData(e)}
             />
             <SLink to={"/login"}>¿ Ya tienes cuenta ?</SLink>
             <ButtonSubmit
