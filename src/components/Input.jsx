@@ -61,7 +61,7 @@ const Slabel = styled.label`
   display: flex;
   justify-content: center;
   flex-direction: column;
-  margin: ${(props) => props.margin ?? "3px"};
+  margin: ${(props) => props.margin ? props.margin : "3px"};
 
   ${(props) =>
           props.searchIcon && `
