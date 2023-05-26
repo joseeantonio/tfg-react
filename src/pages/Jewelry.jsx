@@ -21,8 +21,17 @@ const Jewelry = () => {
     }
 
     useEffect(()=>{
+        const fetchDataApi = async () => {
+            try {
+                const result = await petition("http://localhost:8080/productos")
+                setJewerly(result)
+            } catch (error) {
+                console.log(error)
+            }
+        }
+
         fetchDataApi()
-    },[fetchDataApi])
+    },[])
 
 
     return(
