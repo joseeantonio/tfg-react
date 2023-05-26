@@ -11,18 +11,18 @@ const Jewelry = () => {
 
     const [jewerly,setJewerly] = useState([])
 
-    useEffect(()=>{
-        const fetchDataApi = async () => {
-            try {
-                const result = await petition("http://localhost:8080/productos")
-                setJewerly(result)
-            } catch (error) {
-                console.log(error)
-            }
+    const fetchDataApi = async () => {
+        try {
+            const result = await petition("http://localhost:8080/productos")
+            setJewerly(result)
+        } catch (error) {
+            console.log(error)
         }
+    }
 
+    useEffect(()=>{
         fetchDataApi()
-    },[])
+    },[fetchDataApi()])
 
 
     return(
