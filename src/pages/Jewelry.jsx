@@ -22,7 +22,7 @@ const Jewelry = () => {
 
     useEffect(()=>{
         fetchDataApi()
-    },[])
+    },[fetchDataApi])
 
 
     return(
