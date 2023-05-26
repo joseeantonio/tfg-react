@@ -1,5 +1,5 @@
 import React from "react";
-import {createBrowserRouter} from "react-router-dom";
+import { useRoutes } from "react-router-dom";
 import Home from "../pages/Home";
 import LayoutPublic from "../layouts/LayoutPublic";
 import Register from "../pages/Register";
@@ -9,42 +9,48 @@ import Jewelry from "../pages/Jewelry";
 import Jewel from "../pages/Jewel";
 import Profile from "../pages/Profile";
 
-
-export const router = createBrowserRouter([
+const routes = [
     {
-        path: '/',
+        path: "/",
         element: <LayoutPublic />,
-        // errorElement: <Error />,
         children: [
             {
-                path: '/',
+                path: "/",
                 index: true,
                 element: <Home />,
-            },{
-                path: '/register',
+            },
+            {
+                path: "/register",
                 index: true,
                 element: <Register />,
-            },{
-                path: '/login',
+            },
+            {
+                path: "/login",
                 index: true,
                 element: <Login />,
-            },{
-                path: '/contact',
+            },
+            {
+                path: "/contact",
                 index: true,
                 element: <Contact />,
-            },{
-                path: '/jewelry',
+            },
+            {
+                path: "/jewelry",
                 index: true,
                 element: <Jewelry />,
-            },{
-                path: '/jewel/:id',
+            },
+            {
+                path: "/jewel/:id",
                 index: true,
                 element: <Jewel />,
-            },{
-                path: '/profile',
+            },
+            {
+                path: "/profile",
                 index: true,
                 element: <Profile />,
             },
         ],
     },
-])
+];
+
+export const router = useRoutes(routes);
