@@ -9,7 +9,7 @@ const NavBar = () => {
     return (
         <SHeader>
             <SSectionOrdenador>
-                <SNavLink to={"#"}><h1>LOGO</h1></SNavLink>
+                <SNavLink to={"/profile"}><h1>LOGO</h1></SNavLink>
                 <nav>
                     <SUlOrdenador>
                         <SLiOrdenador><SNavLink to={"/jewelry"}>JOYAS</SNavLink></SLiOrdenador>
