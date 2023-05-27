@@ -13,7 +13,7 @@ const Jewelry = () => {
 
     const fetchDataApi = async () => {
         try {
-            const result = await petition("http://localhost:8080/productos")
+            const result = await petition("/productos")
             setJewerly(result)
         } catch (error) {
             console.log(error)

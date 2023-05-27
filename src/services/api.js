@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export const petition = (url) => {
-    return axios.get(url)
+    return axios.get("http://localhost:8080"+url)
         .then((response) => {
             return response.data;
         })
