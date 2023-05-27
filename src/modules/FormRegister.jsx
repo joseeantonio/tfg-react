@@ -8,13 +8,14 @@ import ButtonSubmit from "../components/ButtonSubmit";
 
 const FormRegister = ({width, margin}) => {
 
-    const [checked,setChecked] = useState(false)
+    const [legalWarning,setLegalWarning] = useState(false)
+    const [promotion,setPromotion] = useState(false)
     const [data,setData] = useState({
-        name: '',
-        surname: '',
-        email: '',
-        password: '',
-        password_rep: '',
+        name: "",
+        surname: "",
+        email: "",
+        password: "",
+        password_rep: "",
     })
     const [errors, setErrors] = useState({
         name: "",
@@ -22,6 +23,8 @@ const FormRegister = ({width, margin}) => {
         email: "",
         password: "",
         password_rep: "",
+        legalWarning: "",
+        promotion: "",
     });
 
     const handleData = (e) => {
@@ -37,6 +40,8 @@ const FormRegister = ({width, margin}) => {
 
         if (!data.name.trim()) {
             errors.name = "Por favor, completa el nombre";
+        }else if (!isNaN(data.name)) {
+            errors.name = "El nombre no debe de tener numeros";
         }
 
         if (!data.surname.trim()) {
@@ -55,16 +60,20 @@ const FormRegister = ({width, margin}) => {
             errors.password_rep = "Por favor, completa la contraseña";
         }
 
-        if (!isNaN(data.name)) {
-            errors.name = "El nombre no debe de tener numeros";
+        if (!legalWarning){
+            errors.legalWarning = "Debes de aceptar los terminos para continuar";
         }
 
         setErrors(errors);
 
     };
 
-    const function1 = () => {
-        setChecked(!checked)
+    const checkedPromotion = () => {
+        setPromotion(!promotion)
+    }
+
+    const checkedLegalWarning = () => {
+        setLegalWarning(!legalWarning)
     }
 
     return(
@@ -90,13 +99,14 @@ const FormRegister = ({width, margin}) => {
             </Sdiv>
             <Checkbox
                 label={"He leido y acepto el aviso legal y la politica de privacidad."}
-                onClick={function1}
+                onClick={checkedLegalWarning}
                 fontSize={"15px"}
             />
+            {errors.legalWarning && <Sdiv className={"error"}>{errors.legalWarning}</Sdiv> }
             <Checkbox
                 className="lastCheckbox"
                 label={"Quiero recibir notificaciones sobre promociones y productos."}
-                onClick={function1}
+                onClick={checkedPromotion}
                 marginBottom={"50px"}
                 fontSize={"15px"}
             />
@@ -152,6 +162,12 @@ const Sdiv = styled.div`
     margin: 0 auto;
     width: ${(props) => props.width || "1200px"};
     margin: ${(props) => props.margin || "0px"};
+  }
+  
+  &.error{
+    color: red;
+    margin-left: 10px;
+    font-size: 14px;
   }
 `
 
