@@ -14,7 +14,7 @@ const Jewelry = () => {
     const fetchDataApi = async () => {
         try {
             const result = await petition("/productos")
-            setJewerly(result)
+            setJewerly(result[0])
         } catch (error) {
             console.log(error)
         }
@@ -22,7 +22,7 @@ const Jewelry = () => {
 
     useEffect(()=>{
         fetchDataApi()
-    },[fetchDataApi()])
+    },[])
 
 
     return(

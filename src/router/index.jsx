@@ -8,6 +8,7 @@ import Contact from "../pages/Contact";
 import Jewelry from "../pages/Jewelry";
 import Jewel from "../pages/Jewel";
 import Profile from "../pages/Profile";
+import ShoppingCart from "../pages/ShoppingCart";
 
 
 export const router = createBrowserRouter([
@@ -44,6 +45,10 @@ export const router = createBrowserRouter([
                 path: '/profile',
                 index: true,
                 element: <Profile />,
+            },{
+                path: '/shoppingCart',
+                index: true,
+                element: <ShoppingCart />,
             },
         ],
     },
