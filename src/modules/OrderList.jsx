@@ -20,6 +20,7 @@ const OrderList = ({productos,padding}) => {
 
 const Sdiv = styled.div`
     padding: ${(props) => props.padding && props.padding};
+    border-bottom: ${(props) => props.padding && "1px solid black"};
 `
 
 export default OrderList

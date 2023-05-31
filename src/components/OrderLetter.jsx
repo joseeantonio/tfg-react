@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { FaTrash } from "react-icons/fa";
 
 const OrderLetter = ({width,margin,producto}) => {
 
@@ -24,13 +25,36 @@ const OrderLetter = ({width,margin,producto}) => {
             <Sh1>{producto.talla}</Sh1>
             <Sh1>Entrega el: {deliveryDate}</Sh1>
             <Sh1>{producto.precio}</Sh1>
-            <Sh1>eliminar</Sh1>
+            <Sbutton>
+              <SFaTrash/>
+              <Sp>Eliminar</Sp>
+            </Sbutton>
         </Sdiv>
     )
 }
 
+const Sp = styled.p`
+  margin:10px;
+  font-family: 'Inter';
+`
+
 const Simg = styled.img`
   max-width: 225px;
+`
+
+const SFaTrash = styled(FaTrash)`
+  font-size:20px;
+  margin:10px;
+`
+
+const Sbutton = styled.button`
+  all:unset;
+  cursor:pointer;
+  width: 150px;
+  text-align:center;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
 `
 
 const Sh1 = styled.h1`

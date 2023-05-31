@@ -8,7 +8,7 @@ import productos from "../assets/json/productosPrueba.json"
 
 const ShoppingCart = () => {
 
-
+    const [prize,setPrize] = useState(100)
     const [order,setOrder] = useState([])
 
     const fetchDataApi = async () => {
@@ -30,9 +30,17 @@ const ShoppingCart = () => {
         <Sbody>
             <TitlePage name={"CESTA"} />
             <OrderList productos={productos.productos} padding={"0px 0px 80px 0px"} />
+            <Sh1>IMPORTE TOTAL DEL PEDIDO (iva incluido) : {prize}€</Sh1>
         </Sbody>
     )
 }
+
+const Sh1 = styled.h1`
+    margin:0;
+    padding: 40px;;
+    text-align:center;
+    font-family:'Inter';
+`
 
 const Sbody = styled.body`
   background-image: url(${img_fondo});

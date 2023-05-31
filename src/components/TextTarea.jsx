@@ -1,11 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 
-const TextTarea = ({ label, height, width, onChange, placeholder, margin }) => {
+const TextTarea = ({ label, height, width, onChange, placeholder, margin,name }) => {
     return (
         <Slabel margin={margin}>
             {label && <Sspan>{label}</Sspan>}
-            <Stextarea height={height} width={width} placeholder={placeholder} onChange={onChange} />
+            <Stextarea height={height} width={width} placeholder={placeholder} onChange={onChange} name={name} />
         </Slabel>
     );
 };
@@ -14,8 +14,9 @@ const Stextarea = styled.textarea`
   background-color: white;
   border: 1px solid black;
   border-radius: 5px;
-  width: ${(props) => (props.width ? props.width : "100%")};
-  height: ${(props) => (props.height ? props.height : "100%")};
+  max-width: ${(props) => (props.width ? props.width : "100%")};
+  min-width: ${(props) => (props.width ? props.width : "100%")};
+  min-height: ${(props) => (props.height ? props.height : "100%")};
 `;
 
 const Sspan = styled.span`
