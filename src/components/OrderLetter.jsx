@@ -45,8 +45,11 @@ const Sdiv = styled.div`
   display: flex;
   justify-content: space-around;
   align-items: center;
+  height: 200px;
+  background-color:white;
   width: ${(props) => props.width && props.width};
   margin: ${(props) => props.margin && props.margin};
+  border-radius:5px;
 `
 
 export default OrderLetter

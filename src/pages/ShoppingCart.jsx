@@ -4,6 +4,7 @@ import styled from "styled-components";
 import img_fondo from "../assets/images/img_fondo_carrito.png"
 import OrderList from "../modules/OrderList";
 import {petition} from "../services/api";
+import productos from "../assets/json/productosPrueba.json"
 
 const ShoppingCart = () => {
 
@@ -27,8 +28,8 @@ const ShoppingCart = () => {
 
     return(
         <Sbody>
-            {/*<TitlePage name={"CESTA"} />*/}
-            {/*<OrderList productos={} />*/}
+            <TitlePage name={"CESTA"} />
+            <OrderList productos={productos.productos} padding={"0px 0px 80px 0px"} />
         </Sbody>
     )
 }
