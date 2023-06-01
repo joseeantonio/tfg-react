@@ -83,9 +83,8 @@ const FormContact = ({margin,width}) => {
 }
 
 const Sdiv = styled.div`
-  display: grid;
-  place-items: center;
-  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
   width: ${(props) => props.width ?  props.width : "1200px"};
   margin: ${(props) => props.margin ? props.margin : "0px"};
 `
