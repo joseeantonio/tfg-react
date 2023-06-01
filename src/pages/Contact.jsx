@@ -6,7 +6,7 @@ const Contact = () => {
     return(
         <body>
             <TitlePage name={"CONTACTO"} />
-            <FormContact margin={"0 auto 50px"} width="1000px" />
+            <FormContact margin={"0 auto"} width="1000px" />
         </body>
     )
 }
