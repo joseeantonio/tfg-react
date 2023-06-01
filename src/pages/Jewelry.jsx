@@ -14,7 +14,7 @@ const Jewelry = () => {
     const fetchDataApi = async () => {
         try {
             const result = await petition("/productos")
-            setJewerly(result[0])
+            setJewerly(result)
         } catch (error) {
             console.log(error)
         }

@@ -13,11 +13,39 @@ const Jewel = () => {
 
     const fetchDataApi = async () => {
         try {
-            const result = await petition(`http://localhost:8080/productos/${id}`)
+            const result = await petition(`/productos/${id}`)
             setJewel(result)
         } catch (error) {
             console.log(error)
         }
+    }
+
+    const addOrder = () => {
+        let order = []
+        if (JSON.parse(localStorage.getItem('order'))){
+            order = JSON.parse(localStorage.getItem('order'))
+        }
+
+        let isInOrder = null
+        for (let i=0;i<order.length;i++){
+            if (order[i].id === jewel.id){
+                isInOrder = true
+            }
+        }
+
+        let finalOrder = []
+        if (isInOrder){
+            for (let i=0;i<order.length;i++){
+                if (order[i].id !== jewel.id){
+                    finalOrder.push(order[i].id)
+                }
+            }
+            localStorage.setItem('favoritos', JSON.stringify(finalOrder))
+        }else{
+            order.push(jewel)
+            localStorage.setItem('favoritos', JSON.stringify(order))
+        }
+
     }
 
     useEffect(()=>{
@@ -30,7 +58,7 @@ const Jewel = () => {
             <TitlePage name={jewel.nombre} />
             <Sdiv>
                 <Simg src={jewel.url_img}/>
-                <Description description={jewel.descripcion} width={"500px"} />
+                <Description description={jewel.descripcion} width={"500px"} onClick={addOrder} />
             </Sdiv>
             <TechnicalInformation jewel={jewel} margin={"40px auto"} width={"1130px"} />
         </body>

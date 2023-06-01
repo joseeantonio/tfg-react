@@ -2,7 +2,7 @@ import React from "react";
 import ButtonSubmit from "./ButtonSubmit";
 import styled from "styled-components";
 
-const Description = ({description,width}) => {
+const Description = ({description,width,onClick}) => {
 
 
     return (
@@ -17,6 +17,7 @@ const Description = ({description,width}) => {
                           fontSize={"18px"}
                           borderRadius={"0px"}
                           margin={"10px"}
+                          onclick={onClick}
             />
         </Sdiv>
     )
