@@ -44,7 +44,7 @@ const Sh1 = styled.h1`
 
 const Sbody = styled.body`
   background-image: url(${img_fondo});
-  background-size: 100% auto;
+  background-size: auto;
   background-repeat: no-repeat;
   background-position: center;
   min-height: 700px;

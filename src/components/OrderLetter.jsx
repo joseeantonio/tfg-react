@@ -24,7 +24,7 @@ const OrderLetter = ({width,margin,producto}) => {
             <Sh1>{producto.nombre}</Sh1>
             <Sh1>{producto.talla}</Sh1>
             <Sh1>Entrega el: {deliveryDate}</Sh1>
-            <Sh1>{producto.precio}</Sh1>
+            <Sh1>{producto.precio} €</Sh1>
             <Sbutton>
               <SFaTrash/>
               <Sp>Eliminar</Sp>
