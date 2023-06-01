@@ -8,7 +8,6 @@ import emailjs from 'emailjs-com';
 
 const FormContact = ({margin,width}) => {
 
-
     const [data,setData] = useState({
         email: "",
         title: "",
@@ -53,7 +52,7 @@ const FormContact = ({margin,width}) => {
                 name={"email"}
                 label={"Correo electronico"}
                 height="37px"
-                width="980px"
+                width="100%"
                 borderRadius={"5px"} 
                 onChange={(e) => handleData(e)}
             />
@@ -61,7 +60,7 @@ const FormContact = ({margin,width}) => {
                 name={"title"}
                 label={"Asunto"}
                 height="37px"
-                width="980px"
+                width="100%"
                 borderRadius={"5px"}
                 onChange={(e) => handleData(e)}
             />
@@ -69,14 +68,15 @@ const FormContact = ({margin,width}) => {
                 name={"message"}
                 label={"Mensaje"}
                 height={"74px"}
-                width={"980px"}
+                width="100%"
                 margin={"0px 0px 45px 0px"}
                 onChange={(e) => handleData(e)}
             />
             <ButtonSubmit
                 label={"ENVIAR"}
                 backgroundColor={"black"}
-                color={"White"} onclick={enviarCorreo}
+                color={"White"}
+                onclick={enviarCorreo}
             />
         </Sdiv>
     )
@@ -85,7 +85,7 @@ const FormContact = ({margin,width}) => {
 const Sdiv = styled.div`
   display: flex;
   flex-direction: column;
-  width: ${(props) => props.width ?  props.width : "1200px"};
+  width: ${(props) => props.width ?  props.width : "100%"};
   margin: ${(props) => props.margin ? props.margin : "0px"};
 `
 
