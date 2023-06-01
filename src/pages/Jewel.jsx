@@ -21,10 +21,7 @@ const Jewel = () => {
     }
 
     const addOrder = () => {
-        let order = []
-        if (JSON.parse(localStorage.getItem('order'))){
-            order = JSON.parse(localStorage.getItem('order'))
-        }
+        let order = JSON.parse(localStorage.getItem("order")) || [];
 
         let isInOrder = null
         for (let i=0;i<order.length;i++){
@@ -35,15 +32,11 @@ const Jewel = () => {
 
         let finalOrder = []
         if (isInOrder){
-            for (let i=0;i<order.length;i++){
-                if (order[i].id !== jewel.id){
-                    finalOrder.push(order[i].id)
-                }
-            }
-            localStorage.setItem('favoritos', JSON.stringify(finalOrder))
+            finalOrder = order.filter(item => item.id !== jewel.id);
+            localStorage.setItem('order', JSON.stringify(finalOrder));
         }else{
             order.push(jewel)
-            localStorage.setItem('favoritos', JSON.stringify(order))
+            localStorage.setItem('order', JSON.stringify(order))
         }
 
     }

@@ -24,6 +24,10 @@ const ButtonSubmit = ({label,onclick,color,backgroundColor,margin,padding,height
 
 
 const Sbutton = styled.button`
+  all: unset;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-color: ${(props) => props.backgroundColor};
   color: ${(props) => props.color};
   width: ${(props) => props.width ? props.width : "504px"};
