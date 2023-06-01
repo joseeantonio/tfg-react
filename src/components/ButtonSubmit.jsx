@@ -30,15 +30,12 @@ const Sbutton = styled.button`
   justify-content: center;
   background-color: ${(props) => props.backgroundColor};
   color: ${(props) => props.color};
-  width: ${(props) => props.width ? props.width : "504px"};
+  width: ${(props) => props.width ? props.width : "50%"};
   height: 37px;
   margin: 0 auto;
   border-radius: ${(props) => props.borderRadius ? props.borderRadius : "5px"};
   cursor: pointer;
   
-  @media (width <= 800px) {
-    width: 80%;
-  }
 `
 
 const Sspan = styled.span`
@@ -47,7 +44,7 @@ const Sspan = styled.span`
   font-size: ${(props) => props.fontSize ? props.fontSize : "20px"};
 
   @media (width <= 550px) {
-    font-size: 17px;
+    font-size: 12px;
   }
 `
 
