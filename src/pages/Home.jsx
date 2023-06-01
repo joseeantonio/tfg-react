@@ -16,9 +16,9 @@ const Home = () => {
                 <Sh1 className="text-img">Creamos sonrisas cuando te damos nuestras joyas</Sh1>
             </Scontainer>
             <SdivContenedor>
-                <ImgSeccion name="Ver Collares" img={img_portada_collares} />
-                <ImgSeccion name="Ver Relojes" img={img_portada_relojes} />
-                <ImgSeccion name="Ver Collares" img={img_portada_anillos} />
+                <ImgSeccion name={"Ver Collares"} img={img_portada_collares} />
+                <ImgSeccion name={"Ver Relojes"} img={img_portada_relojes} />
+                <ImgSeccion name={"Ver Collares"} img={img_portada_anillos} />
             </SdivContenedor>
             <SLink to={"/jewelry"}><Sdiv><Sh1>Todas las joyas</Sh1></Sdiv></SLink>
         </Sbody>
@@ -30,12 +30,8 @@ const Sbody = styled.body`
 `
 
 const Scontainer = styled.div`
-
   position: relative;
-
 `
-
-
 
 const Sh1 = styled.h1`
   font-family: 'Inter';
@@ -57,6 +53,9 @@ const Sh1 = styled.h1`
     align-items: center;
     text-align: center;
 
+    @media (width <= 800px){
+      width: 300px;
+    }
   }
 `
 
@@ -67,17 +66,18 @@ const SimgHome = styled.img`
 `
 
 const Sdiv = styled.div`
-
   display: flex;
   align-items: center;
   justify-content: center;
   width: 373px;
   height: 53px;
   margin: 0 auto 40px;
-
   border: 1px solid #000000;
   border-radius: 5px;
-
+  
+  @media (width <= 400px){
+    width: 300px;
+  }
 `
 
 
@@ -85,6 +85,10 @@ const SdivContenedor = styled.div`
   display: flex;
   justify-content: space-around;
   padding-bottom: 40px;
+  
+  @media (width <= 1006px){
+    flex-direction: column;
+  }
 `
 
 const SLink = styled(Link)`

@@ -16,9 +16,12 @@ export default ImgSeccion
 const Sdiv = styled.div`
   display: flex;
   flex-direction: column;
-  flex-direction: column;
   align-items: center;
   position: relative;
+  
+  @media (width <= 1006px){
+    margin: 30px 0;
+  }
 `
 
 const Simg = styled.img`
@@ -38,6 +41,6 @@ const Sh1 = styled.h1`
   display: flex;
   align-items: center;
   top: 70%;
-  left: 52.4px ;
+  margin-left: -93px;
   transform: translate(-50%, -50%);
 `
