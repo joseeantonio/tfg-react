@@ -40,6 +40,11 @@ const Sp = styled.p`
 
 const Simg = styled.img`
   max-width: 225px;
+
+  @media (width <= 1330px) {
+    padding-top: 20px;
+    max-width: 250px;
+  }
 `
 
 const SFaTrash = styled(FaTrash)`
@@ -63,6 +68,10 @@ const Sh1 = styled.h1`
   text-align: center;
   color: black;
   font-family: 'Inter';
+
+  @media (width <= 1330px) {
+    width: 250px;
+  }
 `
 
 const Sdiv = styled.div`
@@ -74,6 +83,13 @@ const Sdiv = styled.div`
   width: ${(props) => props.width && props.width};
   margin: ${(props) => props.margin && props.margin};
   border-radius:5px;
+  
+  @media (width <= 1330px) {
+    margin: 0 20px 50px;
+    flex-direction: column;
+    height: 500px;
+    width: 330px;
+  }
 `
 
 export default OrderLetter
