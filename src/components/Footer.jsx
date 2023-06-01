@@ -35,6 +35,9 @@ const Sfooter = styled.footer`
 `
 
 const Sdiv = styled.div`
+  width: 170px;
+  text-align: center;
+  
   @media (width <= 600px) {
     margin: 20px;
   }
@@ -44,6 +47,8 @@ const SLink = styled(Link)`
   text-decoration: none;
   color: black;
   font-size: 16px;
+  width: 170px;
+  text-align: center;
   
   &.icono {
     margin-right: 7px;

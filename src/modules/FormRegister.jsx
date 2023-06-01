@@ -83,15 +83,16 @@ const FormRegister = ({width, margin}) => {
                 <Input
                     label={"Nombre"}
                     height="37px"
-                    width="450px"
+                    width="100%"
                     borderRadius={"5px"}
                     error={errors.name}
                     onChange={(e) => handleData(e)}
+                    margin={"0px 50px 0px 0px"}
                 />
                 <Input
                     label={"Apellidos"}
                     height="37px"
-                    width="450px"
+                    width="100%"
                     borderRadius={"5px"}
                     error={errors.surname}
                     onChange={(e) => handleData(e)}
@@ -114,7 +115,7 @@ const FormRegister = ({width, margin}) => {
             <Input
                 label={"Correo electronico"}
                 height="37px"
-                width="980px"
+                width="100%"
                 borderRadius={"5px"}
                 error={errors.email}
                 onChange={(e) => handleData(e)}
@@ -123,7 +124,7 @@ const FormRegister = ({width, margin}) => {
                 label={"Contraseña"}
                 type={"password"}
                 height="37px"
-                width="980px"
+                width="100%"
                 borderRadius={"5px"}
                 error={errors.password}
                 onChange={(e) => handleData(e)}
@@ -131,7 +132,7 @@ const FormRegister = ({width, margin}) => {
             <Input
                 label={"Confirmar contraseña"}
                 height="37px"
-                width="974px"
+                width="100%"
                 borderRadius={"5px"}
                 error={errors.password_rep}
                 onChange={(e) => handleData(e)}
@@ -154,6 +155,11 @@ const Sdiv = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    width: 100%;
+    
+    @media (width <= 1190px) {
+      flex-direction: column;
+    }
   }
   
   &.container{

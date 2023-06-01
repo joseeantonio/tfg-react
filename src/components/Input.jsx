@@ -6,7 +6,7 @@ import {BsSearch} from "react-icons/bs";
 const Input = ({label,type,height,width, onChange,placeholder, margin,searchIcon,widthSearch,borderRadius,error,name}) => {
 
     return(
-        <Slabel margin={margin} searchIcon={searchIcon}>
+        <Slabel margin={margin} searchIcon={searchIcon} width={width}>
             {label && <Sspan>{label}</Sspan>}
             <Sinput type={type} height={height} width={width} placeholder={placeholder} onChange={onChange} borderRadius={borderRadius} name={name} />
             {
@@ -24,7 +24,6 @@ const Input = ({label,type,height,width, onChange,placeholder, margin,searchIcon
 const Sinput = styled.input`
   background-color: white;
   border: 1px solid black;
-  width: ${(props) => props.width ? props.width : "100%"};
   height: ${(props) => props.height ? props.height : "100%"};
 
   ${(props) =>
@@ -61,6 +60,7 @@ const Slabel = styled.label`
   display: flex;
   justify-content: center;
   flex-direction: column;
+  width: ${(props) => props.width ? props.width : "100%"};
   margin: ${(props) => props.margin ? props.margin : "3px"};
 
   ${(props) =>

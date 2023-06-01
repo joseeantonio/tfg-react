@@ -6,7 +6,7 @@ const Register = () => {
     return(
         <body>
             <TitlePage name={"REGISTRO"} />
-            <FormRegister margin={"0 auto 50px"} width="1000px" />
+            <FormRegister margin={"auto 10% 50px 10%"} width="auto" />
         </body>
     )
 }

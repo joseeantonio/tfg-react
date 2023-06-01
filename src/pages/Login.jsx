@@ -6,7 +6,7 @@ const Login = () => {
     return(
         <body>
             <TitlePage name={"INICIO DE SESION"} />
-            <FormLogin margin={"auto 10% 50px 10%"} width="auto"/>
+            <FormLogin margin={"auto 10% 50px 10%"} width="auto" />
         </body>
     )
 }
