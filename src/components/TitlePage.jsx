@@ -18,6 +18,13 @@ const Sh1 = styled.h1`
   margin: 0px;
   display: flex;
   justify-content: center;
+  align-items:center;
+  text-align:center;
+
+  @media ( width <= 450px) {
+    font-size:30px;
+    padding: 50px;
+  }
 
 `
 export default TitlePage

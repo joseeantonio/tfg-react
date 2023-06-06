@@ -35,11 +35,22 @@ const Sdiv = styled.div`
   &.informacion{
     display: flex;
     justify-content: space-between;
+
+    @media (width <= 1170px){
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+    }
+  
   }
   
   &.all{
     margin: ${(props) => props.margin};
     width: ${(props) => props.width};
+
+    /* @media (width <= 1170px){
+    width:80%
+    } */
   }
 `
 

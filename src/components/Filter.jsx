@@ -2,14 +2,22 @@ import React from "react";
 import Checkbox from "./Checkbox";
 import styled from "styled-components";
 
-const Filter = ({name,options,width,margin}) => {
+const Filter = ({name,options,width,margin,filters, setFilters}) => {
+
+    const handleCheckbox = (option, checked) => {
+      if (checked) {
+        setFilters([...filters, option])
+      } else {
+        setFilters(filters.filter((filter) => filter !== option))
+      }
+    }
 
     return(
         <Sdiv width={width} margin={margin}>
             <Sh1>{name}</Sh1>
             {
                 options.map((option, index) => (
-                    <Checkbox label={option} fontSize={"19px"} />
+                    <Checkbox key={index} label={option} fontSize={"19px"} onChange={handleCheckbox} />
                 ))
             }
         </Sdiv>

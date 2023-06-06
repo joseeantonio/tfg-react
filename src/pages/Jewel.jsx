@@ -53,7 +53,7 @@ const Jewel = () => {
                 <Simg src={jewel.url_img}/>
                 <Description description={jewel.descripcion} width={"500px"} onClick={addOrder} />
             </Sdiv>
-            <TechnicalInformation jewel={jewel} margin={"40px auto"} width={"1130px"} />
+            <TechnicalInformation jewel={jewel} margin={"40px auto"} width={"90%"} />
         </body>
     )
 }
@@ -62,12 +62,25 @@ const Sdiv = styled.div`
   display: flex;
   justify-content: space-between;
   margin: 0 auto;
-  width: 1130px;
+  width: 90%;
+
+  @media (width <= 1170px){
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+  }
 `
 
 const Simg = styled.img`
-  height: 372px;
-  width: 532px;
+  max-width:532px;
+
+  @media (width <= 1170px){
+    margin-bottom:30px;
+    max-width:500px;
+  }
+  @media (width <= 600px){
+    max-width:30px;
+  }
 `
 
 export default Jewel

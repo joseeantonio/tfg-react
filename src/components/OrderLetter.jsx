@@ -36,6 +36,10 @@ const OrderLetter = ({width,margin,producto}) => {
 const Sp = styled.p`
   margin:10px;
   font-family: 'Inter';
+
+  @media (width <= 1330px) {
+    margin-left:3px;
+  }
 `
 
 const Simg = styled.img`
@@ -50,6 +54,11 @@ const Simg = styled.img`
 const SFaTrash = styled(FaTrash)`
   font-size:20px;
   margin:10px;
+
+
+  @media (width <= 1330px) {
+    margin-right:3px;
+  }
 `
 
 const Sbutton = styled.button`
@@ -60,6 +69,11 @@ const Sbutton = styled.button`
   display:flex;
   flex-direction:column;
   align-items:center;
+
+  @media (width <= 1330px) {
+    flex-direction:row;
+    justify-content:center;
+  }
 `
 
 const Sh1 = styled.h1`

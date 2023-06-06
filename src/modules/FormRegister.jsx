@@ -37,6 +37,7 @@ const FormRegister = ({width, margin}) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         const errors = {};
+        const regExpEmail =  /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/;
 
         if (!data.name.trim()) {
             errors.name = "Por favor, completa el nombre";
@@ -46,18 +47,29 @@ const FormRegister = ({width, margin}) => {
 
         if (!data.surname.trim()) {
             errors.surname = "Por favor, completa los apellidos";
+        }else if (!isNaN(data.name)) {
+            errors.surname = "Los apellidos no deben de tener numeros";
         }
 
         if (!data.email.trim()) {
             errors.email = "Por favor, completa el correo electronico";
+        }else if (!regExpEmail.test(data.email)) {
+            errors.email = "El correo electronico incorrecto";
         }
 
-        if (!data.password.trim()) {
-            errors.password = "Por favor, completa la contraseña";
-        }
-
-        if (!data.password_rep) {
-            errors.password_rep = "Por favor, completa la contraseña";
+        if(!data.password.trim() ||  !data.password_rep.trim()) {
+            if (!data.password.trim()) {
+                errors.password = "Por favor, completa la contraseña";
+            }else if (data.password.length < 6) {
+                errors.password = "La contraseña debe de tener 6 o mas caracteres";
+            }
+            if (!data.password_rep.trim()) {
+                errors.password_rep = "Por favor, completa confirmar la contraseña";
+            }
+        }else{
+            if (data.password !== data.password_rep) {
+                errors.password_rep = "Las contraseñas no coinciden";
+            }
         }
 
         if (!legalWarning){
@@ -81,6 +93,7 @@ const FormRegister = ({width, margin}) => {
             <TitleForm name={"INFORMACION PERSONAL"} />
             <Sdiv className="nameAndSurname">
                 <Input
+                    name={"name"}
                     label={"Nombre"}
                     height="37px"
                     width="100%"
@@ -90,6 +103,7 @@ const FormRegister = ({width, margin}) => {
                     margin={"0px 50px 0px 0px"}
                 />
                 <Input
+                    name={"surname"}
                     label={"Apellidos"}
                     height="37px"
                     width="100%"
@@ -113,6 +127,7 @@ const FormRegister = ({width, margin}) => {
             />
             <TitleForm name={"INFORMACION INICIO DE SESION"} />
             <Input
+                name={"email"}
                 label={"Correo electronico"}
                 height="37px"
                 width="100%"
@@ -121,6 +136,7 @@ const FormRegister = ({width, margin}) => {
                 onChange={(e) => handleData(e)}
             />
             <Input
+                name={"password"}
                 label={"Contraseña"}
                 type={"password"}
                 height="37px"
@@ -130,7 +146,9 @@ const FormRegister = ({width, margin}) => {
                 onChange={(e) => handleData(e)}
             />
             <Input
+                name={"password_rep"}
                 label={"Confirmar contraseña"}
+                type={"password"}
                 height="37px"
                 width="100%"
                 borderRadius={"5px"}

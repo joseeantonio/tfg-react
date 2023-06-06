@@ -20,7 +20,7 @@ const NavBar = () => {
     return (
         <SHeader>
             <SSectionOrdenador>
-                <SNavLink to={"/profile"}><h1>LOGO</h1></SNavLink>
+                <SNavLink className={"logo"} to={"/profile"}><h1>MUNDO DE LAS JOYAS</h1></SNavLink>
                 <Snav className={"desktop"}>
                     <Sul className={"DESKTOP"}>
                         <Sli><SNavLink to={"/jewelry"}>JOYAS</SNavLink></Sli>
@@ -53,6 +53,10 @@ const SNavLink = styled(NavLink)`
   text-decoration: none;
   color: black;
   padding: 20px;
+
+  &.logo{
+    font-family: "Playfair Display", serif;
+  }
 `;
 
 const SHeader = styled.header`

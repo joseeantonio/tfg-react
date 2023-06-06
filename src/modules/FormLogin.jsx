@@ -1,32 +1,78 @@
 import Input from "../components/Input";
-import React from "react";
+import React, {useState} from "react";
 import {Link} from "react-router-dom";
 import styled from "styled-components";
 import ButtonSubmit from "../components/ButtonSubmit";
 import TitleForm from "../components/TitleForm";
 
 const FormLogin = ({margin,width}) => {
+
+    const [data,setData] = useState({
+        email: "",
+        password: "",
+    })
+    const [errors, setErrors] = useState({
+        email: "",
+        password: "",
+    });
+
+    const handleData = (e) => {
+        setData({
+            ...data,
+            [e.target.name]: e.target.value,
+        })
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const errors = {};
+        const regExpEmail =  /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/;
+
+        if (!data.email.trim()) {
+            errors.email = "Por favor, completa el correo electronico";
+        }else if (!regExpEmail.test(data.email)) {
+            errors.email = "El correo electronico incorrecto";
+        }
+
+        if (!data.password.trim()) {
+            errors.password = "Por favor, completa la contraseña";
+        }else if (data.password.length < 6) {
+            errors.password = "La contraseña debe de tener 6 o mas caracteres";
+        }
+
+        setErrors(errors);
+    };
+
+
     return(
         <Sdiv margin={margin} width={width}>
             <TitleForm name={"ENTRAR CON SU CUENTA"} />
             <Input
+                name={"email"}
                 label={"Correo electronico"}
+                type={"email"}
                 height="37px"
                 width="100%"
-                borderRadius={"5px"}
+                borderRadius={"5px"} 
+                onChange={(e) => handleData(e)}
+                error={errors.email}
             />
             <Input
+                name={"password"}
                 label={"Contraseña"}
                 type={"password"}
                 height="37px"
                 width="100%"
                 borderRadius={"5px"}
+                onChange={(e) => handleData(e)}
+                error={errors.password}
             />
             <SLink to={"/register"}>¿ No tienes cuenta todavía ?</SLink>
             <ButtonSubmit
                 label={"INICIAR SESION"}
                 backgroundColor={"black"}
-                color={"White"}
+                color={"White"} 
+                onclick={handleSubmit}
             />
         </Sdiv>
     )

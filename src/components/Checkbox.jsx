@@ -1,12 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
-const Checkbox = ({label,onClick,marginBottom,fontSize}) => {
+const Checkbox = ({label,marginBottom,fontSize,onChange}) => {
 
+  const handleChecked = (event) => {
+    const checked = event.target.checked
+    onChange(label, checked)
+  }
 
     return(
         <Slabel htmlFor={label} marginBottom={marginBottom}>
-            <Sinput type={"checkbox"} onClick={onClick} />
+            <Sinput type={"checkbox"} onChange={handleChecked} />
             {
                 label && <Sspan fontSize={fontSize}>{label}</Sspan>
             }

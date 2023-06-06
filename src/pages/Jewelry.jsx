@@ -10,6 +10,7 @@ import {petition} from "../services/api";
 const Jewelry = () => {
 
     const [jewerly,setJewerly] = useState([])
+    const [filters, setFilters] = useState([]);
 
     const fetchDataApi = async () => {
         try {
@@ -23,6 +24,9 @@ const Jewelry = () => {
     useEffect(()=>{
         fetchDataApi()
     },[])
+    useEffect(()=>{
+        console.log(filters)
+    },[filters,setFilters])
 
 
     return(
@@ -37,13 +41,22 @@ const Jewelry = () => {
                 marginBottom={"50px"}
                 widthSearch={"51.59px"}
                 borderRadius={"5px"}
-                margin={"0px 0px 40px 0px"}
+                margin={"0 auto 40px"}
             />
             <Sdiv>
-                <Filters margin={"0px 0px 40px 0px"} />
+                <Filters margin={"0px 0px 40px 0px"} filters={filters} setFilters={setFilters} />
                 <div>
                     <LinkSectionGroup width={"900px"} />
-                    <JewelryList productos={jewerly} width={"900px"} margin={"5px 0 30px 0"} />
+                    {
+                        filters.length ===0 ? (
+                            <JewelryList productos={jewerly} width={"900px"} margin={"5px 0 30px 0"} />
+                        ) : 
+                            filters.includes("0 - 50 €") ? (
+                                <p>0 a 50 €</p>
+                            ) : (
+                                <p>pepe</p>
+                            )
+                    }
                 </div>
             </Sdiv>
         </Sbody>
@@ -56,6 +69,6 @@ const Sbody = styled.body`
 
 const Sdiv = styled.div`
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
 `
 export default Jewelry

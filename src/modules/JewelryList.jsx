@@ -9,7 +9,7 @@ const JewelryList = ({margin,width,productos}) => {
         <Sdiv width={width} margin={margin}>
             {
                 productos.map((producto) => (
-                    <JewelCard producto={producto} />
+                    <JewelCard producto={producto} key={producto.id} />
                 ))
             }
         </Sdiv>

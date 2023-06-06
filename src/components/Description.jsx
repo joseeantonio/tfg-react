@@ -1,14 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import ButtonSubmit from "./ButtonSubmit";
 import styled from "styled-components";
+import Quantity from "./Quantity";
 
 const Description = ({description,width,onClick}) => {
 
+  const [quantity,setQuantity] = useState(1)
 
     return (
         <Sdiv width={width}>
             <Sh1>Descripcion</Sh1>
             <Sp>{description}</Sp>
+            <Quantity 
+              quantity={quantity} 
+              setQuantity={setQuantity} 
+              margin={"0px 0px 20px 0px"}
+            />
             <ButtonSubmit label={"Añadir al carrito"}
                           width={"225px"}
                           color={"white"}
@@ -29,6 +36,14 @@ const Sdiv = styled.div`
   flex-direction: column;
   align-items: center;
   width: ${(props) => props.width};
+
+  @media (width <= 1170px){
+    max-width:500px;
+    text-align:center
+  }
+  @media (width <= 600px){
+    max-width:300px;
+  }
 `
 
 const Sh1 = styled.h1`

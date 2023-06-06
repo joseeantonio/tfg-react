@@ -1,11 +1,12 @@
 import React from "react";
 import styled from "styled-components";
 
-const ButtonSubmit = ({label,onclick,color,backgroundColor,margin,padding,height,width,borderRadius,fontSize,type}) => {
+const ButtonSubmit = ({label,onclick,color,backgroundColor,margin,padding,height,width,borderRadius,fontSize,type,border}) => {
     return(
         <Sbutton
             type={type ? type : "submit"}
             color={color}
+            border={border}
             onClick={onclick}
             backgroundColor={backgroundColor}
             margin={margin}
@@ -31,16 +32,21 @@ const Sbutton = styled.button`
   background-color: ${(props) => props.backgroundColor};
   color: ${(props) => props.color};
   width: ${(props) => props.width ? props.width : "50%"};
-  height: 37px;
+  height: ${(props) => props.height ? props.height : "37px"};
   margin: 0 auto;
   border-radius: ${(props) => props.borderRadius ? props.borderRadius : "5px"};
+  border: ${(props) => props.border && props.border};
   cursor: pointer;
-  
+
 `
 
 const Sspan = styled.span`
+  display:flex;
+  justify-content:center;
+  align-items:center;
   font-family: 'Inter';
   font-weight: 700;
+  height:100%;
   font-size: ${(props) => props.fontSize ? props.fontSize : "20px"};
 
   @media (width <= 550px) {

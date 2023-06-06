@@ -17,6 +17,10 @@ const Sdiv = styled.div`
   &.property{
     border-bottom: 1px solid black;
     width: ${(props) => props.width};
+
+    @media (width <= 600px) {
+    max-width:270px;
+    }
   }
   
 `
