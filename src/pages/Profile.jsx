@@ -1,21 +1,23 @@
-import React, {useState} from "react";
+import React, {useState, useTransition} from "react";
 import TitlePage from "../components/TitlePage";
 import PersonalInformation from "../modules/PersonalInformation";
 import cliente from "../../src/assets/json/productosPrueba.json"
 import {FaUserAlt} from "react-icons/fa";
 import styled from "styled-components";
 import FormModify from "../modules/FormModify";
+import {useTranslation} from "react-i18next";
 
 const Profile = () => {
 
     const [modify, setModify] = useState(false);
+    const { t } = useTranslation();
     const functionModify = () => {
         setModify(!modify)
     }
 
     return(
         <Sbody>
-            <TitlePage name={"PERFIL"} />
+            <TitlePage name={t("PERFIL")} />
             <SFaUserAlt />
             <Sh1>Datos Personales</Sh1>
             {

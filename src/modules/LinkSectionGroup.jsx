@@ -1,15 +1,17 @@
 import React from "react";
 import LinkSection from "../components/LinkSection";
 import styled from "styled-components";
+import {useTranslation} from "react-i18next";
 
 const LinkSectionGroup = ({width, margin}) => {
 
+    const { t } = useTranslation();
 
     return(
         <Sdiv width={width} margin={margin}>
-            <LinkSection name={"COLLARES"} route={"/jewerly/collares"} width={"250px"} height={"49px"} color={"White"} margin={"10px"}/>
-            <LinkSection name={"RELOJES"} route={"/jewerly/relojes"} width={"250px"} height={"49px"} color={"White"} margin={"10px"}/>
-            <LinkSection name={"ANILLOS"} route={"/jewerly/anillos"} width={"250px"} height={"49px"} color={"White"} margin={"10px"}/>
+            <LinkSection name={t("COLLARES")} route={"/jewerly/collares"} width={"250px"} height={"49px"} color={"White"} margin={"10px"}/>
+            <LinkSection name={t("RELOJES")} route={"/jewerly/relojes"} width={"250px"} height={"49px"} color={"White"} margin={"10px"}/>
+            <LinkSection name={t("ANILLOS")} route={"/jewerly/anillos"} width={"250px"} height={"49px"} color={"White"} margin={"10px"}/>
         </Sdiv>
     )
 }

@@ -4,10 +4,12 @@ import styled from "styled-components";
 import { FaShoppingCart } from "react-icons/fa";
 import { FaUserAlt } from "react-icons/fa";
 import { BsList } from "react-icons/bs";
+import {useTranslation} from "react-i18next";
 
 const NavBar = () => {
 
     const [mobile,setMobile] = useState(false)
+    const { t } = useTranslation();
 
     const isMobile = () => {
         setMobile(!mobile)
@@ -23,8 +25,8 @@ const NavBar = () => {
                 <SNavLink className={"logo"} to={"/profile"}><h1>MUNDO DE LAS JOYAS</h1></SNavLink>
                 <Snav className={"desktop"}>
                     <Sul className={"DESKTOP"}>
-                        <Sli><SNavLink to={"/jewelry"}>JOYAS</SNavLink></Sli>
-                        <Sli><SNavLink to={"/contact"}>CONTACTO</SNavLink></Sli>
+                        <Sli><SNavLink to={"/jewelry"}>{t("JOYAS")}</SNavLink></Sli>
+                        <Sli><SNavLink to={"/contact"}>{t("CONTACTO")}</SNavLink></Sli>
                         <Sli><SNavLink to={"/shoppingCart"}><SFaShoppingCart /></SNavLink></Sli>
                         <Sli><SNavLink to={"/register"}><FaUserAlt /></SNavLink></Sli>
                     </Sul>

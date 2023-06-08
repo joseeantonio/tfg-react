@@ -5,11 +5,15 @@ import { FaInstagram } from "react-icons/fa";
 import { FaFacebook } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
 import styled from "styled-components";
+import {useTranslation} from "react-i18next";
 
 const Footer = () => {
+
+    const { t } = useTranslation();
+
     return(
         <Sfooter>
-            <SLink to={"#"}>Terminos y condiciones</SLink>
+            <SLink to={"#"}>{t("terminos_y_condiciones")}</SLink>
             <SLink to={"#"}>Cookies</SLink>
             <Sdiv>
                 <SLink className="icono" to={"#"}><FaInstagram /></SLink>

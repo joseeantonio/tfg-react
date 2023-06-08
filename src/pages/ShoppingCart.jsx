@@ -5,11 +5,13 @@ import img_fondo from "../assets/images/img_fondo_carrito.png"
 import OrderList from "../modules/OrderList";
 import {petition} from "../services/api";
 import productos from "../assets/json/productosPrueba.json"
+import {useTranslation} from "react-i18next";
 
 const ShoppingCart = () => {
 
     const [prize,setPrize] = useState(100)
     const [order,setOrder] = useState([])
+    const { t } = useTranslation();
 
     const fetchDataApi = async () => {
         try {
@@ -28,7 +30,7 @@ const ShoppingCart = () => {
 
     return(
         <Sbody>
-            <TitlePage name={"CESTA"} />
+            <TitlePage name={t("CESTA")} />
             <OrderList productos={productos.productos} padding={"0px 0px 80px 0px"} />
             <Sh1>IMPORTE TOTAL DEL PEDIDO (iva incluido) : {prize}€</Sh1>
         </Sbody>

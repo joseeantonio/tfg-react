@@ -6,11 +6,13 @@ import styled from "styled-components";
 import LinkSectionGroup from "../modules/LinkSectionGroup";
 import JewelryList from "../modules/JewelryList";
 import {petition} from "../services/api";
+import {useTranslation} from "react-i18next";
 
 const Jewelry = () => {
 
     const [jewerly,setJewerly] = useState([])
     const [filters, setFilters] = useState([]);
+    const { t } = useTranslation();
 
     const fetchDataApi = async () => {
         try {
@@ -31,9 +33,9 @@ const Jewelry = () => {
 
     return(
         <Sbody>
-            <TitlePage name={"JOYAS"} />
+            <TitlePage name={t("JOYAS")} />
             <Input
-                placeholder={"Busqueda"}
+                placeholder={t("Busqueda")}
                 type={"search"}
                 width={"309.07px"}
                 height={"44px"}

@@ -4,11 +4,17 @@ import styled from "styled-components";
 import ShowInformation from "../components/ShowInformation";
 import ButtonSubmit from "../components/ButtonSubmit";
 import {useNavigate} from "react-router-dom";
-import Input from "../components/Input";
+import {useTranslation} from "react-i18next";
 
 const PersonalInformation = ({cliente,width, functionModify}) => {
 
     const navigate = useNavigate();
+    const { t, i18n } = useTranslation();
+
+    const changeLanguage = (language) => {
+        i18n.changeLanguage(language);
+        localStorage.setItem("language", language);
+    };
 
 
     const cerrarSesion = () => {
@@ -41,8 +47,9 @@ const PersonalInformation = ({cliente,width, functionModify}) => {
                     height={"31px"}
                     backgroundColor={"#CB4335"}
                     borderRadius={"10px"}
-                    onclick={cerrarSesion}
                 />
+                <button onClick={() => changeLanguage('en')}>INGLES</button>
+                <button onClick={() => changeLanguage('es')}>ESPAÑOL</button>
             </Sdiv>
         </Sdiv>
     )
