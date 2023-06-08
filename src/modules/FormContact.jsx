@@ -5,8 +5,11 @@ import Input from "../components/Input";
 import TextTarea from "../components/TextTarea";
 import ButtonSubmit from "../components/ButtonSubmit";
 import emailjs from 'emailjs-com';
+import {useTranslation} from "react-i18next";
 
 const FormContact = ({margin,width}) => {
+
+    const { t } = useTranslation();
 
     const [data,setData] = useState({
         email: "",
@@ -84,10 +87,10 @@ const FormContact = ({margin,width}) => {
 
     return(
         <Sdiv margin={margin} width={width}>
-            <TitleForm name={"ENVIANOS TU MENSAJE"} />
+            <TitleForm name={t("ENVIANOS_TU_MENSAJE")} />
             <Input
                 name={"email"}
-                label={"Correo electronico"}
+                label={t("Correo_electronico")}
                 height="37px"
                 width="100%"
                 type={"email"}
@@ -98,7 +101,7 @@ const FormContact = ({margin,width}) => {
             <Input
                 name={"title"}
                 type={"text"}
-                label={"Asunto"}
+                label={t("Asunto")}
                 height="37px"
                 width="100%"
                 borderRadius={"5px"}
@@ -107,7 +110,7 @@ const FormContact = ({margin,width}) => {
             />
             <TextTarea
                 name={"message"}
-                label={"Mensaje"}
+                label={t("Mensaje")}
                 height={"74px"}
                 width="100%"
                 margin={"0px 0px 45px 0px"}
@@ -115,7 +118,7 @@ const FormContact = ({margin,width}) => {
                 error={errors.message}
             />
             <ButtonSubmit
-                label={"ENVIAR"}
+                label={t("ENVIAR")}
                 backgroundColor={"black"}
                 color={"White"}
                 onclick={sendEmail}

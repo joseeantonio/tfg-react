@@ -24,7 +24,30 @@ i18n
                     RELOJES : "WATCHES",
                     ANILLOS : "RINGS",
                     Busqueda : "Search",
-                    terminos_y_condiciones : "Terms and Conditions"
+                    terminos_y_condiciones : "Terms and Conditions",
+                    Precio : "Price",
+                    Sexo : "Gender",
+                    Mujer : "Women",
+                    Hombre : "Man",
+                    ENVIANOS_TU_MENSAJE : "SEND US YOUR MESSAGE",
+                    Correo_electronico : "Email",
+                    Asunto : "Message Subject",
+                    Mensaje : "Message",
+                    ENVIAR : "SEND",
+                    Nombre : "Name",
+                    Apellidos : "Surnames",
+                    aviso_legal_y_politica : "I have read and accept the legal notice and the privacy policy.",
+                    promociones_notificaciones : "I want to receive notifications about promotions and products.",
+                    INFORMACION_INICIO_DE_SESION : "LOGIN INFORMATION",
+                    Contraseña : "Password",
+                    Confirmar_contraseña : "Confirm Password",
+                    Ya_tienes_cuenta : "Do you already have an account?",
+                    CREAR_CUENTA : "CREATE ACCOUNT",
+                    INFORMACION_PERSONAL : "PERSONAL INFORMATION",
+                    ENTRAR_CON_SU_CUENTA : "LOG IN WITH YOUR ACCOUNT",
+                    No_tienes_cuenta_todavía : "Don't have an account yet?",
+                    INICIAR_SESION : "LOG IN"
+
                 }
             },
             es: {
@@ -39,7 +62,29 @@ i18n
                     RELOJES : "RELOJES",
                     ANILLOS : "ANILLOS",
                     Busqueda : "Busqueda",
-                    terminos_y_condiciones : "Terminos y Condiciones"
+                    terminos_y_condiciones : "Terminos y Condiciones",
+                    Precio : "Precio",
+                    Sexo : "Sexo",
+                    Mujer : "Mujer",
+                    Hombre : "Hombre",
+                    ENVIANOS_TU_MENSAJE : "ENVIANOS TU MENSAJE",
+                    Correo_electronico : "Correo elctronico",
+                    Asunto : "Asunto",
+                    Mensaje : "Mensaje",
+                    ENVIAR : "ENVIAR",
+                    Nombre : "Nombre",
+                    Apellidos : "Apellidos",
+                    aviso_legal_y_politica : "He leido y acepto el aviso legal y la politica de privacidad.",
+                    promociones_notificaciones : "Quiero recibir notificaciones sobre promociones y productos.",
+                    INFORMACION_INICIO_DE_SESION : "INFORMACION INICIO DE SESION",
+                    Contraseña : "Contraseña",
+                    Confirmar_contraseña : "Confirmar contraseña",
+                    Ya_tienes_cuenta : "¿ Ya tienes cuenta ?",
+                    CREAR_CUENTA : "CREAR CUENTA",
+                    INFORMACION_PERSONAL : "INFORMACION PERSONAL",
+                    ENTRAR_CON_SU_CUENTA : "ENTRAR CON SU CUENTA",
+                    No_tienes_cuenta_todavía : "¿ No tienes cuenta todavía ?",
+                    INICIAR_SESION : "INICIAR SESION"
                 }
             }
         }

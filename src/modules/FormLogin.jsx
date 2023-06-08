@@ -4,8 +4,11 @@ import {Link} from "react-router-dom";
 import styled from "styled-components";
 import ButtonSubmit from "../components/ButtonSubmit";
 import TitleForm from "../components/TitleForm";
+import {useTranslation} from "react-i18next";
 
 const FormLogin = ({margin,width}) => {
+
+    const { t } = useTranslation();
 
     const [data,setData] = useState({
         email: "",
@@ -46,10 +49,10 @@ const FormLogin = ({margin,width}) => {
 
     return(
         <Sdiv margin={margin} width={width}>
-            <TitleForm name={"ENTRAR CON SU CUENTA"} />
+            <TitleForm name={t("ENTRAR_CON_SU_CUENTA")} />
             <Input
                 name={"email"}
-                label={"Correo electronico"}
+                label={t("Correo_electronico")}
                 type={"email"}
                 height="37px"
                 width="100%"
@@ -59,7 +62,7 @@ const FormLogin = ({margin,width}) => {
             />
             <Input
                 name={"password"}
-                label={"Contraseña"}
+                label={t("Contraseña")}
                 type={"password"}
                 height="37px"
                 width="100%"
@@ -67,9 +70,9 @@ const FormLogin = ({margin,width}) => {
                 onChange={(e) => handleData(e)}
                 error={errors.password}
             />
-            <SLink to={"/register"}>¿ No tienes cuenta todavía ?</SLink>
+            <SLink to={"/register"}>{t("No_tienes_cuenta_todavía")}</SLink>
             <ButtonSubmit
-                label={"INICIAR SESION"}
+                label={t("INICIAR_SESION")}
                 backgroundColor={"black"}
                 color={"White"} 
                 onclick={handleSubmit}

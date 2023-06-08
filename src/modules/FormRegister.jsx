@@ -5,9 +5,11 @@ import styled from "styled-components";
 import Checkbox from "../components/Checkbox";
 import {Link} from "react-router-dom";
 import ButtonSubmit from "../components/ButtonSubmit";
+import {useTranslation} from "react-i18next";
 
 const FormRegister = ({width, margin}) => {
 
+    const { t } = useTranslation();
     const [legalWarning,setLegalWarning] = useState(false)
     const [promotion,setPromotion] = useState(false)
     const [data,setData] = useState({
@@ -94,7 +96,7 @@ const FormRegister = ({width, margin}) => {
             <Sdiv className="nameAndSurname">
                 <Input
                     name={"name"}
-                    label={"Nombre"}
+                    label={t("Nombre")}
                     height="37px"
                     width="100%"
                     borderRadius={"5px"}
@@ -104,7 +106,7 @@ const FormRegister = ({width, margin}) => {
                 />
                 <Input
                     name={"surname"}
-                    label={"Apellidos"}
+                    label={t("Apellidos")}
                     height="37px"
                     width="100%"
                     borderRadius={"5px"}
@@ -113,22 +115,22 @@ const FormRegister = ({width, margin}) => {
                 />
             </Sdiv>
             <Checkbox
-                label={"He leido y acepto el aviso legal y la politica de privacidad."}
+                label={t("aviso_legal_y_politica")}
                 onClick={checkedLegalWarning}
                 fontSize={"15px"}
             />
             {errors.legalWarning && <Sdiv className={"error"}>{errors.legalWarning}</Sdiv> }
             <Checkbox
                 className="lastCheckbox"
-                label={"Quiero recibir notificaciones sobre promociones y productos."}
+                label={t("promociones_notificaciones")}
                 onClick={checkedPromotion}
                 marginBottom={"50px"}
                 fontSize={"15px"}
             />
-            <TitleForm name={"INFORMACION INICIO DE SESION"} />
+            <TitleForm name={t("INFORMACION_INICIO_DE_SESION")} />
             <Input
                 name={"email"}
-                label={"Correo electronico"}
+                label={t("Correo_electronico")}
                 height="37px"
                 width="100%"
                 borderRadius={"5px"}
@@ -137,7 +139,7 @@ const FormRegister = ({width, margin}) => {
             />
             <Input
                 name={"password"}
-                label={"Contraseña"}
+                label={t("Contraseña")}
                 type={"password"}
                 height="37px"
                 width="100%"
@@ -147,7 +149,7 @@ const FormRegister = ({width, margin}) => {
             />
             <Input
                 name={"password_rep"}
-                label={"Confirmar contraseña"}
+                label={t("Confirmar_contraseña")}
                 type={"password"}
                 height="37px"
                 width="100%"
@@ -155,9 +157,9 @@ const FormRegister = ({width, margin}) => {
                 error={errors.password_rep}
                 onChange={(e) => handleData(e)}
             />
-            <SLink to={"/login"}>¿ Ya tienes cuenta ?</SLink>
+            <SLink to={"/login"}>{t("Ya_tienes_cuenta")}</SLink>
             <ButtonSubmit
-                label={"CREAR CUENTA"}
+                label={t("CREAR_CUENTA")}
                 backgroundColor={"black"}
                 color={"White"}
                 onclick={handleSubmit}
