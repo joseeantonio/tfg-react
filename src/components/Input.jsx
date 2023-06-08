@@ -3,12 +3,12 @@ import styled from "styled-components";
 import {BsSearch} from "react-icons/bs";
 
 
-const Input = ({label,type,height,width, onChange,placeholder, margin,searchIcon,widthSearch,borderRadius,error,name}) => {
+const Input = ({label,defaultValue,type,height,width, onChange,placeholder, margin,searchIcon,widthSearch,borderRadius,error,name}) => {
 
     return(
         <Slabel margin={margin} searchIcon={searchIcon} width={width}>
             {label && <Sspan>{label}</Sspan>}
-            <Sinput type={type} height={height} width={width} placeholder={placeholder} onChange={onChange} borderRadius={borderRadius} name={name} />
+            <Sinput type={type} defaultValue={defaultValue} height={height} width={width} placeholder={placeholder} onChange={onChange} borderRadius={borderRadius} name={name} />
             {
                 searchIcon && (
                     <Sbutton widthSearch={widthSearch} height={height} borderRadius={borderRadius}>

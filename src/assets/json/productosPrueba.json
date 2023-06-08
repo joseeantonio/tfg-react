@@ -151,5 +151,15 @@
       "material" : null,
       "cierre" : null
     }
-  ]
+  ],
+  "cliente" : {
+    "id" : 1,
+    "nombre" : "Jose Antonio",
+    "apellidos" : "Gonzalez Perez",
+    "correo" : "gonzalezperezjoseant@gmail.com",
+    "contraseña" : "candado",
+    "fecha_nac" : "2000-10-10",
+    "admin" : true,
+    "username" : "peri02"
+  }
 }
