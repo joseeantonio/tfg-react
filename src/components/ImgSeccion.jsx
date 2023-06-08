@@ -1,12 +1,15 @@
 import React from "react";
 import styled from "styled-components";
+import {Link} from "react-router-dom";
 
 const ImgSeccion = (props) => {
     return(
-        <Sdiv>
-            <Simg src={props.img} alt=""/>
-            <Sh1>> {props.name}</Sh1>
-        </Sdiv>
+        <SLink to={props.route}>
+            <Sdiv>
+                <Simg src={props.img} alt=""/>
+                <Sh1>> {props.name}</Sh1>
+            </Sdiv>
+        </SLink>
     )
 
 }
@@ -22,6 +25,11 @@ const Sdiv = styled.div`
   @media (width <= 1006px){
     margin: 30px 0;
   }
+`
+
+const SLink = styled(Link)`
+  all: unset;
+    cursor: pointer;
 `
 
 const Simg = styled.img`

@@ -57,6 +57,10 @@ const SNavLink = styled(NavLink)`
   &.logo{
     font-family: "Playfair Display", serif;
   }
+  
+  &.active{
+    color: #FF8C00;
+  }
 `;
 
 const SHeader = styled.header`

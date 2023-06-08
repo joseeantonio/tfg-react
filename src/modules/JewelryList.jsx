@@ -19,11 +19,14 @@ const JewelryList = ({margin,width,productos}) => {
 const Sdiv = styled.div`
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: flex-start;
   margin-top: 20px;
   width: ${(props) => props.width};
   margin: ${(props) => props.margin};
+  @media (width <= 815px) {
+    width: 100%;
+  }
 `
 
 export default JewelryList

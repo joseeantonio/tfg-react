@@ -2,7 +2,8 @@ import React from "react";
 import Filter from "../components/Filter";
 import styled from "styled-components";
 
-const Filters = ({margin, filters, setFilters}) => {
+const
+    Filters = ({margin, filters, setFilters}) => {
     
 
     return(
@@ -25,6 +26,9 @@ const Filters = ({margin, filters, setFilters}) => {
 
 const Sdiv = styled.div`
   margin: ${(props) => props.margin};
+  @media (width <= 815px) {
+    margin: 0 auto;
+  }
 `
 
 export default Filters

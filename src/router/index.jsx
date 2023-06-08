@@ -9,6 +9,7 @@ import Jewelry from "../pages/Jewelry";
 import Jewel from "../pages/Jewel";
 import Profile from "../pages/Profile";
 import ShoppingCart from "../pages/ShoppingCart";
+import TypeJewel from "../pages/TypeJewel";
 
 
 export const router = createBrowserRouter([
@@ -49,6 +50,10 @@ export const router = createBrowserRouter([
                 path: '/shoppingCart',
                 index: true,
                 element: <ShoppingCart />,
+            },{
+                path: '/jewerly/:type',
+                index: true,
+                element: <TypeJewel />,
             },
         ],
     },

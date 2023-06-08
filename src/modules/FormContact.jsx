@@ -13,6 +13,11 @@ const FormContact = ({margin,width}) => {
         title: "",
         message: "",
     })
+    const [errors, setErrors] = useState({
+        email: "",
+        title: "",
+        message: "",
+    });
 
     const SERVICE_ID = 'service_3bez0td';
     const TEMPLATE_ID = 'template_wf56zej';
@@ -26,22 +31,54 @@ const FormContact = ({margin,width}) => {
         })
     }
 
-    const enviarCorreo = () => {
+    const sendEmail = (e) => {
+        e.preventDefault();
+        let ready = true;
+        const errors = {};
+        const regExpEmail =  /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/;
         // Prepara los parámetros del correo electrónico
         const templateParams = {
           to_email: data.email,
           from_name: 'Mundo de las Joyas',
           message: `Su mensaje : "${data.message}" a sido recibido correctamente`,
         };
-      
-        // Envía el correo electrónico utilizando EmailJS
-        emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams, USER_ID)
-          .then((response) => {
-            console.log('Correo electrónico enviado correctamente', response);
-          })
-          .catch((error) => {
-            console.error('Error al enviar el correo electrónico', error);
-          });
+
+        if (!data.email.trim()) {
+            errors.email = "Por favor, completa el correo electronico";
+            ready = false;
+        }else if (!regExpEmail.test(data.email)) {
+            errors.email = "El correo electronico incorrecto";
+            ready = false;
+        }
+
+        if (!data.title.trim()) {
+            errors.title = "Por favor, completa el asunto";
+            ready = false;
+        }else if (data.email.length > 20) {
+            errors.title = "El asunto debe tener menos de 20 caracteres";
+            ready = false;
+        }
+
+        if (!data.message.trim()) {
+            errors.message = "Por favor, completa el mensaje";
+            ready = false;
+        }
+
+        if (ready){
+            console.log("yes")
+            // Envía el correo electrónico utilizando EmailJS
+            emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams, USER_ID)
+                .then((response) => {
+                    console.log('Correo electrónico enviado correctamente', response);
+                })
+                .catch((error) => {
+                    console.error('Error al enviar el correo electrónico', error);
+                });
+        }else{
+            setErrors(errors)
+            console.log("no")
+        }
+
       };
 
 
@@ -53,16 +90,20 @@ const FormContact = ({margin,width}) => {
                 label={"Correo electronico"}
                 height="37px"
                 width="100%"
+                type={"email"}
                 borderRadius={"5px"} 
                 onChange={(e) => handleData(e)}
+                error={errors.email}
             />
             <Input
                 name={"title"}
+                type={"text"}
                 label={"Asunto"}
                 height="37px"
                 width="100%"
                 borderRadius={"5px"}
                 onChange={(e) => handleData(e)}
+                error={errors.title}
             />
             <TextTarea
                 name={"message"}
@@ -71,12 +112,13 @@ const FormContact = ({margin,width}) => {
                 width="100%"
                 margin={"0px 0px 45px 0px"}
                 onChange={(e) => handleData(e)}
+                error={errors.message}
             />
             <ButtonSubmit
                 label={"ENVIAR"}
                 backgroundColor={"black"}
                 color={"White"}
-                onclick={enviarCorreo}
+                onclick={sendEmail}
             />
         </Sdiv>
     )

@@ -1,11 +1,12 @@
 import React from "react";
 import styled from "styled-components";
 
-const TextTarea = ({ label, height, width, onChange, placeholder, margin,name }) => {
+const TextTarea = ({ label, height, width, onChange, placeholder, margin,name,error }) => {
     return (
         <Slabel margin={margin}>
             {label && <Sspan>{label}</Sspan>}
             <Stextarea height={height} width={width} placeholder={placeholder} onChange={onChange} name={name} />
+            {error && <Sdiv>{error}</Sdiv>}
         </Slabel>
     );
 };
@@ -32,5 +33,11 @@ const Slabel = styled.label`
   margin: 3px;
   margin: ${(props) => props.margin};
 `;
+
+const Sdiv = styled.div`
+  color: red;
+  margin-top: 5px;
+  font-size: 14px;
+`
 
 export default TextTarea;

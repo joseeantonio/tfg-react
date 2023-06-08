@@ -16,9 +16,9 @@ const Home = () => {
                 <Sh1 className="text-img">Creamos sonrisas cuando te damos nuestras joyas</Sh1>
             </Scontainer>
             <SdivContenedor>
-                <ImgSeccion name={"Ver Collares"} img={img_portada_collares} />
-                <ImgSeccion name={"Ver Relojes"} img={img_portada_relojes} />
-                <ImgSeccion name={"Ver Collares"} img={img_portada_anillos} />
+                <ImgSeccion name={"Ver Collares"} img={img_portada_collares} route={"/jewerly/collares"} />
+                <ImgSeccion name={"Ver Relojes"} img={img_portada_relojes} route={"/jewerly/relojes"} />
+                <ImgSeccion name={"Ver Anillos"} img={img_portada_anillos} route={"/jewerly/anillos"} />
             </SdivContenedor>
             <SLink to={"/jewelry"}><Sdiv><Sh1>Todas las joyas</Sh1></Sdiv></SLink>
         </Sbody>
