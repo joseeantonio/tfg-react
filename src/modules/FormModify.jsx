@@ -39,7 +39,7 @@ const FormModify = ({cliente, width, functionModify}) => {
                 type={"text"}
                 placeholder={t("Nombre")}
                 height="37px"
-                width="30%"
+                width="40%"
                 borderRadius={"5px"}
                 margin={"30px 0px 0px 0px"}
                 onChange={(e) => handleData(e)}
@@ -49,7 +49,7 @@ const FormModify = ({cliente, width, functionModify}) => {
                 type={"text"}
                 placeholder={t("Apellidos")}
                 height="37px"
-                width="30%"
+                width="40%"
                 borderRadius={"5px"}
                 margin={"20px 0px 0px 0px"}
                 onChange={(e) => handleData(e)}
@@ -59,7 +59,7 @@ const FormModify = ({cliente, width, functionModify}) => {
                 type={"date"}
                 onChange={(e) => handleData(e)}
                 height="37px"
-                width="30%"
+                width="40%"
                 borderRadius={"5px"}
                 margin={"20px 0px 0px 0px"}
                 defaultValue={cliente.fecha_nac}
@@ -69,7 +69,7 @@ const FormModify = ({cliente, width, functionModify}) => {
                 type={"email"}
                 placeholder={t("Correo_electronico")}
                 height="37px"
-                width="30%"
+                width="40%"
                 borderRadius={"5px"}
                 margin={"20px 0px 0px 0px"}
                 onChange={(e) => handleData(e)}
@@ -79,7 +79,7 @@ const FormModify = ({cliente, width, functionModify}) => {
                 type={"password"}
                 placeholder={t("Contraseña")}
                 height="37px"
-                width="30%"
+                width="40%"
                 borderRadius={"5px"}
                 margin={"20px 0px 0px 0px"}
                 onChange={(e) => handleData(e)}
@@ -91,7 +91,7 @@ const FormModify = ({cliente, width, functionModify}) => {
                         placeholder={t("Confirmar_contraseña")}
                         type={"password"}
                         height="37px"
-                        width="30%"
+                        width="40%"
                         borderRadius={"5px"}
                         margin={"20px 0px 0px 0px"}
                         onChange={(e) => handleData(e)}
@@ -136,6 +136,10 @@ const Sdiv = styled.div`
     flex-direction: row;
     justify-content: space-between;
     width: 60%;
+    @media (width <=590px) {
+      flex-direction: column;
+      height: 90px;
+    }
   }
 `
 

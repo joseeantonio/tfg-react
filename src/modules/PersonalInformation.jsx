@@ -110,6 +110,10 @@ const Sdiv = styled.div`
     flex-direction: row;
     justify-content: space-between;
     width: 60%;
+    @media (width <=590px) {
+      flex-direction: column; 
+      height: 90px;
+    }
   }
   
   &.buttons_idioms{
