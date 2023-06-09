@@ -5,16 +5,23 @@ import ShowInformation from "../components/ShowInformation";
 import ButtonSubmit from "../components/ButtonSubmit";
 import {useNavigate} from "react-router-dom";
 import {useTranslation} from "react-i18next";
+import { FiSettings } from "react-icons/fi";
+import { MdCancel } from "react-icons/md";
 
 const PersonalInformation = ({cliente,width, functionModify}) => {
 
     const navigate = useNavigate();
     const { t, i18n } = useTranslation();
+    const [idioms,setIdioms] = useState(false)
 
     const changeLanguage = (language) => {
         i18n.changeLanguage(language);
         localStorage.setItem("language", language);
     };
+
+    const show_settings = () => {
+        setIdioms(!idioms)
+    }
 
 
     const cerrarSesion = () => {
@@ -23,14 +30,51 @@ const PersonalInformation = ({cliente,width, functionModify}) => {
 
     return(
         <Sdiv width={width}>
-            <ShowInformation name={"Nombre"} value={cliente.nombre} />
-            <ShowInformation name={"Apellidos"} value={cliente.apellidos} />
-            <ShowInformation name={"Correo electronico"} value={cliente.correo} />
-            <ShowInformation name={"Fecha de nacimiento"} value={cliente.fecha_nac} />
-            <ShowInformation name={"Contraseña"} value={"******"} />
+            <ShowInformation name={t("Nombre")} value={cliente.nombre} />
+            <ShowInformation name={t("Apellidos")} value={cliente.apellidos} />
+            <ShowInformation name={t("Correo_electronico")} value={cliente.correo} />
+            <ShowInformation name={t("Fecha_de_nacimiento")} value={cliente.fecha_nac} />
+            <ShowInformation name={t("Contraseña")} value={"******"} />
+            <ButtonSubmit
+                label={<SFiSettings />}
+                width={"145px"}
+                height={"31px"}
+                fontSize={"15px"}
+                borderRadius={"10px"}
+                onclick={show_settings}
+            />
+            {
+                idioms && (
+                    <Sdiv className={"buttons_idioms"}>
+                        <Sbutton onClick={show_settings}><MdCancel/></Sbutton>
+                        <ButtonSubmit
+                            label={t("INGLES")}
+                            width={"145px"}
+                            color={"black"}
+                            height={"31px"}
+                            fontSize={"15px"}
+                            backgroundColor={"white"}
+                            border={"1px solid black"}
+                            borderRadius={"10px"}
+                            onclick={() => changeLanguage('en')}
+                        />
+                        <ButtonSubmit
+                            label={t("ESPAÑOL")}
+                            width={"145px"}
+                            color={"black"}
+                            fontSize={"15px"}
+                            height={"31px"}
+                            backgroundColor={"white"}
+                            border={"1px solid black"}
+                            borderRadius={"10px"}
+                            onclick={() => changeLanguage('es')}
+                        />
+                    </Sdiv>
+                )
+            }
             <Sdiv className={"buttons"}>
                 <ButtonSubmit
-                    label={"MODIFICAR"}
+                    label={t("MODIFICAR")}
                     width={"145px"}
                     color={"black"}
                     height={"31px"}
@@ -40,7 +84,7 @@ const PersonalInformation = ({cliente,width, functionModify}) => {
                     onclick={functionModify}
                 />
                 <ButtonSubmit
-                    label={"CERRAR SESION"}
+                    label={t("CERRAR_SESION")}
                     width={"145px"}
                     color={"black"}
                     fontSize={"15px"}
@@ -48,18 +92,10 @@ const PersonalInformation = ({cliente,width, functionModify}) => {
                     backgroundColor={"#CB4335"}
                     borderRadius={"10px"}
                 />
-                <button onClick={() => changeLanguage('en')}>INGLES</button>
-                <button onClick={() => changeLanguage('es')}>ESPAÑOL</button>
             </Sdiv>
         </Sdiv>
     )
 }
-
-const SFaUserAlt = styled(FaUserAlt)`
-  font-size: 100px;
-  width: 100%;
-  margin: 0 auto;
-`
 
 
 const Sdiv = styled.div`
@@ -75,14 +111,34 @@ const Sdiv = styled.div`
     justify-content: space-between;
     width: 60%;
   }
+  
+  &.buttons_idioms{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border: 1px solid black;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    gap: 20px;
+    padding: 60px;
+    justify-items: center;
+  }
 `
 
-const Sh1 = styled.h1`
-  margin: 10px;
-  padding: 20px;
-  border-bottom: 1px solid #000000;
-  width: 70%;
-  text-align: center;
+const Sbutton = styled.button`
+  all: unset;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 10px;
+`
+
+const SFiSettings = styled(FiSettings)`
+  font-size: 25px;
 `
 
 export default PersonalInformation

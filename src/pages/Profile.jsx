@@ -19,7 +19,7 @@ const Profile = () => {
         <Sbody>
             <TitlePage name={t("PERFIL")} />
             <SFaUserAlt />
-            <Sh1>Datos Personales</Sh1>
+            <Sh1>{t("Datos_Personales")}</Sh1>
             {
                 !modify ? (
                     <PersonalInformation

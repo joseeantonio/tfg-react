@@ -51,7 +51,7 @@ const SLink = styled(Link)`
   text-decoration: none;
   color: black;
   font-size: 16px;
-  width: 170px;
+  width: 180px;
   text-align: center;
   
   &.icono {

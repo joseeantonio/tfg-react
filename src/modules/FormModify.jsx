@@ -2,9 +2,11 @@ import React, {useState} from "react";
 import Input from "../components/Input";
 import styled from "styled-components";
 import ButtonSubmit from "../components/ButtonSubmit";
+import {useTranslation} from "react-i18next";
 
 const FormModify = ({cliente, width, functionModify}) => {
 
+    const { t, i18n } = useTranslation();
     const [data,setData] = useState({
         name: "",
         surname: "",
@@ -35,7 +37,7 @@ const FormModify = ({cliente, width, functionModify}) => {
             <Input
                 name={"name"}
                 type={"text"}
-                placeholder={"Nombre"}
+                placeholder={t("Nombre")}
                 height="37px"
                 width="30%"
                 borderRadius={"5px"}
@@ -45,7 +47,7 @@ const FormModify = ({cliente, width, functionModify}) => {
             <Input
                 name={"surname"}
                 type={"text"}
-                placeholder={"Apellidos"}
+                placeholder={t("Apellidos")}
                 height="37px"
                 width="30%"
                 borderRadius={"5px"}
@@ -65,7 +67,7 @@ const FormModify = ({cliente, width, functionModify}) => {
             <Input
                 name={"email"}
                 type={"email"}
-                placeholder={"Correo electronico"}
+                placeholder={t("Correo_electronico")}
                 height="37px"
                 width="30%"
                 borderRadius={"5px"}
@@ -75,7 +77,7 @@ const FormModify = ({cliente, width, functionModify}) => {
             <Input
                 name={"password"}
                 type={"password"}
-                placeholder={"Contraseña"}
+                placeholder={t("Contraseña")}
                 height="37px"
                 width="30%"
                 borderRadius={"5px"}
@@ -86,7 +88,7 @@ const FormModify = ({cliente, width, functionModify}) => {
                 data.password && (
                     <Input
                         name={"password_rep"}
-                        placeholder={"Confirmar contraseña"}
+                        placeholder={t("Confirmar_contraseña")}
                         type={"password"}
                         height="37px"
                         width="30%"
@@ -98,7 +100,7 @@ const FormModify = ({cliente, width, functionModify}) => {
             }
             <Sdiv className={"buttons"}>
                 <ButtonSubmit
-                    label={"CONFIRMAR"}
+                    label={t("CONFIRMAR")}
                     width={"145px"}
                     color={"black"}
                     height={"31px"}
@@ -107,7 +109,7 @@ const FormModify = ({cliente, width, functionModify}) => {
                     borderRadius={"10px"}
                 />
                 <ButtonSubmit
-                    label={"CANCELAR"}
+                    label={t("CANCELAR")}
                     width={"145px"}
                     color={"black"}
                     fontSize={"15px"}

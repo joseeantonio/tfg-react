@@ -28,10 +28,11 @@ const Sdiv = styled.div`
 const Sp = styled.p`
   
   &.name{
-    min-width: 170px;
+    margin-right: 10px;
   }
 
   &.value{
+    margin-left: 10px;
   }
 `
 

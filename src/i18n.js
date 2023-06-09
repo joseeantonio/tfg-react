@@ -46,7 +46,14 @@ i18n
                     INFORMACION_PERSONAL : "PERSONAL INFORMATION",
                     ENTRAR_CON_SU_CUENTA : "LOG IN WITH YOUR ACCOUNT",
                     No_tienes_cuenta_todavía : "Don't have an account yet?",
-                    INICIAR_SESION : "LOG IN"
+                    INICIAR_SESION : "LOG IN",
+                    Datos_Personales : "Personal information",
+                    Fecha_de_nacimiento : "Birthdate",
+                    MODIFICAR : "MODIFY",
+                    CERRAR_SESION : "SIGN OFF",
+                    CONFIRMAR : "CONFIRM",
+                    CANCELAR : "CANCEL",
+
 
                 }
             },
@@ -84,7 +91,13 @@ i18n
                     INFORMACION_PERSONAL : "INFORMACION PERSONAL",
                     ENTRAR_CON_SU_CUENTA : "ENTRAR CON SU CUENTA",
                     No_tienes_cuenta_todavía : "¿ No tienes cuenta todavía ?",
-                    INICIAR_SESION : "INICIAR SESION"
+                    INICIAR_SESION : "INICIAR SESION",
+                    Datos_Personales : "Datos Personales",
+                    Fecha_de_nacimiento : "Fecha de nacimineto",
+                    MODIFICAR : "MODIFICAR",
+                    CERRAR_SESION : "CERRAR SESION",
+                    CONFIRMAR : "CONFIRMAR",
+                    CANCELAR : "CANCELAR",
                 }
             }
         }
