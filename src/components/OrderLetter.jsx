@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import styled from "styled-components";
 import { FaTrash } from "react-icons/fa";
+import {Link} from "react-router-dom";
 
 const OrderLetter = ({width,margin,pedido}) => {
 
@@ -29,23 +30,30 @@ const OrderLetter = ({width,margin,pedido}) => {
     const deliveryDate = calculateDeliveryDate()
 
     return(
-        <Sdiv width={width} margin={margin}>
-            <Sh1 className={"id"}><Slabel>ID :</Slabel> <Sp>{pedido.id}</Sp></Sh1>
-            <Sh1 className={"information"}><Slabel>Informacion :</Slabel> <Sp>{pedido.informacion}</Sp></Sh1>
-            <Sh1><Slabel>Entrega del pedido</Slabel> : <Sp>{pedido.fech_pedido}</Sp></Sh1>
-            <Sh1><Slabel>Productos</Slabel> : <Sp>{calculateQuantityProducts(pedido.productos)}</Sp></Sh1>
-            {/*<Sh1>{producto.nombre}</Sh1>*/}
-            {/*<Sh1>{producto.talla}</Sh1>*/}
-            {/*<Sh1>Entrega el: {deliveryDate}</Sh1>*/}
-            {/*<Sh1>{producto.precio} €</Sh1>*/}
-            {/*<Sbutton>*/}
-            {/*  <SFaTrash/>*/}
-            {/*  <Sp>Eliminar</Sp>*/}
-            {/*</Sbutton>*/}
-        </Sdiv>
+        <SLink to={"/oneOrder/:1"}>
+            <Sdiv width={width} margin={margin}>
+                <Sh1 className={"id"}><Slabel>ID :</Slabel> <Sp>{pedido.id}</Sp></Sh1>
+                <Sh1 className={"information"}><Slabel>Informacion :</Slabel> <Sp>{pedido.informacion}</Sp></Sh1>
+                <Sh1><Slabel>Entrega del pedido</Slabel> : <Sp>{pedido.fech_pedido}</Sp></Sh1>
+                <Sh1><Slabel>Productos</Slabel> : <Sp>{calculateQuantityProducts(pedido.productos)}</Sp></Sh1>
+                {/*<Sh1>{producto.nombre}</Sh1>*/}
+                {/*<Sh1>{producto.talla}</Sh1>*/}
+                {/*<Sh1>Entrega el: {deliveryDate}</Sh1>*/}
+                {/*<Sh1>{producto.precio} €</Sh1>*/}
+                {/*<Sbutton>*/}
+                {/*  <SFaTrash/>*/}
+                {/*  <Sp>Eliminar</Sp>*/}
+                {/*</Sbutton>*/}
+            </Sdiv>
+        </SLink>
     )
 }
 
+
+const SLink = styled(Link)`
+  all: unset;
+  cursor: pointer;
+`
 
 const Slabel = styled.span`
   font-weight: bold;

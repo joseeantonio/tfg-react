@@ -10,6 +10,8 @@ import Jewel from "../pages/Jewel";
 import Profile from "../pages/Profile";
 import ShoppingCart from "../pages/ShoppingCart";
 import TypeJewel from "../pages/TypeJewel";
+import Orders from "../pages/Orders";
+import OneOrder from "../pages/OneOrder";
 
 
 export const router = createBrowserRouter([
@@ -54,6 +56,14 @@ export const router = createBrowserRouter([
                 path: '/jewerly/:type',
                 index: true,
                 element: <TypeJewel />,
+            },{
+                path: '/orders',
+                index: true,
+                element: <Orders />,
+            },{
+                path: '/oneOrder/:id',
+                index: true,
+                element: <OneOrder />,
             },
         ],
     },
