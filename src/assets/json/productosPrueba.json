@@ -161,5 +161,51 @@
     "fecha_nac" : "2000-10-10",
     "admin" : true,
     "username" : "peri02"
-  }
+  },
+  "pedidos" : [
+    {
+      "id": 1,
+      "fech_pedido" : "2002-11-23",
+      "informacion" : "Si no estoy en casa dejarlo al vecino ",
+      "clienteId" : 1,
+      "productos" : [
+        {
+          "id" : 1,
+          "cantidad" : 2
+        },
+        {
+          "id" : 2,
+          "cantidad" : 1
+        },
+        {
+          "id" : 3,
+          "cantidad" : 3
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "fech_pedido" : "2002-11-23",
+      "informacion" : "Si no estoy en casa dejarlo al vecino",
+      "clienteId" : 1,
+      "productos" : [
+        {
+          "id" : 1,
+          "cantidad" : 2
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "fech_pedido" : "2002-11-23",
+      "informacion" : "Si no estoy en casa dejarlo al vecino",
+      "clienteId" : 1,
+      "productos" : [
+        {
+          "id" : 1,
+          "cantidad" : 2
+        }
+      ]
+    }
+  ]
 }

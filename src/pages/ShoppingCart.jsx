@@ -31,8 +31,8 @@ const ShoppingCart = () => {
     return(
         <Sbody>
             <TitlePage name={t("CESTA")} />
-            <OrderList productos={productos.productos} padding={"0px 0px 80px 0px"} />
-            <Sh1>IMPORTE TOTAL DEL PEDIDO (iva incluido) : {prize}€</Sh1>
+            <OrderList pedidos={productos.pedidos} padding={"0px 0px 40px 0px"} />
+            <Sh1>Tienes {productos.pedidos.length} pedidos realizados.</Sh1>
         </Sbody>
     )
 }
