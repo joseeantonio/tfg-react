@@ -57,7 +57,7 @@ const FormContact = ({margin,width}) => {
         if (!data.title.trim()) {
             errors.title = "Por favor, completa el asunto";
             ready = false;
-        }else if (data.email.length > 20) {
+        }else if (data.title.length >= 20) {
             errors.title = "El asunto debe tener menos de 20 caracteres";
             ready = false;
         }
