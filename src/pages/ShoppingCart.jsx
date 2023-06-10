@@ -7,6 +7,7 @@ import {petition} from "../services/api";
 import productos from "../assets/json/productosPrueba.json"
 import {useTranslation} from "react-i18next";
 import OneOrderList from "../modules/OneOrderList";
+import ShoppingCartList from "../modules/ShoppingCartList";
 
 const ShoppingCart = () => {
 
@@ -32,7 +33,7 @@ const ShoppingCart = () => {
     return(
         <Sbody>
             <TitlePage name={t("CESTA")} />
-            <OneOrderList pedido={productos.productosPedidos} />
+            <ShoppingCartList pedido={productos.productosPedidos} />
         </Sbody>
     )
 }
