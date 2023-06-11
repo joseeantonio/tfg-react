@@ -11,7 +11,16 @@ import productos from "../../src/assets/json/productosPrueba.json"
 const TypeJewel = () => {
 
     const {type} = useParams()
-    const jewerly = productos.productos
+    const jewerly = productos.productos.filter(producto => {
+        if (type === "anillos") {
+            return producto.tipo === "anillo";
+        } else if (type === "collares") {
+            return producto.tipo === "collar";
+        } else {
+            return producto.tipo === "relojes";
+        }
+    });
+
 
     return(
         <Sbody>
