@@ -12,9 +12,9 @@ import ButtonSubmit from "../components/ButtonSubmit";
 const Jewelry = () => {
 
     const [jewerly,setJewerly] = useState([])
-    const [filters, setFilters] = useState([]);
+    const [filters, setFilters] = useState([])
     const [filterJewels,setFilterJewels] = useState([])
-    const { t } = useTranslation();
+    const { t } = useTranslation()
 
     const [pagination,setPagination] = useState(12)
 
@@ -28,38 +28,18 @@ const Jewelry = () => {
     }
 
     //Comprobamos si esta cada opcion en la lista de filtros y añadimos los filtros con esas opciones
+    // a la una lista en variable y cuando acabe de recorrerlo le da el valor a la lista de productos filtrados.
     const activeFilters = () => {
-        let filterProducts = jewerly;
-        if (filters.includes("0 - 50 €")) {
-            filterProducts = filterProducts.filter(
-                (jewel) => jewel.precio >= 0 && jewel.precio <= 50
-            );
-        }
-        if (filters.includes("50 - 100 €")) {
-            filterProducts = filterProducts.filter(
-                (jewel) => jewel.precio >= 51 && jewel.precio <= 100
-            );
-        }
-        if (filters.includes("100 - 150 €")) {
-            filterProducts = filterProducts.filter(
-                (jewel) => jewel.precio >= 101 && jewel.precio <= 150
-            );
-        }
-        if (filters.includes("Mujer")) {
-            filterProducts = filterProducts.filter((jewel) => jewel.sexo === "Mujer");
-        }
-        if (filters.includes("Hombre")) {
-            filterProducts = filterProducts.filter(
-                (jewel) => jewel.sexo === "Hombre"
-            );
-        }
-        if (filters.includes("Unisex")) {
-            filterProducts = filterProducts.filter(
-                (jewel) => jewel.sexo === "Unisex"
-            );
-        }
+        let filterProducts = jewerly.filter((jewel) =>
+            (filters.includes("0 - 50 €") && jewel.precio >= 0 && jewel.precio <= 50) ||
+            (filters.includes("51 - 100 €") && jewel.precio >= 51 && jewel.precio <= 100) ||
+            (filters.includes("101 - 150 €") && jewel.precio >= 101 && jewel.precio <= 150) ||
+            (filters.includes("Mujer") && jewel.sexo === "Mujer") ||
+            (filters.includes("Hombre") && jewel.sexo === "Hombre") ||
+            (filters.includes("Unisex") && jewel.sexo === "Unisex")
+        )
         setFilterJewels(filterProducts)
-    };
+    }
 
     const loadMore = () => {
         setPagination(pagination+12)
