@@ -33,7 +33,7 @@ const Sbutton = styled.button`
   color: ${(props) => props.color};
   width: ${(props) => props.width ? props.width : "50%"};
   height: ${(props) => props.height ? props.height : "37px"};
-  margin: 0 auto;
+  margin: ${(props) => props.margin ? props.margin : "0 auto"};
   border-radius: ${(props) => props.borderRadius ? props.borderRadius : "5px"};
   border: ${(props) => props.border && props.border};
   cursor: pointer;

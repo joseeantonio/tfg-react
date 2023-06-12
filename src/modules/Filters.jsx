@@ -27,11 +27,8 @@ const
 }
 
 const Sdiv = styled.div`
-  margin: ${(props) => props.margin};
+  margin: ${(props) => props.margin && props.margin};
   width: ${(props) => props.width && props.width};
-  @media (width <= 815px) {
-    margin: 0 auto;
-  }
 `
 
 export default Filters

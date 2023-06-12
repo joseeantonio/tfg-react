@@ -17,10 +17,14 @@ const LinkSectionGroup = ({width, margin}) => {
 }
 
 const Sdiv = styled.div`
-  display: flex; 
+  display: flex;
+  flex-wrap: wrap;
   justify-content: space-evenly;
-  width: ${(props) => props.width};
-  margin: ${(props) => props.margin};
+  align-items: flex-start;
+  margin: ${(props) => props.margin && props.margin};
+  @media (width <= 934px) {
+    width: 80%;
+  }
 `
 
 export default LinkSectionGroup
