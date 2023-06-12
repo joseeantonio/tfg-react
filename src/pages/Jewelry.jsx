@@ -11,6 +11,9 @@ import ButtonSubmit from "../components/ButtonSubmit";
 
 const Jewelry = () => {
 
+    const [search,setSearch] = useState("")
+    const [isSearch,setIsSearch] = useState(false)
+    const [jewerlySearch,setJewerlySearch] = useState([])
     const [jewerly,setJewerly] = useState([])
     const [filters, setFilters] = useState([])
     const [filterJewels,setFilterJewels] = useState([])
@@ -22,6 +25,16 @@ const Jewelry = () => {
         try {
             const result = await petition(`/productos/paginacion/${pagination}`)
             setJewerly(result)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    const functionSearch = async () => {
+        try {
+            const result = await petition(`/productos/nombre/${search}`)
+            setJewerlySearch(result)
+            setIsSearch(true)
         } catch (error) {
             console.log(error)
         }
@@ -39,6 +52,10 @@ const Jewelry = () => {
             (filters.includes("Unisex") && jewel.sexo === "Unisex")
         )
         setFilterJewels(filterProducts)
+    }
+
+    const handleChange=(e)=>{
+        setSearch(e.target.value)
     }
 
     const loadMore = () => {
@@ -67,14 +84,23 @@ const Jewelry = () => {
                 marginBottom={"50px"}
                 widthSearch={"51.59px"}
                 borderRadius={"5px"}
-                margin={"0 auto 40px"} fontSize={"17px"}
+                margin={"0 auto 40px"}
+                fontSize={"17px"}
+                onChange={handleChange}
+                onClick={functionSearch}
             />
             <Sdiv>
                 <Filters margin={"0px 20px 40px 20px"} filters={filters} setFilters={setFilters} />
                 <div>
                     <LinkSectionGroup width={"900px"} margin={"15px 0px 0px 15px"} />
                     {
-                        filters.length ===0 ? (
+                        isSearch === true ? (
+                                <JewelryList
+                                    productos={jewerlySearch}
+                                    width={"930px"}
+                                    margin={"15px 5px 30px 15px"}
+                                />
+                            ) : filters.length ===0 ? (
                             <>
                                 <JewelryList
                                     productos={jewerly}
