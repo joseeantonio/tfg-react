@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import TitlePage from "../components/TitlePage";
 import {useParams} from "react-router-dom";
 import Input from "../components/Input";
@@ -7,24 +7,39 @@ import LinkSectionGroup from "../modules/LinkSectionGroup";
 import JewelryList from "../modules/JewelryList";
 import styled from "styled-components";
 import productos from "../../src/assets/json/productosPrueba.json"
+import {useTranslation} from "react-i18next";
+import {petition} from "../services/api";
+import pluralize from 'pluralize';
 
 const TypeJewel = () => {
 
     const {type} = useParams()
-    const jewerly = productos.productos.filter(producto => {
-        if (type === "anillos") {
-            return producto.tipo === "anillo";
-        } else if (type === "collares") {
-            return producto.tipo === "collar";
-        } else {
-            return producto.tipo === "relojes";
+    const title = pluralize(type).toUpperCase()
+
+    const [jewerly,setJewerly] = useState([])
+    const [filters, setFilters] = useState([]);
+    const { t } = useTranslation();
+
+    const fetchDataApi = async () => {
+        try {
+            const result = await petition(`/productos/tipo/${type}`)
+            setJewerly(result)
+        } catch (error) {
+            console.log(error)
         }
-    });
+    }
+
+    useEffect(()=>{
+        fetchDataApi()
+    },[])
+    useEffect(()=>{
+        console.log(filters)
+    },[filters,setFilters])
 
 
     return(
         <Sbody>
-            <TitlePage name={type.toUpperCase()} />
+            <TitlePage name={title} />
             <Input
                 placeholder={"Busqueda"}
                 type={"search"}
@@ -37,7 +52,7 @@ const TypeJewel = () => {
                 margin={"0 auto 40px"}
             />
             <Sdiv>
-                <Filters margin={"0px 20px 40px 20px"} />
+                <Filters margin={"0px 20px 40px 20px"}   />
                 <JewelryList productos={jewerly} width={"100%"} margin={"5px 0 30px 0"} />
             </Sdiv>
         </Sbody>

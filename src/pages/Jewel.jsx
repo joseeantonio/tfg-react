@@ -10,6 +10,7 @@ const Jewel = () => {
     const {id} = useParams()
 
     const [jewel,setJewel] = useState([])
+    const [quantity,setQuantity] = useState(1)
 
     const fetchDataApi = async () => {
         try {
@@ -21,23 +22,24 @@ const Jewel = () => {
     }
 
     const addOrder = () => {
+
+        // Cogemos el pedido del localStorage
         let order = JSON.parse(localStorage.getItem("order")) || [];
 
-        let isInOrder = null
-        for (let i=0;i<order.length;i++){
-            if (order[i].id === jewel.id){
-                isInOrder = true
-            }
-        }
+        // Comprobamos si existe en el pedido
+        let isInOrder = order.find(product => product.id === jewel.id)
 
-        let finalOrder = []
+        // Si esta en el pedido, le sumamos la cantidad a la que tiene
         if (isInOrder){
-            finalOrder = order.filter(item => item.id !== jewel.id);
-            localStorage.setItem('order', JSON.stringify(finalOrder));
-        }else{
-            order.push(jewel)
-            localStorage.setItem('order', JSON.stringify(order))
+            isInOrder.cantidad += quantity
         }
+        // Si no esta en el pedido le añadimos la cantidad
+        else{
+            jewel.cantidad = quantity;
+            order.push(jewel);
+        }
+        // Guardamos el pedido en el localStorage
+        localStorage.setItem('order', JSON.stringify(order));
 
     }
 
@@ -51,7 +53,13 @@ const Jewel = () => {
             <TitlePage name={jewel.nombre} />
             <Sdiv>
                 <Simg src={jewel.url_img}/>
-                <Description description={jewel.descripcion} width={"500px"} onClick={addOrder} />
+                <Description
+                    description={jewel.descripcion}
+                    width={"500px"}
+                    onClick={addOrder}
+                    setQuantity={setQuantity}
+                    quantity={quantity}
+                />
             </Sdiv>
             <TechnicalInformation jewel={jewel} margin={"40px auto"} width={"90%"} />
         </body>

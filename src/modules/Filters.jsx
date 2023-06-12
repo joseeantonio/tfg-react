@@ -4,12 +4,12 @@ import styled from "styled-components";
 import {useTranslation} from "react-i18next";
 
 const
-    Filters = ({margin, filters, setFilters}) => {
+    Filters = ({margin, filters, setFilters,width}) => {
 
 
         const { t } = useTranslation();
     return(
-        <Sdiv margin={margin}>
+        <Sdiv margin={margin} width={width}>
             <Filter
                 width={"230px"}
                 name={t("Precio")}
@@ -28,6 +28,7 @@ const
 
 const Sdiv = styled.div`
   margin: ${(props) => props.margin};
+  width: ${(props) => props.width && props.width};
   @media (width <= 815px) {
     margin: 0 auto;
   }

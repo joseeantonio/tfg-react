@@ -6,7 +6,7 @@ const TechnicalInformation = ({jewel,margin,width}) => {
 
 
     return(
-                jewel.tipo === "Anillo" ? (
+                jewel.tipo === "anillo" ? (
                     <Sdiv className={"all"} margin={margin} width={width}>
                         <Sh1>Informacion Tecnica</Sh1>
                         <Sdiv className={"informacion"}>

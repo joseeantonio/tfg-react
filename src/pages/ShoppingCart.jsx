@@ -11,29 +11,27 @@ import ShoppingCartList from "../modules/ShoppingCartList";
 
 const ShoppingCart = () => {
 
-    const [prize,setPrize] = useState(100)
     const [order,setOrder] = useState([])
     const { t } = useTranslation();
 
-    const fetchDataApi = async () => {
-        try {
-            const result = await petition("/pedidos")
-            setOrder(result)
-            console.log(result)
-        } catch (error) {
-            console.log(error)
-        }
+    const getData = () => {
+        const finalOrder = JSON.parse(localStorage.getItem("order")) || [];
+        setOrder(finalOrder);
+    }
+
+    const updateOrder = () => {
+        getData();
     }
 
     useEffect(()=>{
-        fetchDataApi()
+        getData()
     },[])
 
 
     return(
         <Sbody>
             <TitlePage name={t("CESTA")} />
-            <ShoppingCartList pedido={productos.productosPedidos} />
+            <ShoppingCartList pedido={order} updateOrder={updateOrder} />
         </Sbody>
     )
 }

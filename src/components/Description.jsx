@@ -3,9 +3,7 @@ import ButtonSubmit from "./ButtonSubmit";
 import styled from "styled-components";
 import Quantity from "./Quantity";
 
-const Description = ({description,width,onClick}) => {
-
-  const [quantity,setQuantity] = useState(1)
+const Description = ({description,width,onClick,setQuantity,quantity}) => {
 
     return (
         <Sdiv width={width}>

@@ -1,11 +1,45 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import styled from "styled-components";
 import { FaTrash } from "react-icons/fa";
 import Quantity from "./Quantity";
 
-const ProductShoppingCart = ({width,producto,margin}) => {
+const ProductShoppingCart = ({width,producto,margin,updateOrder}) => {
 
     const [quantity,setQuantity] = useState(producto.cantidad)
+
+    const updatedQuantity = () => {
+        // Copiamos el producto para que no de problemas
+        const updatedProduct = { ...producto,};
+        //añadimos la cantidad actual
+        updatedProduct.cantidad = quantity
+        const order = JSON.parse(localStorage.getItem("order"));
+        // Recorremos el pedido del localStorage y cambiamos el que hemos modificado y con los otros no lo tocamos.
+        const updatedOrder = order.map((product) =>
+            product.id === producto.id ? updatedProduct : product
+        );
+        // Guardamos el pedido actualizado
+        localStorage.setItem("order", JSON.stringify(updatedOrder));
+    }
+
+    const removeJewel = () => {
+        const order = JSON.parse(localStorage.getItem("order"));
+
+        let updatedOrder = [];
+
+        for (let i = 0; i < order.length; i++) {
+            if (order[i].id !== producto.id) {
+                updatedOrder.push(order[i]);
+            }
+        }
+
+        // Actualizar el localStorage con la lista filtrada
+        localStorage.setItem('order', JSON.stringify(updatedOrder));
+        updateOrder();
+    }
+
+    useEffect(()=>{
+        updatedQuantity()
+    },[quantity])
 
     return(
         <Sdiv width={width} margin={margin}>
@@ -14,7 +48,7 @@ const ProductShoppingCart = ({width,producto,margin}) => {
             <Sh2>{producto.precio} €</Sh2>
             <Sh3>{producto.sexo}</Sh3>
             <Quantity quantity={quantity} margin={"0px 10px 10px 10px"} setQuantity={setQuantity} />
-            <Sbutton>
+            <Sbutton onClick={removeJewel}>
                 <SFaTrash/>
                 <Sp>Eliminar</Sp>
             </Sbutton>

@@ -3,7 +3,7 @@ import ProductOrder from "../components/ProductOrder";
 import styled from "styled-components";
 import ProductShoppingCart from "../components/ProductShoppingCart";
 
-const ShoppingCartList = ({pedido}) => {
+const ShoppingCartList = ({pedido,updateOrder}) => {
 
     return(
         <Sdiv>
@@ -11,6 +11,7 @@ const ShoppingCartList = ({pedido}) => {
                 pedido.map((producto,index) => (
                     <ProductShoppingCart
                         producto={producto}
+                        updateOrder={updateOrder}
                     />
                 ))
             }
