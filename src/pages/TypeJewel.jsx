@@ -95,7 +95,7 @@ const TypeJewel = () => {
             <Sdiv>
                 <Filters
                     margin={"0px 20px 40px 20px"}
-                    type={"relojes"}
+                    type={type}
                     filters={filters}
                     setFilters={setFilters}
                 />

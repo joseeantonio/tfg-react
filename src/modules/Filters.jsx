@@ -24,7 +24,7 @@ const
                         filters={filters} setFilters={setFilters}
                     />
                 </Sdiv>
-            ) : type === "relojes" ? (
+            ) : type === "reloj" ? (
                 <Sdiv margin={margin} width={width}>
                     <Filter
                         width={"230px"}
@@ -54,6 +54,45 @@ const
                         width={"230px"}
                         name={t("Material Caja")}
                         options={["Acero inoxidable","Bronce","Plata"]}
+                        filters={filters} setFilters={setFilters}
+                    />
+                </Sdiv>
+            ) : type === "anillo" ? (
+                <Sdiv margin={margin} width={width}>
+                    <Filter
+                        width={"230px"}
+                        name={t("Tallas")}
+                        options={["60 - 62 mm","64 - 66 mm","68 - 70 mm"]}
+                        filters={filters} setFilters={setFilters}
+                    />
+                    <Filter
+                        width={"230px"}
+                        name={t("Color")}
+                        options={["Azul","Negro","Amarillo","Verde","Rojo"]}
+                        filters={filters} setFilters={setFilters}
+                    />
+                    <Filter
+                        width={"230px"}
+                        name={t("Peso")}
+                        options={["9 gramos","11 gramos","14 gramos"]}
+                        filters={filters} setFilters={setFilters}
+                    />
+                    <Filter
+                        width={"230px"}
+                        name={t("Calidad")}
+                        options={["14k","18k","24k"]}
+                        filters={filters} setFilters={setFilters}
+                    />
+                    <Filter
+                        width={"230px"}
+                        name={t("Piedra")}
+                        options={["Diamante","Moissanita","Zafiro","Esmeralda"]}
+                        filters={filters} setFilters={setFilters}
+                    />
+                    <Filter
+                        width={"230px"}
+                        name={t("Numero de piedra")}
+                        options={["1","2","3","5"]}
                         filters={filters} setFilters={setFilters}
                     />
                 </Sdiv>
