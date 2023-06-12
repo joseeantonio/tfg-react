@@ -13,6 +13,7 @@ const Jewelry = () => {
 
     const [jewerly,setJewerly] = useState([])
     const [filters, setFilters] = useState([]);
+    const [filterJewels,setFilterJewels] = useState([])
     const { t } = useTranslation();
 
     const [pagination,setPagination] = useState(12)
@@ -26,6 +27,40 @@ const Jewelry = () => {
         }
     }
 
+    //Comprobamos si esta cada opcion en la lista de filtros y añadimos los filtros con esas opciones
+    const activeFilters = () => {
+        let filterProducts = jewerly;
+        if (filters.includes("0 - 50 €")) {
+            filterProducts = filterProducts.filter(
+                (jewel) => jewel.precio >= 0 && jewel.precio <= 50
+            );
+        }
+        if (filters.includes("50 - 100 €")) {
+            filterProducts = filterProducts.filter(
+                (jewel) => jewel.precio >= 51 && jewel.precio <= 100
+            );
+        }
+        if (filters.includes("100 - 150 €")) {
+            filterProducts = filterProducts.filter(
+                (jewel) => jewel.precio >= 101 && jewel.precio <= 150
+            );
+        }
+        if (filters.includes("Mujer")) {
+            filterProducts = filterProducts.filter((jewel) => jewel.sexo === "Mujer");
+        }
+        if (filters.includes("Hombre")) {
+            filterProducts = filterProducts.filter(
+                (jewel) => jewel.sexo === "Hombre"
+            );
+        }
+        if (filters.includes("Unisex")) {
+            filterProducts = filterProducts.filter(
+                (jewel) => jewel.sexo === "Unisex"
+            );
+        }
+        setFilterJewels(filterProducts)
+    };
+
     const loadMore = () => {
         setPagination(pagination+12)
     }
@@ -33,9 +68,11 @@ const Jewelry = () => {
     useEffect(()=>{
         fetchDataApi()
     },[pagination])
+
+    //Cada vez que se añada algo a la lista de filtros se ejecuta la funcion
     useEffect(()=>{
-        console.log(filters)
-    },[filters,setFilters])
+        activeFilters()
+    },[filters])
 
 
     return(
@@ -44,18 +81,18 @@ const Jewelry = () => {
             <Input
                 placeholder={t("Busqueda")}
                 type={"search"}
-                width={"309.07px"}
+                width={"200px"}
                 height={"44px"}
                 searchIcon={"true"}
                 marginBottom={"50px"}
                 widthSearch={"51.59px"}
                 borderRadius={"5px"}
-                margin={"0 auto 40px"}
+                margin={"0 auto 40px"} fontSize={"17px"}
             />
             <Sdiv>
                 <Filters margin={"0px 20px 40px 20px"} filters={filters} setFilters={setFilters} />
                 <div>
-                    <LinkSectionGroup width={"900px"} margin={"0 auto"} />
+                    <LinkSectionGroup width={"900px"} margin={"15px 0px 0px 15px"} />
                     {
                         filters.length ===0 ? (
                             <>
@@ -74,12 +111,13 @@ const Jewelry = () => {
                                     backgroundColor={"#5A5A5A"}
                                 />
                             </>
-                        ) : 
-                            filters.includes("0 - 50 €") ? (
-                                <p>0 a 50 €</p>
-                            ) : (
-                                <p>pepe</p>
-                            )
+                        ) : (
+                            <JewelryList
+                                productos={filterJewels}
+                                width={"930px"}
+                                margin={"15px 5px 30px 15px"}
+                            />
+                        )
                     }
                 </div>
             </Sdiv>

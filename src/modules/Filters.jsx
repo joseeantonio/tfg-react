@@ -13,7 +13,7 @@ const
             <Filter
                 width={"230px"}
                 name={t("Precio")}
-                options={["0 - 50 €","50 - 100 €","100 - 150 €"]}
+                options={["0 - 50 €","51 - 100 €","101 - 150 €"]}
                 filters={filters} setFilters={setFilters}
             />
             <Filter

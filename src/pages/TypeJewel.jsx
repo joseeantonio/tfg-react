@@ -14,11 +14,23 @@ import pluralize from 'pluralize';
 const TypeJewel = () => {
 
     const {type} = useParams()
-    const title = pluralize(type).toUpperCase()
 
+
+    const [title,setTitle] = useState()
     const [jewerly,setJewerly] = useState([])
     const [filters, setFilters] = useState([]);
     const { t } = useTranslation();
+
+
+    const plural = () => {
+        if (type === "anillo") {
+            setTitle("ANILLOS")
+        }else if (type === "collar") {
+            setTitle("COLLARES")
+        }else{
+            setTitle("RELOJES")
+        }
+    }
 
     const fetchDataApi = async () => {
         try {
@@ -31,6 +43,7 @@ const TypeJewel = () => {
 
     useEffect(()=>{
         fetchDataApi()
+        plural()
     },[])
     useEffect(()=>{
         console.log(filters)

@@ -9,9 +9,9 @@ const LinkSectionGroup = ({width, margin}) => {
 
     return(
         <Sdiv width={width} margin={margin}>
-            <LinkSection name={t("COLLARES")} route={"/jewerly/collares"} width={"250px"} height={"49px"} color={"White"} margin={"10px"}/>
-            <LinkSection name={t("RELOJES")} route={"/jewerly/relojes"} width={"250px"} height={"49px"} color={"White"} margin={"10px"}/>
-            <LinkSection name={t("ANILLOS")} route={"/jewerly/anillos"} width={"250px"} height={"49px"} color={"White"} margin={"10px"}/>
+            <LinkSection name={t("COLLARES")} route={"/jewerly/collar"} width={"250px"} height={"49px"} color={"White"} margin={"10px"}/>
+            <LinkSection name={t("RELOJES")} route={"/jewerly/reloj"} width={"250px"} height={"49px"} color={"White"} margin={"10px"}/>
+            <LinkSection name={t("ANILLOS")} route={"/jewerly/anillo"} width={"250px"} height={"49px"} color={"White"} margin={"10px"}/>
         </Sdiv>
     )
 }
