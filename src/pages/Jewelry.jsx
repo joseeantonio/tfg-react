@@ -11,17 +11,26 @@ import ButtonSubmit from "../components/ButtonSubmit";
 
 const Jewelry = () => {
 
+    //Todos los productos de la api
     const [allJewerly,setAllJewerly] = useState([])
+    //La palabra que buscamos
     const [search,setSearch] = useState("")
+    //variable para mostrar si estamos buscando o no
     const [isSearch,setIsSearch] = useState(false)
+    //productos de la busqueda
     const [jewerlySearch,setJewerlySearch] = useState([])
+    //Productos de la paginacion
     const [jewerly,setJewerly] = useState([])
+    //listra con las opciones de los filtros
     const [filters, setFilters] = useState([])
-    const [filterJewels,setFilterJewels] = useState([])
+    //productos que tienen los filtros seleccionados
+    const [filteredJewels,setFilteredJewels] = useState([])
+    //traduccion
     const { t } = useTranslation()
 
     const [pagination,setPagination] = useState(12)
 
+    //llamadas a la api
     const fetchDataApi = async () => {
         try {
             const result = await petition(`/productos/paginacion/${pagination}`)
@@ -38,28 +47,16 @@ const Jewelry = () => {
             console.log(error)
         }
     }
-
     const resetFilters = () => {
         setFilters([])
-    }
-
-
-    const functionSearch = async () => {
-        try {
-            const result = await petition(`/productos/nombre/${search}`)
-            setJewerlySearch(result)
-            setIsSearch(true)
-        } catch (error) {
-            console.log(error)
-        }
     }
 
     //Comprobamos si esta cada opcion en la lista de filtros y añadimos los filtros con esas opciones
     // a la una lista en variable y cuando acabe de recorrerlo le da el valor a la lista de productos filtrados.
     // Si esta en busqueda ,comprobamos si tiene los requisitos de los filtros y si incluye la busqueda,
     // en el nombre.
-    const activeFilters = () => {
-        if (isSearch) {
+    const activeFilters = (busqueda) => {
+        if (isSearch && filters.length>0) {
             let filterSearchProducts = allJewerly.filter(
                 (jewel) =>
                     ((filters.includes("0 - 50 €") && jewel.precio >= 0 && jewel.precio <= 50) ||
@@ -70,8 +67,17 @@ const Jewelry = () => {
                     (filters.includes("Unisex") && jewel.sexo === "Unisex")) &&
                     (jewel.nombre.toLowerCase().includes(search.toLowerCase()))
             )
-            setJewerlySearch(filterSearchProducts)
-        } else {
+            setFilteredJewels(filterSearchProducts)
+            setIsSearch(true)
+        }
+        else if (isSearch && filters.length === 0) {
+            let filterProducts = allJewerly.filter(
+                (jewel) => jewel.nombre.toLowerCase().includes(search.toLowerCase())
+            )
+            setFilteredJewels(filterProducts)
+            setIsSearch(true)
+        }
+        else {
             let filterProducts = jewerly.filter((jewel) =>
                 (filters.includes("0 - 50 €") && jewel.precio >= 0 && jewel.precio <= 50) ||
                 (filters.includes("51 - 100 €") && jewel.precio >= 51 && jewel.precio <= 100) ||
@@ -80,7 +86,7 @@ const Jewelry = () => {
                 (filters.includes("Hombre") && jewel.sexo === "Hombre") ||
                 (filters.includes("Unisex") && jewel.sexo === "Unisex")
             )
-            setFilterJewels(filterProducts)
+            setFilteredJewels(filterProducts)
         }
     }
 
@@ -93,10 +99,17 @@ const Jewelry = () => {
 
     const handleChange=(e)=>{
         setSearch(e.target.value)
+        if (e.target.value.trim() === "") {
+            setIsSearch(false)
+        }
     }
 
     const loadMore = () => {
         setPagination(pagination+12)
+    }
+
+    const functionSearch = () => {
+        setIsSearch(true)
     }
 
     useEffect(()=>{
@@ -106,7 +119,7 @@ const Jewelry = () => {
     //Cada vez que se añada algo a la lista de filtros se ejecuta la funcion
     useEffect(()=>{
         activeFilters()
-    },[filters])
+    },[filters,isSearch])
 
     useEffect(()=>{
         fetchDataApiAll()
@@ -136,13 +149,7 @@ const Jewelry = () => {
                 <div>
                     <LinkSectionGroup width={"900px"} margin={"15px 0px 0px 15px"} />
                     {
-                        isSearch === true ? (
-                                <JewelryList
-                                    productos={jewerlySearch}
-                                    width={"930px"}
-                                    margin={"15px 5px 30px 15px"}
-                                />
-                            ) : filters.length ===0 ? (
+                            filters.length === 0 && !isSearch ? (
                             <>
                                 <JewelryList
                                     productos={jewerly}
@@ -161,7 +168,7 @@ const Jewelry = () => {
                             </>
                         ) : (
                             <JewelryList
-                                productos={filterJewels}
+                                productos={filteredJewels}
                                 width={"930px"}
                                 margin={"15px 5px 30px 15px"}
                             />
