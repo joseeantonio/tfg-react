@@ -100,14 +100,14 @@ const
                 <Sdiv margin={margin} width={width}>
                     <Filter
                         width={"230px"}
-                        name={t("Precio")}
-                        options={["0 - 50 €","51 - 100 €","101 - 150 €"]}
+                        name={t("Material")}
+                        options={["Oro","Plata"]}
                         filters={filters} setFilters={setFilters}
                     />
                     <Filter
                         width={"230px"}
-                        name={t("Sexo")}
-                        options={[t("Mujer"),t("Hombre"),"Unisex"]}
+                        name={t("Cierre")}
+                        options={[t("Magnetico"),t("Mosqueton"),"Gancho"]}
                         filters={filters} setFilters={setFilters}
                     />
                 </Sdiv>

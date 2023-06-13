@@ -75,6 +75,15 @@ const TypeJewel = () => {
                 (filters.includes("5") && jewel.numeroPiedra === 5)
             )
             setFilterJewels(filterProducts)
+        } else if (type === "collar") {
+            let filterProducts = jewerly.filter((jewel) =>
+                (filters.includes("Oro") && jewel.material === "Oro") ||
+                (filters.includes("PLata") && jewel.material === "plata") ||
+                (filters.includes("Magnetico") && jewel.cierre === "magnetico") ||
+                (filters.includes("Mosqueton") && jewel.cierre === "mosqueton") ||
+                (filters.includes("Gancho") && jewel.cierre === "gancho")
+            )
+            setFilterJewels(filterProducts)
         }
     }
 
