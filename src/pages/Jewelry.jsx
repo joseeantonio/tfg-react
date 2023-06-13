@@ -11,6 +11,7 @@ import ButtonSubmit from "../components/ButtonSubmit";
 
 const Jewelry = () => {
 
+    const [allJewerly,setAllJewerly] = useState([])
     const [search,setSearch] = useState("")
     const [isSearch,setIsSearch] = useState(false)
     const [jewerlySearch,setJewerlySearch] = useState([])
@@ -29,6 +30,19 @@ const Jewelry = () => {
             console.log(error)
         }
     }
+    const fetchDataApiAll = async () => {
+        try {
+            const result = await petition(`/productos`)
+            setAllJewerly(result)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    const resetFilters = () => {
+        setFilters([])
+    }
+
 
     const functionSearch = async () => {
         try {
@@ -42,17 +56,40 @@ const Jewelry = () => {
 
     //Comprobamos si esta cada opcion en la lista de filtros y añadimos los filtros con esas opciones
     // a la una lista en variable y cuando acabe de recorrerlo le da el valor a la lista de productos filtrados.
+    // Si esta en busqueda ,comprobamos si tiene los requisitos de los filtros y si incluye la busqueda,
+    // en el nombre.
     const activeFilters = () => {
-        let filterProducts = jewerly.filter((jewel) =>
-            (filters.includes("0 - 50 €") && jewel.precio >= 0 && jewel.precio <= 50) ||
-            (filters.includes("51 - 100 €") && jewel.precio >= 51 && jewel.precio <= 100) ||
-            (filters.includes("101 - 150 €") && jewel.precio >= 101 && jewel.precio <= 150) ||
-            (filters.includes("Mujer") && jewel.sexo === "Mujer") ||
-            (filters.includes("Hombre") && jewel.sexo === "Hombre") ||
-            (filters.includes("Unisex") && jewel.sexo === "Unisex")
-        )
-        setFilterJewels(filterProducts)
+        if (isSearch) {
+            let filterSearchProducts = allJewerly.filter(
+                (jewel) =>
+                    ((filters.includes("0 - 50 €") && jewel.precio >= 0 && jewel.precio <= 50) ||
+                    (filters.includes("51 - 100 €") && jewel.precio >= 51 && jewel.precio <= 100) ||
+                    (filters.includes("101 - 150 €") && jewel.precio >= 101 && jewel.precio <= 150) ||
+                    (filters.includes("Mujer") && jewel.sexo === "Mujer") ||
+                    (filters.includes("Hombre") && jewel.sexo === "Hombre") ||
+                    (filters.includes("Unisex") && jewel.sexo === "Unisex")) &&
+                    (jewel.nombre.toLowerCase().includes(search.toLowerCase()))
+            )
+            setJewerlySearch(filterSearchProducts)
+        } else {
+            let filterProducts = jewerly.filter((jewel) =>
+                (filters.includes("0 - 50 €") && jewel.precio >= 0 && jewel.precio <= 50) ||
+                (filters.includes("51 - 100 €") && jewel.precio >= 51 && jewel.precio <= 100) ||
+                (filters.includes("101 - 150 €") && jewel.precio >= 101 && jewel.precio <= 150) ||
+                (filters.includes("Mujer") && jewel.sexo === "Mujer") ||
+                (filters.includes("Hombre") && jewel.sexo === "Hombre") ||
+                (filters.includes("Unisex") && jewel.sexo === "Unisex")
+            )
+            setFilterJewels(filterProducts)
+        }
     }
+
+    //Nos sirve para que cuando escriba en el input de busqueda y le de al enter haga la funcion
+    const enter = (e) => {
+        if (e.key === 'Enter') {
+            functionSearch()
+        }
+    };
 
     const handleChange=(e)=>{
         setSearch(e.target.value)
@@ -71,6 +108,10 @@ const Jewelry = () => {
         activeFilters()
     },[filters])
 
+    useEffect(()=>{
+        fetchDataApiAll()
+    },[])
+
 
     return(
         <Sbody>
@@ -88,6 +129,7 @@ const Jewelry = () => {
                 fontSize={"17px"}
                 onChange={handleChange}
                 onClick={functionSearch}
+                onKeyPress={enter}
             />
             <Sdiv>
                 <Filters margin={"0px 20px 40px 20px"} filters={filters} setFilters={setFilters} />
