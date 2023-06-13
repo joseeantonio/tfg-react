@@ -47,14 +47,11 @@ const Jewelry = () => {
             console.log(error)
         }
     }
-    const resetFilters = () => {
-        setFilters([])
-    }
 
     //Comprobamos si esta cada opcion en la lista de filtros y añadimos los filtros con esas opciones
     // a la una lista en variable y cuando acabe de recorrerlo le da el valor a la lista de productos filtrados.
     // Si esta en busqueda ,comprobamos si tiene los requisitos de los filtros y si incluye la busqueda,
-    // en el nombre.
+    // en el nombre. Tambien lo hacemos a la vez que la busqueda y sino que lo haga de los filtros solos.
     const activeFilters = (busqueda) => {
         if (isSearch && filters.length>0) {
             let filterSearchProducts = allJewerly.filter(
@@ -97,6 +94,7 @@ const Jewelry = () => {
         }
     };
 
+    //Cogemos el valor del input de la busqueda
     const handleChange=(e)=>{
         setSearch(e.target.value)
         if (e.target.value.trim() === "") {
@@ -104,6 +102,7 @@ const Jewelry = () => {
         }
     }
 
+    //Paginacion
     const loadMore = () => {
         setPagination(pagination+12)
     }
@@ -112,6 +111,7 @@ const Jewelry = () => {
         setIsSearch(true)
     }
 
+    //Cada vez que cambie el numero de paginacion haremos una llamada a la api
     useEffect(()=>{
         fetchDataApi()
     },[pagination])
@@ -121,6 +121,7 @@ const Jewelry = () => {
         activeFilters()
     },[filters,isSearch])
 
+    //Cargamos todos los productos
     useEffect(()=>{
         fetchDataApiAll()
     },[])
@@ -149,6 +150,7 @@ const Jewelry = () => {
                 <div>
                     <LinkSectionGroup width={"900px"} margin={"15px 0px 0px 15px"} />
                     {
+                            // Ponemos las posibilidades que hay para mostrar una u otra.
                             filters.length === 0 && !isSearch ? (
                             <>
                                 <JewelryList
@@ -180,6 +182,7 @@ const Jewelry = () => {
     )
 }
 
+/*ESTILOS*/
 const Sbody = styled.body`
   background-color: #DFDFDF;
 `
@@ -193,6 +196,5 @@ const Sdiv = styled.div`
     justify-content: center;
     align-items: center;
   }
-  
 `
 export default Jewelry
