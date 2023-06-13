@@ -5,6 +5,7 @@ import styled from "styled-components";
 import ButtonSubmit from "../components/ButtonSubmit";
 import TitleForm from "../components/TitleForm";
 import {useTranslation} from "react-i18next";
+import axios from "axios";
 
 const FormLogin = ({margin,width}) => {
 
@@ -27,24 +28,49 @@ const FormLogin = ({margin,width}) => {
     }
 
     const handleSubmit = (e) => {
-        e.preventDefault();
-        const errors = {};
-        const regExpEmail =  /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/;
+        e.preventDefault()
+        const errors = {}
+        const regExpEmail =  /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/
 
         if (!data.email.trim()) {
-            errors.email = "Por favor, completa el correo electronico";
+            errors.email = "Por favor, completa el correo electronico"
         }else if (!regExpEmail.test(data.email)) {
-            errors.email = "El correo electronico incorrecto";
+            errors.email = "El correo electronico incorrecto"
         }
 
         if (!data.password.trim()) {
-            errors.password = "Por favor, completa la contraseña";
+            errors.password = "Por favor, completa la contraseña"
         }else if (data.password.length < 6) {
-            errors.password = "La contraseña debe de tener 6 o mas caracteres";
+            errors.password = "La contraseña debe de tener 6 o mas caracteres"
         }
 
         setErrors(errors);
+
+        //Comprobamos que las no tiene ni una propiedad el objeto
+        if (Object.keys(errors).length === 0) {
+            authenticatedPetition(data.email, data.password)
+        }
     };
+
+    // Hacemos esta peticion sin reutilizar la funcion petition de la api.js porque esta utilizamos un Basic Auth.
+    const authenticatedPetition = async (email, password) => {
+        try {
+            const response = await axios.post(
+                'http://localhost:8080/token',
+                {},
+                {
+                    auth: {
+                        username: email,
+                        password: password,
+                    },
+                }
+            )
+            // Guardamos el token en el localStorage
+            localStorage.setItem('token', response.data.token)
+        } catch (error) {
+            throw new Error('No estas autorizado')
+        }
+    }
 
 
     return(
