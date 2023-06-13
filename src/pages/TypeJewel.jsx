@@ -3,26 +3,25 @@ import TitlePage from "../components/TitlePage";
 import {useParams} from "react-router-dom";
 import Input from "../components/Input";
 import Filters from "../modules/Filters";
-import LinkSectionGroup from "../modules/LinkSectionGroup";
 import JewelryList from "../modules/JewelryList";
 import styled from "styled-components";
-import productos from "../../src/assets/json/productosPrueba.json"
 import {useTranslation} from "react-i18next";
 import {petition} from "../services/api";
-import pluralize from 'pluralize';
 import ButtonSubmit from "../components/ButtonSubmit";
-
 const TypeJewel = () => {
 
     //Cogemos el tipo a traves de la url
     const {type} = useParams()
-
     // Titulo de la pagina
     const [title,setTitle] = useState()
     // Todos los productos de esa categoria
     const [jewerly,setJewerly] = useState([])
+    //La palabra que buscamos
+    const [search,setSearch] = useState("")
+    //variable para mostrar si estamos buscando o no
+    const [isSearch,setIsSearch] = useState(false)
     const [filters, setFilters] = useState([]);
-    const [filterJewels,setFilterJewels] = useState([])
+    const [filteredJewels,setFilteredJewels] = useState([])
     const { t } = useTranslation();
 
 
@@ -30,61 +29,104 @@ const TypeJewel = () => {
     // a la una lista en variable y cuando acabe de recorrerlo le da el valor a la lista de productos filtrados.
     // Segun el tipo de joya que sea.
     const activeFilters = () => {
-        if (type === "reloj") {
-            let filterProducts = jewerly.filter((jewel) =>
-                (filters.includes("34 mm") && jewel.talla === 34) ||
-                (filters.includes("39 mm") && jewel.talla === 39) ||
-                (filters.includes("42 mm") && jewel.talla === 42) ||
-                (filters.includes("No") && jewel.resistenteAgua === 0) ||
-                (filters.includes("100 m") && jewel.resistenteAgua === 100) ||
-                (filters.includes("200 m") && jewel.resistenteAgua === 200) ||
-                (filters.includes("Mas de 200 m") && jewel.resistenteAgua > 200) ||
-                (filters.includes("Nylon") && jewel.materialCorrea === "nylon") ||
-                (filters.includes("Cuero") && jewel.materialCorrea === "cuero") ||
-                (filters.includes("Acero inoxidable") && jewel.materialCaja === "acero inoxidable") ||
-                (filters.includes("Plata") && jewel.materialCaja === "plata") ||
-                (filters.includes("Bronce") && jewel.materialCaja === "bronce") ||
-                (filters.includes("Mecanico") && jewel.tipoMovimiento === "mecanico") ||
-                (filters.includes("Cuarzo") && jewel.tipoMovimiento === "cuarzo") ||
-                (filters.includes("Plata") && jewel.tipoMovimiento === "plata")
-            )
-            setFilterJewels(filterProducts)
-        } else if (type === "anillo") {
-            let filterProducts = jewerly.filter((jewel) =>
-                (filters.includes("60 - 62 mm") && jewel.talla <=62 && jewel.talla >=60) ||
-                (filters.includes("64 - 66 mm") && jewel.talla <=66 && jewel.talla >=64) ||
-                (filters.includes("68 - 70 mm") && jewel.talla <=67 && jewel.talla >=68) ||
-                (filters.includes("Azul") && jewel.color === "azul") ||
-                (filters.includes("Amarillo") && jewel.color === "amarillo") ||
-                (filters.includes("Negro") && jewel.color === "negro") ||
-                (filters.includes("Verde") && jewel.color === "verde") ||
-                (filters.includes("Rojo") && jewel.color === "rojo") ||
-                (filters.includes("9 gramos") && jewel.peso === "9 gramos") ||
-                (filters.includes("11 gramos") && jewel.peso === "11 gramos") ||
-                (filters.includes("14 gramos") && jewel.peso === "14 gramos") ||
-                (filters.includes("14k") && jewel.calidadMinima === "14K") ||
-                (filters.includes("18k") && jewel.calidadMinima === "18K") ||
-                (filters.includes("24k") && jewel.calidadMinima === "24K") ||
-                (filters.includes("Diamante") && jewel.piedra === "diamante") ||
-                (filters.includes("Moissanita") && jewel.piedra === "moissanita") ||
-                (filters.includes("Zafiro") && jewel.piedra === "zafiro") ||
-                (filters.includes("Esmeralda") && jewel.piedra === "esmeralda") ||
-                (filters.includes("1") && jewel.numeroPiedra === 1) ||
-                (filters.includes("2") && jewel.numeroPiedra === 2) ||
-                (filters.includes("3") && jewel.numeroPiedra === 3) ||
-                (filters.includes("5") && jewel.numeroPiedra === 5)
-            )
-            setFilterJewels(filterProducts)
-        } else if (type === "collar") {
-            let filterProducts = jewerly.filter((jewel) =>
-                (filters.includes("Oro") && jewel.material === "Oro") ||
-                (filters.includes("PLata") && jewel.material === "plata") ||
-                (filters.includes("Magnetico") && jewel.cierre === "magnetico") ||
-                (filters.includes("Mosqueton") && jewel.cierre === "mosqueton") ||
-                (filters.includes("Gancho") && jewel.cierre === "gancho")
-            )
-            setFilterJewels(filterProducts)
+        if (filters.length>0) {
+            if (type === "reloj") {
+                let filterProducts = jewerly.filter((jewel) =>
+                    (filters.includes("34 mm") && jewel.talla === 34) ||
+                    (filters.includes("39 mm") && jewel.talla === 39) ||
+                    (filters.includes("42 mm") && jewel.talla === 42) ||
+                    (filters.includes("No") && jewel.resistenteAgua === 0) ||
+                    (filters.includes("100 m") && jewel.resistenteAgua === 100) ||
+                    (filters.includes("200 m") && jewel.resistenteAgua === 200) ||
+                    (filters.includes("Mas de 200 m") && jewel.resistenteAgua > 200) ||
+                    (filters.includes("Nylon") && jewel.materialCorrea === "nylon") ||
+                    (filters.includes("Cuero") && jewel.materialCorrea === "cuero") ||
+                    (filters.includes("Acero inoxidable") && jewel.materialCaja === "acero inoxidable") ||
+                    (filters.includes("Plata") && jewel.materialCaja === "plata") ||
+                    (filters.includes("Bronce") && jewel.materialCaja === "bronce") ||
+                    (filters.includes("Mecanico") && jewel.tipoMovimiento === "mecanico") ||
+                    (filters.includes("Cuarzo") && jewel.tipoMovimiento === "cuarzo") ||
+                    (filters.includes("Plata") && jewel.tipoMovimiento === "plata")
+                )
+                if (isSearch) {
+                    filterProducts = filterProducts.filter((jewel) =>
+                        jewel.nombre.toLowerCase().includes(search.toLowerCase())
+                    );
+                }
+                setFilteredJewels(filterProducts)
+            } else if (type === "anillo") {
+                let filterProducts = jewerly.filter((jewel) =>
+                    (filters.includes("60 - 62 mm") && jewel.talla <=62 && jewel.talla >=60) ||
+                    (filters.includes("64 - 66 mm") && jewel.talla <=66 && jewel.talla >=64) ||
+                    (filters.includes("68 - 70 mm") && jewel.talla <=67 && jewel.talla >=68) ||
+                    (filters.includes("Azul") && jewel.color === "azul") ||
+                    (filters.includes("Amarillo") && jewel.color === "amarillo") ||
+                    (filters.includes("Negro") && jewel.color === "negro") ||
+                    (filters.includes("Verde") && jewel.color === "verde") ||
+                    (filters.includes("Rojo") && jewel.color === "rojo") ||
+                    (filters.includes("9 gramos") && jewel.peso === "9 gramos") ||
+                    (filters.includes("11 gramos") && jewel.peso === "11 gramos") ||
+                    (filters.includes("14 gramos") && jewel.peso === "14 gramos") ||
+                    (filters.includes("14k") && jewel.calidadMinima === "14K") ||
+                    (filters.includes("18k") && jewel.calidadMinima === "18K") ||
+                    (filters.includes("24k") && jewel.calidadMinima === "24K") ||
+                    (filters.includes("Diamante") && jewel.piedra === "diamante") ||
+                    (filters.includes("Moissanita") && jewel.piedra === "moissanita") ||
+                    (filters.includes("Zafiro") && jewel.piedra === "zafiro") ||
+                    (filters.includes("Esmeralda") && jewel.piedra === "esmeralda") ||
+                    (filters.includes("1") && jewel.numeroPiedra === 1) ||
+                    (filters.includes("2") && jewel.numeroPiedra === 2) ||
+                    (filters.includes("3") && jewel.numeroPiedra === 3) ||
+                    (filters.includes("5") && jewel.numeroPiedra === 5)
+                )
+                if (isSearch) {
+                    filterProducts = filterProducts.filter((jewel) =>
+                        jewel.nombre.toLowerCase().includes(search.toLowerCase())
+                    );
+                }
+                setFilteredJewels(filterProducts)
+            } else if (type === "collar") {
+                let filterProducts = jewerly.filter((jewel) =>
+                    (filters.includes("Oro") && jewel.material === "Oro") ||
+                    (filters.includes("PLata") && jewel.material === "plata") ||
+                    (filters.includes("Magnetico") && jewel.cierre === "magnetico") ||
+                    (filters.includes("Mosqueton") && jewel.cierre === "mosqueton") ||
+                    (filters.includes("Gancho") && jewel.cierre === "gancho")
+                )
+                if (isSearch) {
+                    filterProducts = filterProducts.filter((jewel) =>
+                        jewel.nombre.toLowerCase().includes(search.toLowerCase())
+                    );
+                }
+                setFilteredJewels(filterProducts)
+            }
         }
+        else if (isSearch && filters.length === 0) {
+            let filterProducts = jewerly.filter(
+                (jewel) => jewel.nombre.toLowerCase().includes(search.toLowerCase())
+            )
+            setFilteredJewels(filterProducts)
+            setIsSearch(true)
+        }
+    }
+
+    //Nos sirve para que cuando escriba en el input de busqueda y le de al enter haga la funcion
+    const enter = (e) => {
+        if (e.key === 'Enter') {
+            functionSearch()
+        }
+    };
+
+    //Cogemos el valor del input de la busqueda
+    const handleChange=(e)=>{
+        setSearch(e.target.value)
+        if (e.target.value.trim() === "") {
+            setIsSearch(false)
+        }
+    }
+
+    const functionSearch = () => {
+        setIsSearch(true)
     }
 
     // Ponemos el titulo de la pagina en plural
@@ -116,7 +158,7 @@ const TypeJewel = () => {
     //Cada vez que se añada algo a la lista de filtros se ejecuta la funcion
     useEffect(()=>{
         activeFilters()
-    },[filters])
+    },[filters,isSearch])
 
 
     return(
@@ -132,6 +174,9 @@ const TypeJewel = () => {
                 widthSearch={"51.59px"}
                 borderRadius={"5px"}
                 margin={"0 auto 40px"}
+                onChange={handleChange}
+                onClick={functionSearch}
+                onKeyPress={enter}
             />
             <Sdiv>
                 <Filters
@@ -141,15 +186,18 @@ const TypeJewel = () => {
                     setFilters={setFilters}
                 />
                 {
-                    filters.length ===0 ? (
-                        <JewelryList
-                            productos={jewerly}
-                            width={"930px"}
-                            margin={"15px 5px 30px 15px"}
-                        />
+                    // Ponemos las posibilidades que hay para mostrar una u otra.
+                    filters.length === 0 && !isSearch ? (
+                        <>
+                            <JewelryList
+                                productos={jewerly}
+                                width={"930px"}
+                                margin={"15px 5px 30px 15px"}
+                            />
+                        </>
                     ) : (
                         <JewelryList
-                            productos={filterJewels}
+                            productos={filteredJewels}
                             width={"930px"}
                             margin={"15px 5px 30px 15px"}
                         />

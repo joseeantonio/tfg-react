@@ -17,8 +17,6 @@ const Jewelry = () => {
     const [search,setSearch] = useState("")
     //variable para mostrar si estamos buscando o no
     const [isSearch,setIsSearch] = useState(false)
-    //productos de la busqueda
-    const [jewerlySearch,setJewerlySearch] = useState([])
     //Productos de la paginacion
     const [jewerly,setJewerly] = useState([])
     //listra con las opciones de los filtros
@@ -52,8 +50,8 @@ const Jewelry = () => {
     // a la una lista en variable y cuando acabe de recorrerlo le da el valor a la lista de productos filtrados.
     // Si esta en busqueda ,comprobamos si tiene los requisitos de los filtros y si incluye la busqueda,
     // en el nombre. Tambien lo hacemos a la vez que la busqueda y sino que lo haga de los filtros solos.
-    const activeFilters = (busqueda) => {
-        if (isSearch && filters.length>0) {
+    const activeFilters = () => {
+        if (filters.length>0) {
             let filterSearchProducts = allJewerly.filter(
                 (jewel) =>
                     ((filters.includes("0 - 50 €") && jewel.precio >= 0 && jewel.precio <= 50) ||
@@ -61,9 +59,14 @@ const Jewelry = () => {
                     (filters.includes("101 - 150 €") && jewel.precio >= 101 && jewel.precio <= 150) ||
                     (filters.includes("Mujer") && jewel.sexo === "Mujer") ||
                     (filters.includes("Hombre") && jewel.sexo === "Hombre") ||
-                    (filters.includes("Unisex") && jewel.sexo === "Unisex")) &&
-                    (jewel.nombre.toLowerCase().includes(search.toLowerCase()))
+                    (filters.includes("Unisex") && jewel.sexo === "Unisex"))
+                    // (jewel.nombre.toLowerCase().includes(search.toLowerCase()))
             )
+            if (isSearch) {
+                filterSearchProducts = filterSearchProducts.filter((jewel) =>
+                    jewel.nombre.toLowerCase().includes(search.toLowerCase())
+                );
+            }
             setFilteredJewels(filterSearchProducts)
             setIsSearch(true)
         }
@@ -73,17 +76,6 @@ const Jewelry = () => {
             )
             setFilteredJewels(filterProducts)
             setIsSearch(true)
-        }
-        else {
-            let filterProducts = jewerly.filter((jewel) =>
-                (filters.includes("0 - 50 €") && jewel.precio >= 0 && jewel.precio <= 50) ||
-                (filters.includes("51 - 100 €") && jewel.precio >= 51 && jewel.precio <= 100) ||
-                (filters.includes("101 - 150 €") && jewel.precio >= 101 && jewel.precio <= 150) ||
-                (filters.includes("Mujer") && jewel.sexo === "Mujer") ||
-                (filters.includes("Hombre") && jewel.sexo === "Hombre") ||
-                (filters.includes("Unisex") && jewel.sexo === "Unisex")
-            )
-            setFilteredJewels(filterProducts)
         }
     }
 
