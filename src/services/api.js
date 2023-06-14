@@ -9,3 +9,19 @@ export const petition = (url) => {
             throw new Error(`Hay un error: ${error}`);
         });
 };
+
+export const petitionWithToken = (url) => {
+    const token = localStorage.getItem('token');
+
+    return axios.get("http://localhost:8080" + url, {
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    })
+        .then((response) => {
+            return response.data;
+        })
+        .catch((error) => {
+            throw new Error(`Hay un error: ${error}`);
+        });
+};

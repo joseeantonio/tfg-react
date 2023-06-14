@@ -1,16 +1,19 @@
 import Input from "../components/Input";
 import React, {useState} from "react";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import styled from "styled-components";
 import ButtonSubmit from "../components/ButtonSubmit";
 import TitleForm from "../components/TitleForm";
 import {useTranslation} from "react-i18next";
 import axios from "axios";
 import {useUserContext} from "../context/UserContext";
+import {petition, petitionWithToken} from "../services/api";
+import home from "../pages/Home";
 
 const FormLogin = ({margin,width}) => {
 
     const { t } = useTranslation();
+    const navigate = useNavigate()
 
     // Recogemos datos de los input
     const [data,setData] = useState({
@@ -75,9 +78,22 @@ const FormLogin = ({margin,width}) => {
             )
             // Guardamos el token en el localStorage
             localStorage.setItem('token', response.data.token)
-            
+
+            await fetchDataApiWithToken()
+
+            navigate("/")
+
         } catch (error) {
             throw new Error('No estas autorizado')
+        }
+    }
+
+    const fetchDataApiWithToken = async () => {
+        try {
+            const result = await petitionWithToken(`/me`)
+            setUser(result)
+        } catch (error) {
+            console.log(error)
         }
     }
 
