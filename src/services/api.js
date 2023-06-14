@@ -10,18 +10,20 @@ export const petition = (url) => {
         });
 };
 
-export const petitionWithToken = (url) => {
-    const token = localStorage.getItem('token');
+export const petitionWithToken = (url, method) => {
+    const token = localStorage.getItem('token')
 
-    return axios.get("http://localhost:8080" + url, {
+    return axios({
+        method: method,
+        url: "http://localhost:8080" + url,
         headers: {
             Authorization: `Bearer ${token}`
         }
     })
         .then((response) => {
-            return response.data;
+            return response.data
         })
         .catch((error) => {
-            throw new Error(`Hay un error: ${error}`);
+            throw new Error(`Hay un error: ${error}`)
         });
 };
