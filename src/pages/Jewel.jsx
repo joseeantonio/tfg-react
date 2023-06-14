@@ -5,11 +5,15 @@ import {petition} from "../services/api";
 import Description from "../components/Description";
 import styled from "styled-components";
 import TechnicalInformation from "../modules/TechnicalInformation";
+import {useShoppingCartContext} from "../context/ShoppingCartContext";
 
 // Pagina de contacto y utilizamos modulos y componentes
 const Jewel = () => {
     // Recogemos el id por la url
     const {id} = useParams()
+
+    // Definimos el context de la cantidad para el NavBar
+    const { shoppingCart, setShoppingCart } = useShoppingCartContext()
 
     const [jewel,setJewel] = useState([])
     const [quantity,setQuantity] = useState(1)
@@ -41,6 +45,8 @@ const Jewel = () => {
         else{
             jewel.cantidad = quantity;
             order.push(jewel);
+            // modificamos el context
+            setShoppingCart(shoppingCart+1)
         }
         // Guardamos el pedido en el localStorage
         localStorage.setItem('order', JSON.stringify(order))

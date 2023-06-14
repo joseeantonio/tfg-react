@@ -8,7 +8,6 @@ import {useTranslation} from "react-i18next";
 import axios from "axios";
 import {useUserContext} from "../context/UserContext";
 import {petition, petitionWithToken} from "../services/api";
-import home from "../pages/Home";
 
 const FormLogin = ({margin,width}) => {
 

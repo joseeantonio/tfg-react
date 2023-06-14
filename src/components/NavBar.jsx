@@ -5,11 +5,13 @@ import { FaShoppingCart } from "react-icons/fa";
 import { FaUserAlt } from "react-icons/fa";
 import { BsList } from "react-icons/bs";
 import {useTranslation} from "react-i18next";
+import {useShoppingCartContext} from "../context/ShoppingCartContext";
 
 // NavBar
 
 const NavBar = () => {
 
+    const { shoppingCart, setShoppingCart } = useShoppingCartContext()
     // Utilizamos este hook para controlar el menu hamburguesa
     const [mobile,setMobile] = useState(false)
     const { t } = useTranslation();
@@ -30,7 +32,14 @@ const NavBar = () => {
                     <Sul className={"DESKTOP"}>
                         <Sli><SNavLink to={"/jewelry"}>{t("JOYAS")}</SNavLink></Sli>
                         <Sli><SNavLink to={"/contact"}>{t("CONTACTO")}</SNavLink></Sli>
-                        <Sli><SNavLink to={"/shoppingCart"}><SFaShoppingCart /></SNavLink></Sli>
+                        <Sli><SNavLink to={"/shoppingCart"}>
+                            <SFaShoppingCart />
+                            {
+                                shoppingCart > 0 && (
+                                    <Sspan>{shoppingCart}</Sspan>
+                                )
+                            }
+                        </SNavLink></Sli>
                         <Sli><SNavLink to={"/register"}><FaUserAlt /></SNavLink></Sli>
                     </Sul>
                 </Snav>
@@ -58,6 +67,10 @@ const SNavLink = styled(NavLink)`
   text-decoration: none;
   color: black;
   padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 24px;
 
   &.logo{
     font-family: "Playfair Display", serif;
@@ -71,6 +84,12 @@ const SNavLink = styled(NavLink)`
 const SHeader = styled.header`
   border-bottom: 1px solid #000000;
   background-color: #ECF0F1;
+`
+
+const Sspan = styled.span`
+  margin-left: 5px;
+  align-items: center;
+  font-size: 20px;
 `
 
 const Snav = styled.nav`
@@ -108,7 +127,8 @@ const Sul = styled.ul`
 
 const Sli = styled.li`
   text-align: center;
-  padding: 22.5px 35px;
+  padding-right: 35px;
+  padding-left: 35px;
   font-size: 16px;
 `
 

@@ -2,12 +2,16 @@ import React, {useEffect, useState} from "react";
 import styled from "styled-components";
 import { FaTrash } from "react-icons/fa";
 import Quantity from "./Quantity";
+import {useShoppingCartContext} from "../context/ShoppingCartContext";
 
 // Carta producto que utilizamos en el carrito que todavia no hemos pedido
 const ProductShoppingCart = ({width,producto,margin,updateOrder}) => {
 
     // Podemos modificar la cantidad, porque todavia no esta pedido y se almacena el pedido en el LocalStorage
     const [quantity,setQuantity] = useState(producto.cantidad)
+
+    // Definimos el context de la cantidad para el NavBar
+    const { shoppingCart, setShoppingCart } = useShoppingCartContext()
 
     const updatedQuantity = () => {
         // Copiamos el producto para que no de problemas
@@ -34,6 +38,10 @@ const ProductShoppingCart = ({width,producto,margin,updateOrder}) => {
 
         // Actualizar el localStorage con la lista filtrada
         localStorage.setItem('order', JSON.stringify(updatedOrder));
+
+        // modificamos el context
+        setShoppingCart(shoppingCart-1)
+
         // Esta funcion la utilizamos para recargar la pagina del carrito y se vea el carrito sin el producto eliminado.
         updateOrder();
     }
