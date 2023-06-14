@@ -6,6 +6,7 @@ import {FaUserAlt} from "react-icons/fa";
 import styled from "styled-components";
 import FormModify from "../modules/FormModify";
 import {useTranslation} from "react-i18next";
+import {useUserContext} from "../context/UserContext";
 
 // Pagina de Perfil y utilizamos modulos y componentes
 const Profile = () => {
@@ -15,6 +16,8 @@ const Profile = () => {
     const functionModify = () => {
         setModify(!modify)
     }
+    // Cogemos el user y set user del context para almacenar lo que queramos
+    const { user, setUser } = useUserContext()
 
     return(
         <Sbody>
@@ -22,18 +25,20 @@ const Profile = () => {
             <SFaUserAlt />
             <Sh1>{t("Datos_Personales")}</Sh1>
             {
-                !modify ? (
-                    <PersonalInformation
-                        cliente={cliente.cliente}
-                        width={"90%"}
-                        functionModify={functionModify}
-                    />
-                ) : (
-                    <FormModify
-                        cliente={cliente.cliente}
-                        width={"90%"}
-                        functionModify={functionModify}
-                    />
+                user && (
+                    !modify ? (
+                        <PersonalInformation
+                            cliente={cliente.cliente}
+                            width={"90%"}
+                            functionModify={functionModify}
+                        />
+                    ) : (
+                        <FormModify
+                            cliente={cliente.cliente}
+                            width={"90%"}
+                            functionModify={functionModify}
+                        />
+                    )
                 )
             }
         </Sbody>

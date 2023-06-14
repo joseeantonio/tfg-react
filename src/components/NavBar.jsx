@@ -6,11 +6,14 @@ import { FaUserAlt } from "react-icons/fa";
 import { BsList } from "react-icons/bs";
 import {useTranslation} from "react-i18next";
 import {useShoppingCartContext} from "../context/ShoppingCartContext";
+import {useUserContext} from "../context/UserContext";
 
 // NavBar
 
 const NavBar = () => {
 
+    // Cogemos el user y set user del context para almacenar lo que queramos
+    const { user, setUser } = useUserContext()
     const { shoppingCart, setShoppingCart } = useShoppingCartContext()
     // Utilizamos este hook para controlar el menu hamburguesa
     const [mobile,setMobile] = useState(false)
@@ -40,7 +43,13 @@ const NavBar = () => {
                                 )
                             }
                         </SNavLink></Sli>
-                        <Sli><SNavLink to={"/register"}><FaUserAlt /></SNavLink></Sli>
+                        {
+                            user ? (
+                                <Sli><SNavLink to={"/profile"}><SFaUserAlt />{user.username}</SNavLink></Sli>
+                            ) : (
+                                <Sli><SNavLink to={"/register"}><FaUserAlt /></SNavLink></Sli>
+                            )
+                        }
                     </Sul>
                 </Snav>
                 <Sbutton onClick={isMobile}>
@@ -62,6 +71,10 @@ const NavBar = () => {
         </SHeader>
     )
 }
+
+const SFaUserAlt = styled(FaUserAlt)`
+  margin-right: 5px;
+`
 
 const SNavLink = styled(NavLink)`
   text-decoration: none;

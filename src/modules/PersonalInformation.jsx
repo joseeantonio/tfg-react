@@ -6,6 +6,7 @@ import {useNavigate} from "react-router-dom";
 import {useTranslation} from "react-i18next";
 import { FiSettings } from "react-icons/fi";
 import { MdCancel } from "react-icons/md";
+import {useUserContext} from "../context/UserContext";
 
 // Con este modulo mostramos la informacion personale del cliente
 const PersonalInformation = ({cliente,width, functionModify}) => {
@@ -13,6 +14,8 @@ const PersonalInformation = ({cliente,width, functionModify}) => {
     const navigate = useNavigate();
     const { t, i18n } = useTranslation();
     const [idioms,setIdioms] = useState(false)
+    // Cogemos el user y set user del context para almacenar lo que queramos
+    const { user, setUser } = useUserContext()
 
     // Cambiamos de idioma con la libreria i18n
     const changeLanguage = (language) => {
@@ -25,15 +28,16 @@ const PersonalInformation = ({cliente,width, functionModify}) => {
 
 
     const cerrarSesion = () => {
+        setUser(null)
         navigate("/login");
     }
 
     return(
         <Sdiv width={width}>
-            <ShowInformation name={t("Nombre")} value={cliente.nombre} />
-            <ShowInformation name={t("Apellidos")} value={cliente.apellidos} />
-            <ShowInformation name={t("Correo_electronico")} value={cliente.correo} />
-            <ShowInformation name={t("Fecha_de_nacimiento")} value={cliente.fecha_nac} />
+            <ShowInformation name={t("Nombre")} value={user.nombre} />
+            <ShowInformation name={t("Apellidos")} value={user.apellidos} />
+            <ShowInformation name={t("Correo_electronico")} value={user.correo} />
+            <ShowInformation name={t("Fecha_de_nacimiento")} value={user.fecha_nac} />
             <ShowInformation name={t("Contraseña")} value={"******"} />
             <ButtonSubmit
                 label={<SFiSettings />}
@@ -92,6 +96,7 @@ const PersonalInformation = ({cliente,width, functionModify}) => {
                     height={"31px"}
                     backgroundColor={"#CB4335"}
                     borderRadius={"10px"}
+                    onclick={cerrarSesion}
                 />
             </Sdiv>
         </Sdiv>

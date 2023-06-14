@@ -75,7 +75,7 @@ i18n
                     Mujer : "Mujer",
                     Hombre : "Hombre",
                     ENVIANOS_TU_MENSAJE : "ENVIANOS TU MENSAJE",
-                    Correo_electronico : "Correo elctronico",
+                    Correo_electronico : "Correo electronico",
                     Asunto : "Asunto",
                     Mensaje : "Mensaje",
                     ENVIAR : "ENVIAR",
