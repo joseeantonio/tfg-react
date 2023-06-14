@@ -1,20 +1,23 @@
-import React, { useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
 import ButtonSubmit from "./ButtonSubmit";
 import { VscAdd } from "react-icons/vsc";
 import { VscChromeMinimize } from "react-icons/vsc";
 
+// Componente que muestra la cantidad y se puede cambiar con un + y un -
 const Quantity = ({setQuantity,quantity, margin}) => {
 
+    // Funcion que hace que sea mas cantidad
     const incrementQuantity = () => {
-        setQuantity(quantity + 1);
-      };
-    
-      const decrementQuantity = () => {
+        setQuantity(quantity + 1)
+      }
+
+    // Funcion que hace que sea mas cantidad
+    const decrementQuantity = () => {
         if (quantity > 1) {
-          setQuantity(quantity - 1);
+          setQuantity(quantity - 1)
         }
-      };
+    }
 
     return(
         <Sdiv margin={margin}>

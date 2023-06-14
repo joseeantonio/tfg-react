@@ -2,6 +2,7 @@ import React from "react";
 import Checkbox from "./Checkbox";
 import styled from "styled-components";
 
+// Este componente esta formado por Checkbox que son opciones que vamos a tener para seleccionar
 const Filter = ({name,options,width,margin,filters, setFilters}) => {
 
     const handleCheckbox = (option, checked) => {
@@ -38,4 +39,5 @@ const Sdiv = styled.div`
   width: ${(props) => props.width};
   margin: ${(props) => props.margin};
 `
+
 export default Filter

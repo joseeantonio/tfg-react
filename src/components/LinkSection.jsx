@@ -2,6 +2,8 @@ import React from "react";
 import {Link} from "react-router-dom";
 import styled from "styled-components";
 
+// Es una seccion que tiene las opciones de ir a los diferentes tipos de productos que hay
+
 const LinkSection = ({name,route,width,height,margin,color}) => {
 
     return(

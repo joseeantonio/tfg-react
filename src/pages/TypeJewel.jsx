@@ -135,7 +135,7 @@ const TypeJewel = () => {
             setTitle("ANILLOS")
         }else if (type === "collar") {
             setTitle("COLLARES")
-        }else{
+        }else if (type === "reloj" ){
             setTitle("RELOJES")
         }
     }

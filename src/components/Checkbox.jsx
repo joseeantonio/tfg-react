@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 
+// Checkbox con estilos por props
 const Checkbox = ({label,marginBottom,fontSize,onChange}) => {
 
   const handleChecked = (event) => {
@@ -18,7 +19,7 @@ const Checkbox = ({label,marginBottom,fontSize,onChange}) => {
     )
 }
 
-
+// estilos
 const Slabel = styled.label`
   display: flex;
   align-items: center;

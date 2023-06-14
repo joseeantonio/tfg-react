@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import {Link} from "react-router-dom";
 
+// Este componente lo utilizamos en el Home para las imagenes que no lleve a cada seccion de productos
 const ImgSeccion = (props) => {
     return(
         <SLink to={props.route}>
@@ -11,10 +12,7 @@ const ImgSeccion = (props) => {
             </Sdiv>
         </SLink>
     )
-
 }
-export default ImgSeccion
-
 
 const Sdiv = styled.div`
   display: flex;
@@ -52,3 +50,5 @@ const Sh1 = styled.h1`
   margin-left: -93px;
   transform: translate(-50%, -50%);
 `
+
+export default ImgSeccion

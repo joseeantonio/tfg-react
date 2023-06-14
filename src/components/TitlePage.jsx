@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
+// Lo utilizo como titulo de la pagina
 const TitlePage = ({name}) => {
     return(
         <Sh1>{name}</Sh1>
@@ -8,7 +9,6 @@ const TitlePage = ({name}) => {
 }
 
 const Sh1 = styled.h1`
-
   font-family: 'Inter';
   font-style: normal;
   font-weight: 400;
@@ -25,6 +25,6 @@ const Sh1 = styled.h1`
     font-size:30px;
     padding: 50px;
   }
-
 `
+
 export default TitlePage

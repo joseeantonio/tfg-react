@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import {BsSearch} from "react-icons/bs";
 
-
+// Componente input y tenemos la opcion si seleccionamos el search si es un input de busqueda
 const Input = ({onKeyPress,fontSize,label,defaultValue,type,height,width, onChange,placeholder, margin,searchIcon,widthSearch,borderRadius,error,name,onClick}) => {
 
     return(

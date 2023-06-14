@@ -6,8 +6,11 @@ import { FaUserAlt } from "react-icons/fa";
 import { BsList } from "react-icons/bs";
 import {useTranslation} from "react-i18next";
 
+// NavBar
+
 const NavBar = () => {
 
+    // Utilizamos este hook para controlar el menu hamburguesa
     const [mobile,setMobile] = useState(false)
     const { t } = useTranslation();
 
@@ -63,7 +66,7 @@ const SNavLink = styled(NavLink)`
   &.active{
     color: #FF8C00;
   }
-`;
+`
 
 const SHeader = styled.header`
   border-bottom: 1px solid #000000;

@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
+// Componente Boton en el que a traves de props le indicamos el tipo,y todos los estilos que queremos
 const ButtonSubmit = ({label,onclick,color,backgroundColor,margin,padding,height,width,borderRadius,fontSize,type,border}) => {
     return(
         <Sbutton
@@ -23,6 +24,7 @@ const ButtonSubmit = ({label,onclick,color,backgroundColor,margin,padding,height
     )
 }
 
+// ESTILOS
 
 const Sbutton = styled.button`
   all: unset;
@@ -37,7 +39,6 @@ const Sbutton = styled.button`
   border-radius: ${(props) => props.borderRadius ? props.borderRadius : "5px"};
   border: ${(props) => props.border && props.border};
   cursor: pointer;
-
 `
 
 const Sspan = styled.span`
@@ -53,6 +54,5 @@ const Sspan = styled.span`
     font-size: 12px;
   }
 `
-
 
 export default ButtonSubmit

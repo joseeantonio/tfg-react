@@ -1,12 +1,12 @@
 import React from "react";
 import {Link} from "react-router-dom";
-
 import { FaInstagram } from "react-icons/fa";
 import { FaFacebook } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
 import styled from "styled-components";
 import {useTranslation} from "react-i18next";
 
+// Footer
 const Footer = () => {
 
     const { t } = useTranslation();

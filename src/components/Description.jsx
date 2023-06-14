@@ -3,6 +3,7 @@ import ButtonSubmit from "./ButtonSubmit";
 import styled from "styled-components";
 import Quantity from "./Quantity";
 
+// Componentes que utilizamos para la descripcion del producto
 const Description = ({description,width,onClick,setQuantity,quantity}) => {
 
     return (

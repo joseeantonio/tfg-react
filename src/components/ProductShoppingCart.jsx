@@ -3,8 +3,10 @@ import styled from "styled-components";
 import { FaTrash } from "react-icons/fa";
 import Quantity from "./Quantity";
 
+// Carta producto que utilizamos en el carrito que todavia no hemos pedido
 const ProductShoppingCart = ({width,producto,margin,updateOrder}) => {
 
+    // Podemos modificar la cantidad, porque todavia no esta pedido y se almacena el pedido en el LocalStorage
     const [quantity,setQuantity] = useState(producto.cantidad)
 
     const updatedQuantity = () => {
@@ -21,22 +23,22 @@ const ProductShoppingCart = ({width,producto,margin,updateOrder}) => {
         localStorage.setItem("order", JSON.stringify(updatedOrder));
     }
 
+    // Eliminamos el producto del carrito
     const removeJewel = () => {
+        // Cogemos la lista del localStorage
         const order = JSON.parse(localStorage.getItem("order"));
 
-        let updatedOrder = [];
+        // Recorremos el pedido y si el id no es igual, lo guardamos en la variable
+        const updatedOrder = order.filter(item => item.id !== producto.id);
 
-        for (let i = 0; i < order.length; i++) {
-            if (order[i].id !== producto.id) {
-                updatedOrder.push(order[i]);
-            }
-        }
 
         // Actualizar el localStorage con la lista filtrada
         localStorage.setItem('order', JSON.stringify(updatedOrder));
+        // Esta funcion la utilizamos para recargar la pagina del carrito y se vea el carrito sin el producto eliminado.
         updateOrder();
     }
 
+    // Cada vez que se modifique la cantidad, se actualizara el componente
     useEffect(()=>{
         updatedQuantity()
     },[quantity])
@@ -85,8 +87,6 @@ const SFaTrash = styled(FaTrash)`
   font-size:20px;
   margin:10px;
   text-align: center;
-
-  
 `
 
 const Simg = styled.img`

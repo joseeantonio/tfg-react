@@ -2,8 +2,9 @@ import React from "react";
 import {Link} from "react-router-dom";
 import styled from "styled-components";
 
-const JewelCard = ({producto, index}) => {
+// Carta del producto en el listado de productos
 
+const JewelCard = ({producto, index}) => {
 
     return(
         <Sdiv>

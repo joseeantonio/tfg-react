@@ -2,8 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import {Link} from "react-router-dom";
 
+// Componente para carta del producto al ver los productos que he pedido en un producto
 const ProductOrder = ({width,producto,margin}) => {
-
     return(
         <SLink to={`/jewel/${producto.id}`}>
             <Sdiv width={width} margin={margin}>
@@ -15,7 +15,6 @@ const ProductOrder = ({width,producto,margin}) => {
             </Sdiv>
         </SLink>
     )
-
 }
 
 const Simg = styled.img`
