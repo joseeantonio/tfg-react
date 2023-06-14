@@ -21,6 +21,8 @@ const FormRegister = ({width, margin}) => {
         email: "",
         password: "",
         password_rep: "",
+        birthdate: "",
+        username: "",
     })
     // Errores
     const [errors, setErrors] = useState({
@@ -31,6 +33,8 @@ const FormRegister = ({width, margin}) => {
         password_rep: "",
         legalWarning: "",
         promotion: "",
+        birthdate: "",
+        username: "",
     });
 
     // con esta funcion cogemos los datos
@@ -63,6 +67,29 @@ const FormRegister = ({width, margin}) => {
             errors.email = "Por favor, completa el correo electronico";
         }else if (!regExpEmail.test(data.email)) {
             errors.email = "El correo electronico incorrecto";
+        }
+
+        if (!data.username.trim()) {
+            errors.username = "Por favor, completa el nombre de usuario";
+        }
+
+        if (!data.birthdate.trim()) {
+            errors.birthdate = "Por favor, completa la fecha de nacimiento";
+        } else if (data.birthdate) {
+            const today = new Date()
+            const birthdate = new Date(data.birthdate)
+
+            // Cogemos el año actual y el seleccionado
+            const currentYear = today.getFullYear()
+            const yearbirthdate = birthdate.getFullYear()
+
+            // Lo restamos para saber cuantos años hay de diferencia
+            const differenceYears = currentYear - yearbirthdate
+
+            // Si el numero que de es menor de 18, es menor
+            if (differenceYears < 18){
+                errors.birthdate = "Debes de ser mayor de edad"
+            }
         }
 
         if(!data.password.trim() ||  !data.password_rep.trim()) {
@@ -119,6 +146,28 @@ const FormRegister = ({width, margin}) => {
                     width="100%"
                     borderRadius={"5px"}
                     error={errors.surname}
+                    onChange={(e) => handleData(e)}
+                />
+            </Sdiv>
+            <Sdiv className="userNameAndBirthday">
+                <Input
+                    name={"birthdate"}
+                    label={"Fecha de nacimiento"}
+                    type={"date"}
+                    onChange={(e) => handleData(e)}
+                    height="37px"
+                    width="100%"
+                    borderRadius={"5px"}
+                    margin={"0px 50px 3px 0px"}
+                    error={errors.birthdate}
+                />
+                <Input
+                    name={"username"}
+                    label={t("Nombre de usuario")}
+                    height="37px"
+                    width="100%"
+                    borderRadius={"5px"}
+                    error={errors.username}
                     onChange={(e) => handleData(e)}
                 />
             </Sdiv>
@@ -181,11 +230,21 @@ const Sdiv = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: baseline;
     width: 100%;
     
     @media (width <= 1190px) {
       flex-direction: column;
     }
+  }
+  &.userNameAndBirthday{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    align-items: end;
+    margin-bottom: 10px;
+    align-items: baseline;
   }
   
   &.container{

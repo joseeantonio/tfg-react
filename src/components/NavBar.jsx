@@ -9,7 +9,6 @@ import {useShoppingCartContext} from "../context/ShoppingCartContext";
 import {useUserContext} from "../context/UserContext";
 
 // NavBar
-
 const NavBar = () => {
 
     // Cogemos el user y set user del context para almacenar lo que queramos
@@ -30,7 +29,7 @@ const NavBar = () => {
     return (
         <SHeader>
             <SSectionOrdenador>
-                <SNavLink className={"logo"} to={"/profile"}><h1>MUNDO DE LAS JOYAS</h1></SNavLink>
+                <SNavLink className={"logo"} to={"/"}><h1>MUNDO DE LAS JOYAS</h1></SNavLink>
                 <Snav className={"desktop"}>
                     <Sul className={"DESKTOP"}>
                         <Sli><SNavLink to={"/jewelry"}>{t("JOYAS")}</SNavLink></Sli>
@@ -62,8 +61,21 @@ const NavBar = () => {
                         <Sul className={"mobile"}>
                             <Sli><SNavLink to={"/jewelry"}>JOYAS</SNavLink></Sli>
                             <Sli><SNavLink to={"/contact"}>CONTACTO</SNavLink></Sli>
-                            <Sli><SNavLink to={"/shoppingCart"}><SFaShoppingCart /></SNavLink></Sli>
-                            <Sli><SNavLink to={"/register"}><FaUserAlt /></SNavLink></Sli>
+                            <Sli><SNavLink to={"/shoppingCart"}>
+                                <SFaShoppingCart />
+                                {
+                                    shoppingCart > 0 && (
+                                        <Sspan>{shoppingCart}</Sspan>
+                                    )
+                                }
+                            </SNavLink></Sli>
+                            {
+                                user ? (
+                                    <Sli><SNavLink to={"/profile"}><SFaUserAlt />{user.username}</SNavLink></Sli>
+                                ) : (
+                                    <Sli><SNavLink to={"/register"}><FaUserAlt /></SNavLink></Sli>
+                                )
+                            }
                         </Sul>
                     </Snav>
                 )
