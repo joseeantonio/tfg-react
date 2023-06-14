@@ -7,6 +7,7 @@ import styled from "styled-components";
 import FormModify from "../modules/FormModify";
 import {useTranslation} from "react-i18next";
 
+// Pagina de Perfil y utilizamos modulos y componentes
 const Profile = () => {
 
     const [modify, setModify] = useState(false);

@@ -5,9 +5,8 @@ import OrderList from "../modules/OrderList";
 import styled from "styled-components";
 import img_fondo from "../assets/images/img_fondo_carrito.png"
 
+// Pagina de Pedidos y utilizamos modulos y componentes
 const Orders = () => {
-
-
 
     return(
         <Sbody>

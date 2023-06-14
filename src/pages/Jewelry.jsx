@@ -9,6 +9,7 @@ import {petition} from "../services/api";
 import {useTranslation} from "react-i18next";
 import ButtonSubmit from "../components/ButtonSubmit";
 
+// Pagina de Todos los productos y utilizamos modulos y componentes
 const Jewelry = () => {
 
     //Todos los productos de la api
@@ -118,7 +119,6 @@ const Jewelry = () => {
         fetchDataApiAll()
     },[])
 
-
     return(
         <Sbody>
             <TitlePage name={t("JOYAS")} />
@@ -174,7 +174,7 @@ const Jewelry = () => {
     )
 }
 
-/*ESTILOS*/
+// Estilos
 const Sbody = styled.body`
   background-color: #DFDFDF;
 `

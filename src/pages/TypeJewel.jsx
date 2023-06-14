@@ -7,7 +7,8 @@ import JewelryList from "../modules/JewelryList";
 import styled from "styled-components";
 import {useTranslation} from "react-i18next";
 import {petition} from "../services/api";
-import ButtonSubmit from "../components/ButtonSubmit";
+
+// Pagina de Un tipo de producto y utilizamos modulos y componentes
 const TypeJewel = () => {
 
     //Cogemos el tipo a traves de la url
@@ -150,6 +151,7 @@ const TypeJewel = () => {
         }
     }
 
+    // Nada mas se cargue esta pagina lo primero sera coger el nombre del titulo y los dato de los productos.
     useEffect(()=>{
         fetchDataApi()
         plural()

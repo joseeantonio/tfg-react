@@ -3,6 +3,7 @@ import TitlePage from "../components/TitlePage";
 import FormRegister from "../modules/FormRegister";
 import {useTranslation} from "react-i18next";
 
+// Pagina de Registro y utilizamos modulos y componentes
 const Register = () => {
 
     const { t } = useTranslation();

@@ -7,6 +7,7 @@ import img_portada_relojes from "../assets/images/img_portada_relojes.jpg";
 import img_portada_anillos from "../assets/images/img_portada_anillos.jpg";
 import ImgSeccion from "../components/ImgSeccion";
 
+// Pagina de Inicio y utilizamos modulos y componentes
 const Home = () => {
 
     return(
@@ -79,7 +80,6 @@ const Sdiv = styled.div`
     width: 300px;
   }
 `
-
 
 const SdivContenedor = styled.div`
   display: flex;

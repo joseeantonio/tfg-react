@@ -6,12 +6,15 @@ import Description from "../components/Description";
 import styled from "styled-components";
 import TechnicalInformation from "../modules/TechnicalInformation";
 
+// Pagina de contacto y utilizamos modulos y componentes
 const Jewel = () => {
+    // Recogemos el id por la url
     const {id} = useParams()
 
     const [jewel,setJewel] = useState([])
     const [quantity,setQuantity] = useState(1)
 
+    // Hacemos llamada a la api para coger el producto entero y lo almacenamos en la constante jewel
     const fetchDataApi = async () => {
         try {
             const result = await petition(`/productos/${id}`)
@@ -21,10 +24,11 @@ const Jewel = () => {
         }
     }
 
+    // Lo añadimos al carrito de la compra por el localStorage, y si ya hay un producto con el mismo id
+    // y volvemos a pedir el mismo producto, pero con cantidad 4 se le sumara a la que ya tenia.
     const addOrder = () => {
-
         // Cogemos el pedido del localStorage
-        let order = JSON.parse(localStorage.getItem("order")) || [];
+        let order = JSON.parse(localStorage.getItem("order")) || []
 
         // Comprobamos si existe en el pedido
         let isInOrder = order.find(product => product.id === jewel.id)
@@ -39,14 +43,14 @@ const Jewel = () => {
             order.push(jewel);
         }
         // Guardamos el pedido en el localStorage
-        localStorage.setItem('order', JSON.stringify(order));
+        localStorage.setItem('order', JSON.stringify(order))
 
     }
 
+    // Nada mas se inicie la pagina, haremos la llamada a la api
     useEffect(()=>{
         fetchDataApi()
     },[])
-
 
     return(
         <body>
