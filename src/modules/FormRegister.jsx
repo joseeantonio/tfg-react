@@ -3,9 +3,10 @@ import TitleForm from "../components/TitleForm";
 import Input from "../components/Input";
 import styled from "styled-components";
 import Checkbox from "../components/Checkbox";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import ButtonSubmit from "../components/ButtonSubmit";
 import {useTranslation} from "react-i18next";
+import {petitionPost, petitionWithToken} from "../services/api";
 
 const FormRegister = ({width, margin}) => {
 
@@ -14,6 +15,7 @@ const FormRegister = ({width, margin}) => {
     // constantes que modificamos segun el los CheckBox
     const [legalWarning,setLegalWarning] = useState(false)
     const [promotion,setPromotion] = useState(false)
+    const navigate = useNavigate()
     // Guardamos los datos de los input
     const [data,setData] = useState({
         name: "",
@@ -22,7 +24,7 @@ const FormRegister = ({width, margin}) => {
         password: "",
         password_rep: "",
         birthdate: "",
-        username: "",
+        username: ""
     })
     // Errores
     const [errors, setErrors] = useState({
@@ -34,7 +36,7 @@ const FormRegister = ({width, margin}) => {
         legalWarning: "",
         promotion: "",
         birthdate: "",
-        username: "",
+        username: ""
     });
 
     // con esta funcion cogemos los datos
@@ -110,10 +112,31 @@ const FormRegister = ({width, margin}) => {
         if (!legalWarning){
             errors.legalWarning = "Debes de aceptar los terminos para continuar";
         }
-
         setErrors(errors);
-
+        if (Object.keys(errors).length === 0) {
+            addUser()
+        }
     };
+
+    const addUser = async () => {
+        const finallyData = {
+            nombre : data.name,
+            apellidos : data.surname,
+            correo : data.email,
+            username : data.username,
+            contraseña : data.password,
+            fecha_nac : data.birthdate,
+            admin : false
+        }
+
+        try {
+            const result = await petitionPost(`/clientes/create`,finallyData)
+            console.log(result)
+            navigate("/login")
+        } catch (error) {
+            console.log(error)
+        }
+    }
 
     // Comprobamos si el checkBox esta seleccionado o no
     const checkedPromotion = () => {
@@ -173,16 +196,16 @@ const FormRegister = ({width, margin}) => {
             </Sdiv>
             <Checkbox
                 label={t("aviso_legal_y_politica")}
-                onClick={checkedLegalWarning}
                 fontSize={"15px"}
+                onChange={checkedLegalWarning}
             />
             {errors.legalWarning && <Sdiv className={"error"}>{errors.legalWarning}</Sdiv> }
             <Checkbox
                 className="lastCheckbox"
                 label={t("promociones_notificaciones")}
-                onClick={checkedPromotion}
                 marginBottom={"50px"}
                 fontSize={"15px"}
+                onChange={checkedPromotion}
             />
             <TitleForm name={t("INFORMACION_INICIO_DE_SESION")} />
             <Input

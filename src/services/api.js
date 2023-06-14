@@ -10,7 +10,17 @@ export const petition = (url) => {
         });
 };
 
-export const petitionWithToken = (url, method) => {
+export const petitionPost = (url,data) => {
+    return axios.post("http://localhost:8080"+url,data)
+        .then((response) => {
+            return response.data;
+        })
+        .catch((error) => {
+            throw new Error(`Hay un error: ${error}`);
+        });
+};
+
+export const petitionWithToken = (url, method, data) => {
     const token = localStorage.getItem('token')
 
     return axios({
@@ -18,7 +28,8 @@ export const petitionWithToken = (url, method) => {
         url: "http://localhost:8080" + url,
         headers: {
             Authorization: `Bearer ${token}`
-        }
+        },
+        data: data
     })
         .then((response) => {
             return response.data
