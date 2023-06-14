@@ -111,6 +111,12 @@ const Filters = ({margin, filters, setFilters,width, type}) => {
                         options={[t("Magnetico"),t("Mosqueton"),"Gancho"]}
                         filters={filters} setFilters={setFilters}
                     />
+                    <Filter
+                        width={"230px"}
+                        name={t("Tallas")}
+                        options={[t("40 cm"),t("50 cm"),"70 cm"]}
+                        filters={filters} setFilters={setFilters}
+                    />
                 </Sdiv>
             )
     )

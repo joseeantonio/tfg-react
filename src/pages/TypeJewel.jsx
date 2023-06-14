@@ -92,7 +92,10 @@ const TypeJewel = () => {
                     (filters.includes("PLata") && jewel.material === "plata") ||
                     (filters.includes("Magnetico") && jewel.cierre === "magnetico") ||
                     (filters.includes("Mosqueton") && jewel.cierre === "mosqueton") ||
-                    (filters.includes("Gancho") && jewel.cierre === "gancho")
+                    (filters.includes("Gancho") && jewel.cierre === "gancho") ||
+                    (filters.includes("40 cm") && jewel.talla === 40) ||
+                    (filters.includes("50 cm") && jewel.talla === 50) ||
+                    (filters.includes("70 cm") && jewel.talla === 70)
                 )
                 if (isSearch) {
                     filterProducts = filterProducts.filter((jewel) =>
