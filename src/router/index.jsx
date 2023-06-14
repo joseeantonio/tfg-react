@@ -12,6 +12,7 @@ import ShoppingCart from "../pages/ShoppingCart";
 import TypeJewel from "../pages/TypeJewel";
 import Orders from "../pages/Orders";
 import OneOrder from "../pages/OneOrder";
+import LayoutPrivate from "../layouts/LayoutPrivate";
 
 
 export const router = createBrowserRouter([
@@ -45,10 +46,6 @@ export const router = createBrowserRouter([
                 index: true,
                 element: <Jewel />,
             },{
-                path: '/profile',
-                index: true,
-                element: <Profile />,
-            },{
                 path: '/shoppingCart',
                 index: true,
                 element: <ShoppingCart />,
@@ -56,15 +53,25 @@ export const router = createBrowserRouter([
                 path: '/jewerly/:type',
                 index: true,
                 element: <TypeJewel />,
-            },{
-                path: '/orders',
-                index: true,
-                element: <Orders />,
-            },{
-                path: '/oneOrder/:id',
-                index: true,
-                element: <OneOrder />,
             },
+            {
+                element : <LayoutPrivate />,
+                children : [
+                    {
+                        path: '/profile',
+                        index: true,
+                        element: <Profile />,
+                    },{
+                        path: '/orders',
+                        index: true,
+                        element: <Orders />,
+                    },{
+                        path: '/oneOrder/:id',
+                        index: true,
+                        element: <OneOrder />,
+                    },
+                ]
+            }
         ],
     },
 ])
