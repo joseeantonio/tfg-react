@@ -1,8 +1,9 @@
 import React from "react";
-import ProductOrder from "../components/ProductOrder";
 import styled from "styled-components";
 import ProductShoppingCart from "../components/ProductShoppingCart";
 
+// Recibimos por props una lista de productos que se muestran en el carrito y por cada uno crea un componente
+// ProductDhoppingCart
 const ShoppingCartList = ({pedido,updateOrder}) => {
 
     return(

@@ -3,12 +3,13 @@ import Filter from "../components/Filter";
 import styled from "styled-components";
 import {useTranslation} from "react-i18next";
 
-const
-    Filters = ({margin, filters, setFilters,width, type}) => {
-
+// Lo utilizamos poniendo varios Filter en el que formo los filtros
+const Filters = ({margin, filters, setFilters,width, type}) => {
 
         const { t } = useTranslation();
+
     return(
+            // Segun del type que sea el props, los filtros seran unos u otros
             !type ? (
                 <Sdiv margin={margin} width={width}>
                     <Filter

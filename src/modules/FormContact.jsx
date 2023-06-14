@@ -7,26 +7,31 @@ import ButtonSubmit from "../components/ButtonSubmit";
 import emailjs from 'emailjs-com';
 import {useTranslation} from "react-i18next";
 
+// Formulario de contacto
 const FormContact = ({margin,width}) => {
 
     const { t } = useTranslation();
 
+    // Datos que introduzca que lo cogemos con el handleData
     const [data,setData] = useState({
         email: "",
         title: "",
         message: "",
     })
+    // Errores
     const [errors, setErrors] = useState({
         email: "",
         title: "",
         message: "",
     });
 
+    // Variables para usar la libreria de email.js en la que te mandara un correo automatico si todos los
+    // valores son correctos.
     const SERVICE_ID = 'service_3bez0td';
     const TEMPLATE_ID = 'template_wf56zej';
     const USER_ID = 'S2z1K0oRltgdm3Xyl';
 
-
+    // Captura los datos introducidos en los input
     const handleData = (e) => {
         setData({
             ...data,
@@ -34,18 +39,21 @@ const FormContact = ({margin,width}) => {
         })
     }
 
+    // Esta funcion valida cada uno de los campos y si no hay ningun error,
     const sendEmail = (e) => {
         e.preventDefault();
         let ready = true;
         const errors = {};
         const regExpEmail =  /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/;
-        // Prepara los parámetros del correo electrónico
+
+        // Prepara los parámetros para mandar el correo electrónico
         const templateParams = {
           to_email: data.email,
           from_name: 'Mundo de las Joyas',
           message: `Su mensaje : "${data.message}" a sido recibido correctamente`,
         };
 
+        // Control de errores
         if (!data.email.trim()) {
             errors.email = "Por favor, completa el correo electronico";
             ready = false;
@@ -81,9 +89,7 @@ const FormContact = ({margin,width}) => {
             setErrors(errors)
             console.log("no")
         }
-
-      };
-
+    }
 
     return(
         <Sdiv margin={margin} width={width}>

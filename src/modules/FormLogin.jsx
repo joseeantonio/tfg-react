@@ -12,16 +12,21 @@ const FormLogin = ({margin,width}) => {
 
     const { t } = useTranslation();
 
+    // Recogemos datos de los input
     const [data,setData] = useState({
         email: "",
         password: "",
     })
+    // Errores
     const [errors, setErrors] = useState({
         email: "",
         password: "",
     });
+
+    // Cogemos el user y set user del context para almacenar lo que queramos
     const { user, setUser } = useUserContext()
 
+    // Con esta funcion cogemos los datos de los input y lo almacenamos
     const handleData = (e) => {
         setData({
             ...data,
@@ -29,6 +34,7 @@ const FormLogin = ({margin,width}) => {
         })
     }
 
+    // Comprobamos si hay algun fallo y si no hay ninguno se hace la peticion al token y lo almacenamos en el LocalStorage.
     const handleSubmit = (e) => {
         e.preventDefault()
         const errors = {}
@@ -74,7 +80,6 @@ const FormLogin = ({margin,width}) => {
             throw new Error('No estas autorizado')
         }
     }
-
 
     return(
         <Sdiv margin={margin} width={width}>

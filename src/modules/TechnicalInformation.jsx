@@ -2,8 +2,8 @@ import React from "react";
 import ShowInformation from "../components/ShowInformation";
 import styled from "styled-components";
 
+// Segun el type que recibamos del props, mostraremos una cosa u otra porque nos indica el tipo de producto.
 const TechnicalInformation = ({jewel,margin,width}) => {
-
 
     return(
                 jewel.tipo === "anillo" ? (
@@ -31,7 +31,6 @@ const TechnicalInformation = ({jewel,margin,width}) => {
 }
 
 const Sdiv = styled.div`
-  
   &.informacion{
     display: flex;
     justify-content: space-between;
@@ -41,16 +40,11 @@ const Sdiv = styled.div`
       justify-content:center;
       align-items:center;
     }
-  
   }
   
   &.all{
     margin: ${(props) => props.margin};
     width: ${(props) => props.width};
-
-    /* @media (width <= 1170px){
-    width:80%
-    } */
   }
 `
 

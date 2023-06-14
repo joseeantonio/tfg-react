@@ -3,6 +3,7 @@ import Checkbox from "./Checkbox";
 import styled from "styled-components";
 
 // Este componente esta formado por Checkbox que son opciones que vamos a tener para seleccionar
+// Le paso en option suna lista con las opciones posibles y el label es el titulo de ese conjunto
 const Filter = ({name,options,width,margin,filters, setFilters}) => {
 
     const handleCheckbox = (option, checked) => {

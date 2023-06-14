@@ -1,5 +1,4 @@
 import React, {useState} from "react";
-import {FaUserAlt} from "react-icons/fa";
 import styled from "styled-components";
 import ShowInformation from "../components/ShowInformation";
 import ButtonSubmit from "../components/ButtonSubmit";
@@ -8,15 +7,16 @@ import {useTranslation} from "react-i18next";
 import { FiSettings } from "react-icons/fi";
 import { MdCancel } from "react-icons/md";
 
+// Con este modulo mostramos la informacion personale del cliente
 const PersonalInformation = ({cliente,width, functionModify}) => {
 
     const navigate = useNavigate();
     const { t, i18n } = useTranslation();
     const [idioms,setIdioms] = useState(false)
 
+    // Cambiamos de idioma con la libreria i18n
     const changeLanguage = (language) => {
         i18n.changeLanguage(language);
-        localStorage.setItem("language", language);
     };
 
     const show_settings = () => {
@@ -44,6 +44,7 @@ const PersonalInformation = ({cliente,width, functionModify}) => {
                 onclick={show_settings}
             />
             {
+                // Menu en el que podras cambiar de idioma
                 idioms && (
                     <Sdiv className={"buttons_idioms"}>
                         <Sbutton onClick={show_settings}><MdCancel/></Sbutton>
@@ -96,7 +97,6 @@ const PersonalInformation = ({cliente,width, functionModify}) => {
         </Sdiv>
     )
 }
-
 
 const Sdiv = styled.div`
   display: flex;

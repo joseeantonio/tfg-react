@@ -2,14 +2,17 @@ import React from "react";
 import JewelCard from "../components/JewelCard";
 import styled from "styled-components";
 
+// Le pasamos por props una lista de productos y por cada uno lo recorre y utiliza un componente por cada uno
 const JewelryList = ({margin,width,productos}) => {
-
 
     return(
         <Sdiv width={width} margin={margin}>
             {
                 productos.map((producto) => (
-                    <JewelCard producto={producto} key={producto.id} />
+                    <JewelCard
+                        producto={producto}
+                        key={producto.id}
+                    />
                 ))
             }
         </Sdiv>

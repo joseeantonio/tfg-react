@@ -3,6 +3,7 @@ import LinkSection from "../components/LinkSection";
 import styled from "styled-components";
 import {useTranslation} from "react-i18next";
 
+// Mostramos como un menu que te lleva a la seccion que que hayamos puesto en la ruta de el componente LinkSection
 const LinkSectionGroup = ({width, margin}) => {
 
     const { t } = useTranslation();

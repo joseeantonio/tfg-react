@@ -16,6 +16,7 @@ const Input = ({onKeyPress,fontSize,label,defaultValue,type,height,width, onChan
                     </Sbutton>
                 )
             }
+            {/*Se le pasa el error y lo muestra abajo del input*/}
             {error && <Sdiv>{error}</Sdiv>}
         </Slabel>
     )

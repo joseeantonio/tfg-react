@@ -9,9 +9,12 @@ import {useTranslation} from "react-i18next";
 
 const FormRegister = ({width, margin}) => {
 
+    // Variable de traduccion
     const { t } = useTranslation();
+    // constantes que modificamos segun el los CheckBox
     const [legalWarning,setLegalWarning] = useState(false)
     const [promotion,setPromotion] = useState(false)
+    // Guardamos los datos de los input
     const [data,setData] = useState({
         name: "",
         surname: "",
@@ -19,6 +22,7 @@ const FormRegister = ({width, margin}) => {
         password: "",
         password_rep: "",
     })
+    // Errores
     const [errors, setErrors] = useState({
         name: "",
         lastName: "",
@@ -29,6 +33,7 @@ const FormRegister = ({width, margin}) => {
         promotion: "",
     });
 
+    // con esta funcion cogemos los datos
     const handleData = (e) => {
         setData({
             ...data,
@@ -36,6 +41,7 @@ const FormRegister = ({width, margin}) => {
         })
     }
 
+    // Funcion que mira que no haya ningun fallo y si no hay ninguno te registra
     const handleSubmit = (e) => {
         e.preventDefault();
         const errors = {};
@@ -82,10 +88,12 @@ const FormRegister = ({width, margin}) => {
 
     };
 
+    // Comprobamos si el checkBox esta seleccionado o no
     const checkedPromotion = () => {
         setPromotion(!promotion)
     }
 
+    // Comprobamos si el checkBox esta seleccionado o no
     const checkedLegalWarning = () => {
         setLegalWarning(!legalWarning)
     }
@@ -168,9 +176,7 @@ const FormRegister = ({width, margin}) => {
     )
 }
 
-
 const Sdiv = styled.div`
-  
   &.nameAndSurname{
     display: flex;
     flex-direction: row;

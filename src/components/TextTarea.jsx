@@ -7,6 +7,7 @@ const TextTarea = ({ label, height, width, onChange, placeholder, margin,name,er
         <Slabel margin={margin}>
             {label && <Sspan>{label}</Sspan>}
             <Stextarea height={height} width={width} placeholder={placeholder} onChange={onChange} name={name} />
+            {/*Se le pasa si hay algun error y lo muestra abajo del TextTarea*/}
             {error && <Sdiv>{error}</Sdiv>}
         </Slabel>
     )
