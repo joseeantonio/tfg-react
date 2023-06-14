@@ -6,6 +6,7 @@ import ButtonSubmit from "../components/ButtonSubmit";
 import TitleForm from "../components/TitleForm";
 import {useTranslation} from "react-i18next";
 import axios from "axios";
+import {useUserContext} from "../context/UserContext";
 
 const FormLogin = ({margin,width}) => {
 
@@ -19,6 +20,7 @@ const FormLogin = ({margin,width}) => {
         email: "",
         password: "",
     });
+    const { user, setUser } = useUserContext()
 
     const handleData = (e) => {
         setData({
@@ -67,6 +69,7 @@ const FormLogin = ({margin,width}) => {
             )
             // Guardamos el token en el localStorage
             localStorage.setItem('token', response.data.token)
+            
         } catch (error) {
             throw new Error('No estas autorizado')
         }
