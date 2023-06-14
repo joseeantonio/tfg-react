@@ -1,18 +1,39 @@
 import React from "react";
 import {Link} from "react-router-dom";
 import styled from "styled-components";
+import {useUserContext} from "../context/UserContext";
+import { BsFillTrash3Fill } from "react-icons/bs";
+import {petitionWithToken} from "../services/api";
 
 // Carta del producto en el listado de productos
-
 const JewelCard = ({producto, index}) => {
+
+    // Cogemos el user y set user del context para almacenar lo que queramos
+    const { user, setUser } = useUserContext()
+
+    const removeProduct = async () => {
+        try {
+            const result = await petitionWithToken(`/productos/${producto.id}`, "delete")
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
 
     return(
         <Sdiv>
             <Simg src={producto.url_img}/>
             <Sh1>{producto.nombre}</Sh1>
             <Sh2>{producto.precio} €</Sh2>
-            <Sh3>{producto.sexo}</Sh3>
             <SLink to={`/jewel/${producto.id}`}>Añadir al carrito</SLink>
+            {
+                user && user.admin && (
+                    <Sbutton onClick={removeProduct}>
+                        <SBsFillTrash3Fill />
+                        <span>Eliminar</span>
+                    </Sbutton>
+                )
+            }
         </Sdiv>
     )
 }
@@ -21,6 +42,10 @@ const JewelCard = ({producto, index}) => {
 const Simg = styled.img`
   max-width: 225px;
   margin: 10px;
+`
+
+const SBsFillTrash3Fill = styled(BsFillTrash3Fill)`
+  margin-right: 5px ;
 `
 
 const SLink = styled(Link)`
@@ -41,13 +66,6 @@ const SLink = styled(Link)`
     background-color: #213075;
     font-size: 17px;
   }
-`
-
-const Sh3 = styled.h3`
-  margin: 0px 10px 10px 10px;
-  font-family: 'Inter';
-  font-weight: 400;
-  font-size: 16px;
 `
 
 const Sh2 = styled.h2`
@@ -75,6 +93,17 @@ const Sdiv = styled.div`
   align-items: center;
   margin: 25px 10px 10px 10px;
   border-radius: 5px;
+`
+
+const Sbutton = styled.button`
+  all: unset;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0px 0px 10px 0px;
+  cursor: pointer;
+  padding: 5px;
 `
 
 export default JewelCard

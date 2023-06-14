@@ -61,7 +61,6 @@ const Jewelry = () => {
                     (filters.includes("Mujer") && jewel.sexo === "Mujer") ||
                     (filters.includes("Hombre") && jewel.sexo === "Hombre") ||
                     (filters.includes("Unisex") && jewel.sexo === "Unisex"))
-                    // (jewel.nombre.toLowerCase().includes(search.toLowerCase()))
             )
             if (isSearch) {
                 filterSearchProducts = filterSearchProducts.filter((jewel) =>
@@ -107,7 +106,7 @@ const Jewelry = () => {
     //Cada vez que cambie el numero de paginacion haremos una llamada a la api
     useEffect(()=>{
         fetchDataApi()
-    },[pagination])
+    },[pagination,jewerly])
 
     //Cada vez que se añada algo a la lista de filtros se ejecuta la funcion
     useEffect(()=>{

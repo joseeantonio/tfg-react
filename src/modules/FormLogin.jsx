@@ -89,7 +89,7 @@ const FormLogin = ({margin,width}) => {
 
     const fetchDataApiWithToken = async () => {
         try {
-            const result = await petitionWithToken(`/me`)
+            const result = await petitionWithToken(`/me`,"get")
             setUser(result)
         } catch (error) {
             console.log(error)
