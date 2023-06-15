@@ -43,7 +43,7 @@ const Orders = () => {
 
     return(
         <Sbody>
-            <TitlePage name={"PEDIDOS"} />
+            <TitlePage name={"MIS PEDIDOS"} />
             {
                 loading ? (
                     <Sdiv className={"loading"}>
