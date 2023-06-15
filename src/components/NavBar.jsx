@@ -7,6 +7,7 @@ import { BsList } from "react-icons/bs";
 import {useTranslation} from "react-i18next";
 import {useShoppingCartContext} from "../context/ShoppingCartContext";
 import {useUserContext} from "../context/UserContext";
+import logo from "../../src/assets/images/logo.png"
 
 // NavBar
 const NavBar = () => {
@@ -29,7 +30,7 @@ const NavBar = () => {
     return (
         <SHeader>
             <SSectionOrdenador>
-                <SNavLink className={"logo"} to={"/"}><h1>MUNDO DE LAS JOYAS</h1></SNavLink>
+                <SNavLink className={"logo"} to={"/"}><Sh1><Simg src={logo} /> MUNDO JOYAS</Sh1></SNavLink>
                 <Snav className={"desktop"}>
                     <Sul className={"DESKTOP"}>
                         <Sli><SNavLink to={"/jewelry"}>{t("JOYAS")}</SNavLink></Sli>
@@ -106,6 +107,16 @@ const SNavLink = styled(NavLink)`
   }
 `
 
+const Simg = styled.img`
+  max-height: 30px;
+  margin-right: 10px;
+`
+const Sh1 = styled.h1`
+  display: flex;
+  text-align: center;
+  align-items: center;
+`
+
 const SHeader = styled.header`
   border-bottom: 1px solid #000000;
   background-color: #ECF0F1;
@@ -120,13 +131,13 @@ const Sspan = styled.span`
 const Snav = styled.nav`
 
   &.desktop{
-    @media (width <= 800px){
+    @media (width <= 878px){
       display: none;
     }
   }
   
   &.mobile{
-    @media (width > 800px){
+    @media (width > 878px){
       display: none;
     }
   }
@@ -175,7 +186,7 @@ const Sbutton = styled.button`
   padding: 0 35px;
   height: 100%;
   
-  @media(width <= 800px) {
+  @media(width <= 878px) {
     display: flex;
     align-items: center;
     justify-content: center;
