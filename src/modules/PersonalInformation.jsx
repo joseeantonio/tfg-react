@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import styled from "styled-components";
 import ShowInformation from "../components/ShowInformation";
 import ButtonSubmit from "../components/ButtonSubmit";
-import {useNavigate} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import {useTranslation} from "react-i18next";
 import { FiSettings } from "react-icons/fi";
 import { MdCancel } from "react-icons/md";
@@ -39,6 +39,7 @@ const PersonalInformation = ({cliente,width, functionModify}) => {
             <ShowInformation name={t("Correo_electronico")} value={user.correo} />
             <ShowInformation name={t("Fecha_de_nacimiento")} value={user.fecha_nac} />
             <ShowInformation name={t("Contraseña")} value={"******"} />
+            <SLink to={"/orders"}>Mis pedidos</SLink>
             <ButtonSubmit
                 label={<SFiSettings />}
                 width={"145px"}
@@ -134,6 +135,13 @@ const Sdiv = styled.div`
     padding: 60px;
     justify-items: center;
   }
+`
+
+const SLink = styled(Link)`
+  all: unset;
+  cursor: pointer;
+  margin: 10px;
+  padding: 10px;
 `
 
 const Sbutton = styled.button`

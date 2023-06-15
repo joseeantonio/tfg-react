@@ -1,9 +1,12 @@
-import React from "react";
+import React, {useEffect} from "react";
 import styled from "styled-components";
 import {Link} from "react-router-dom";
 
 // Componente para carta del producto al ver los productos que he pedido en un producto
 const ProductOrder = ({width,producto,margin}) => {
+
+    useEffect(()=>{
+    },[])
     return(
         <SLink to={`/jewel/${producto.id}`}>
             <Sdiv width={width} margin={margin}>

@@ -1,10 +1,47 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import ProductOrder from "../components/ProductOrder";
 import styled from "styled-components";
+import {petition, petitionWithToken} from "../services/api";
 
 // Le pasamos por props una lista de productos de un pedido y los muestra utilizando el componente
 // ProductOrder por cada uno.
 const OneOrderList = ({pedido}) => {
+
+    // const [products,setProducts] = useState([])
+    //
+    // const fetchData = async () => {
+    //     const list = []
+    //     try {
+    //         for (let i = 0; i < pedido.productos.length; i++) {
+    //             try {
+    //                 const result = await petitionWithToken(`/productos/${pedido.productos[i].id}`, "get")
+    //                 result.cantidad = pedido.productos[i].cantidad
+    //                 list.push(result)
+    //             } catch (error) {
+    //                 console.log(error)
+    //             }
+    //         }
+    //         console.log(list)
+    //         setProducts(list)
+    //     } catch (error) {
+    //         console.log(error)
+    //     }
+    // }
+    //
+    // useEffect(() => {
+    //     fetchData()
+    // },[])
+
+
+    //
+    // const fetchDataOrders = async () => {
+    //     try {
+    //         const result = await petition(`/pedidos/${id}`)
+    //         setOrder(result)
+    //     } catch (error) {
+    //         console.log(error)
+    //     }
+    // }
 
 
     return(
