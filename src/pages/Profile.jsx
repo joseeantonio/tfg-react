@@ -1,4 +1,4 @@
-import React, {useState, useTransition} from "react";
+import React, {useEffect, useState, useTransition} from "react";
 import TitlePage from "../components/TitlePage";
 import PersonalInformation from "../modules/PersonalInformation";
 import cliente from "../../src/assets/json/productosPrueba.json"
@@ -7,6 +7,7 @@ import styled from "styled-components";
 import FormModify from "../modules/FormModify";
 import {useTranslation} from "react-i18next";
 import {useUserContext} from "../context/UserContext";
+import {use} from "i18next";
 
 // Pagina de Perfil y utilizamos modulos y componentes
 const Profile = () => {
@@ -18,6 +19,10 @@ const Profile = () => {
     }
     // Cogemos el user y set user del context para almacenar lo que queramos
     const { user, setUser } = useUserContext()
+
+    useEffect(()=>{
+
+    },[user])
 
     return(
         <Sbody>
