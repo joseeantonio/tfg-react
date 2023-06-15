@@ -8,9 +8,19 @@ import {useUserContext} from "../context/UserContext";
 import {Link} from "react-router-dom";
 import ButtonSubmit from "../components/ButtonSubmit";
 import {useShoppingCartContext} from "../context/ShoppingCartContext";
+import Input from "../components/Input";
+import {petitionWithToken} from "../services/api";
 
 // Pagina de Carrito y utilizamos modulos y componentes
 const ShoppingCart = () => {
+
+
+    const [data,setData] = useState({
+        information: ""
+    })
+    const [errors,setErrors] = useState({
+        information: ""
+    })
 
     const [order,setOrder] = useState([])
     const [price,setPrice] = useState(0)
@@ -30,6 +40,30 @@ const ShoppingCart = () => {
             price += finalOrder[i].cantidad*finalOrder[i].precio
         }
         setPrice(price)
+    }
+
+    const handleData = (e) => {
+        setData({
+            ...data,
+            [e.target.name]: e.target.value,
+        })
+    }
+
+    const sendOrder = async () => {
+        const date = new Date();
+        const finallyDate = date.toLocaleDateString();
+        const dataBody = {
+            fech_pedido : finallyDate,
+            clienteId : user.id
+        }
+        if (data.information !== "") {
+            dataBody.informacion = data.information
+        }
+        try {
+            const result = await petitionWithToken(`/pedidos/create`, "post", dataBody)
+        } catch (error) {
+            console.log(error)
+        }
     }
 
 
@@ -53,14 +87,28 @@ const ShoppingCart = () => {
                             !user ? (
                                 <SLink to={"/register"}>IDENTIFIQUISE PARA HACER EL PEDIDO</SLink>
                             ) : (
-                                <ButtonSubmit
-                                    label={"COMPRAR"}
-                                    color={"white"}
-                                    fontSize={"18px"}
-                                    backgroundColor={"black"}
-                                    width={"350px"}
-                                    margin={"0px 0px 40px 0px"}
-                                />
+                                <>
+                                    <Input
+                                        name={"information"}
+                                        type={"text"}
+                                        placeholder={t("Informacion adicional")}
+                                        height="37px"
+                                        width="50%"
+                                        borderRadius={"5px"}
+                                        margin={"0px 0px 30px 0px"}
+                                        onChange={(e) => handleData(e)}
+                                        error={errors.information}
+                                    />
+                                    <ButtonSubmit
+                                        label={"COMPRAR"}
+                                        color={"white"}
+                                        fontSize={"18px"}
+                                        backgroundColor={"black"}
+                                        width={"350px"}
+                                        margin={"0px 0px 40px 0px"}
+                                        onclick={sendOrder}
+                                    />
+                                </>
                             )
                         }
                     </>
