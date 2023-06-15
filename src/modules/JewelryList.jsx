@@ -3,7 +3,7 @@ import JewelCard from "../components/JewelCard";
 import styled from "styled-components";
 
 // Le pasamos por props una lista de productos y por cada uno lo recorre y utiliza un componente por cada uno
-const JewelryList = ({margin,width,productos}) => {
+const JewelryList = ({margin,width,productos,fetchDataApi}) => {
 
     return(
         <Sdiv width={width} margin={margin}>
@@ -12,6 +12,7 @@ const JewelryList = ({margin,width,productos}) => {
                     <JewelCard
                         producto={producto}
                         key={producto.id}
+                        fetchDataApi={fetchDataApi}
                     />
                 ))
             }

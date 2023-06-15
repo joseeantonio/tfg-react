@@ -162,6 +162,7 @@ const Jewelry = () => {
                                                 productos={jewerly}
                                                 width={"930px"}
                                                 margin={"15px 5px 30px 15px"}
+                                                fetchDataApi={fetchDataApi}
                                             />
                                             <ButtonSubmit
                                                 label={"CARGAR MAS"}
@@ -189,6 +190,7 @@ const Jewelry = () => {
                                         productos={filteredJewels}
                                         width={"930px"}
                                         margin={"15px 5px 30px 15px"}
+                                        fetchDataApi={fetchDataApi}
                                     />
                                 )
                         )

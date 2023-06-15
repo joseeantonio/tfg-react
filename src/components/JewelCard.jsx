@@ -1,37 +1,53 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import {Link} from "react-router-dom";
 import styled from "styled-components";
 import {useUserContext} from "../context/UserContext";
 import { BsFillTrash3Fill } from "react-icons/bs";
 import {petitionWithToken} from "../services/api";
+import {FadeLoader} from "react-spinners";
 
 // Carta del producto en el listado de productos
-const JewelCard = ({producto, index}) => {
+const JewelCard = ({producto, index,fetchDataApi}) => {
+    // cargando
+    const [loading, setLoading] = useState(false)
 
     // Cogemos el user y set user del context para almacenar lo que queramos
     const { user, setUser } = useUserContext()
 
     const removeProduct = async () => {
         try {
+            setLoading(true)
             const result = await petitionWithToken(`/productos/${producto.id}`, "delete")
+            fetchDataApi()
         } catch (error) {
             console.log(error)
         }
     }
 
 
+
     return(
         <Sdiv>
-            <Simg src={producto.url_img}/>
-            <Sh1>{producto.nombre}</Sh1>
-            <Sh2>{producto.precio} €</Sh2>
-            <SLink to={`/jewel/${producto.id}`}>Añadir al carrito</SLink>
             {
-                user && user.admin && (
-                    <Sbutton onClick={removeProduct}>
-                        <SBsFillTrash3Fill />
-                        <span>Eliminar</span>
-                    </Sbutton>
+                loading ? (
+                    <SFadeLoader
+                        color="#000000"
+                        margin={16}
+                    />
+                ) : (
+                    <>
+                        <Simg src={producto.url_img}/>
+                        <Sh1>{producto.nombre}</Sh1>
+                        <Sh2>{producto.precio} €</Sh2>
+                        <SLink to={`/jewel/${producto.id}`}>Añadir al carrito</SLink>
+                        {
+                            user && user.admin && (
+                                <Sbutton onClick={removeProduct}>
+                                    <SBsFillTrash3Fill />
+                                    <span>Eliminar</span>
+                                </Sbutton>
+                            )
+                        }</>
                 )
             }
         </Sdiv>
@@ -42,6 +58,12 @@ const JewelCard = ({producto, index}) => {
 const Simg = styled.img`
   max-width: 225px;
   margin: 10px;
+`
+
+const SFadeLoader = styled(FadeLoader)`
+  margin: 0 auto;
+  top: 5px;
+  left: 34px;
 `
 
 const SBsFillTrash3Fill = styled(BsFillTrash3Fill)`
@@ -86,6 +108,7 @@ const Sh1 = styled.h1`
 
 const Sdiv = styled.div`
   width: 250px;
+  min-height: 399px;
   background-color: white;
   display: flex;
   justify-content: center;
