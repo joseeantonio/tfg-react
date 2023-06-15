@@ -29,6 +29,7 @@ const ShoppingCart = () => {
     const { user, setUser } = useUserContext()
     // Definimos el context de la cantidad para el NavBar
     const { shoppingCart, setShoppingCart } = useShoppingCartContext()
+    const [orderSent,setOrderSent] = useState([])
 
     // Cogemos los datos del localStorage
     const getData = () => {
@@ -49,6 +50,7 @@ const ShoppingCart = () => {
         })
     }
 
+
     const sendOrder = async () => {
         const date = new Date();
         const finallyDate = date.toLocaleDateString();
@@ -60,9 +62,30 @@ const ShoppingCart = () => {
             dataBody.informacion = data.information
         }
         try {
-            const result = await petitionWithToken(`/pedidos/create`, "post", dataBody)
+            const resultOrder = await petitionWithToken(`/pedidos/create`, "post", dataBody)
+            console.log(resultOrder)
+            setOrderSent(resultOrder)
+            await sendProducts()
         } catch (error) {
             console.log(error)
+        }
+    }
+
+    const sendProducts = async () => {
+        try {
+            for (let i = 0; i < order.length; i++) {
+                const json = {
+                    cantidad: order[i].cantidad,
+                    productoId: order[i].cantidad,
+                    pedidoId: orderSent.id
+                }
+                console.log(json)
+                console.log(json)
+                const resultOrder = await petitionWithToken(`/productosPedidos/create`, "post", json)
+                console.log(resultOrder)
+            }
+        } catch (error) {
+            console.error()
         }
     }
 
