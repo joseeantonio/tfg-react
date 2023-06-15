@@ -268,6 +268,10 @@ const Sdiv = styled.div`
     align-items: end;
     margin-bottom: 10px;
     align-items: baseline;
+
+    @media (width <= 1190px) {
+      flex-direction: column;
+    }
   }
   
   &.container{
