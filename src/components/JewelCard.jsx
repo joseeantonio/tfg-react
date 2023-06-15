@@ -126,7 +126,10 @@ const Sbutton = styled.button`
   align-items: center;
   margin: 0px 0px 10px 0px;
   cursor: pointer;
-  padding: 5px;
+  padding: 5px 50px;
+  &:hover{
+    background-color: rgba(255, 0, 0, 0.4);
+  }
 `
 
 export default JewelCard
