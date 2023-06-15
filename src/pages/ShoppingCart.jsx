@@ -10,6 +10,8 @@ import ButtonSubmit from "../components/ButtonSubmit";
 import {useShoppingCartContext} from "../context/ShoppingCartContext";
 import Input from "../components/Input";
 import {petitionWithToken} from "../services/api";
+import {toast, ToastContainer} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 // Pagina de Carrito y utilizamos modulos y componentes
 const ShoppingCart = () => {
@@ -79,11 +81,28 @@ const ShoppingCart = () => {
                     pedidoId: orderSent.id
                 }
                 const resultOrder = await petitionWithToken(`/productosPedidos/create`, "post", json)
-                console.log(resultOrder)
+                showAlert()
             }
         } catch (error) {
             console.error()
+        }finally {
+            localStorage.removeItem("order");
+            setShoppingCart(0)
+            setOrder([])
         }
+    }
+
+
+    // alerta con toast
+    const showAlert = () => {
+        toast.success('¡Pedido realizado!', {
+            position: toast.POSITION.TOP_RIGHT,
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: false,
+            draggable: true,
+        })
     }
 
 
@@ -98,6 +117,7 @@ const ShoppingCart = () => {
     return(
         <Sbody>
             <TitlePage name={t("CESTA")} />
+            <ToastContainer />
             {
                 order.length !== 0 ? (
                     <>
