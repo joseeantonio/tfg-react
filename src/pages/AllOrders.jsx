@@ -18,7 +18,6 @@ const AllOrders = () => {
             const ordersResponse = await petitionWithToken(`/pedidos`,"get")
             for (let i = 0;i < ordersResponse.length;i++) {
                 try {
-                    console.log(ordersResponse[i])
                     list.push(ordersResponse[i])
                 } catch (error) {
                     console.log(error)

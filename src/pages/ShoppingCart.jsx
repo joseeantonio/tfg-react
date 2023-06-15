@@ -63,7 +63,6 @@ const ShoppingCart = () => {
         }
         try {
             const resultOrder = await petitionWithToken(`/pedidos/create`, "post", dataBody)
-            console.log(resultOrder)
             setOrderSent(resultOrder)
             await sendProducts()
         } catch (error) {
@@ -79,8 +78,6 @@ const ShoppingCart = () => {
                     productoId: order[i].cantidad,
                     pedidoId: orderSent.id
                 }
-                console.log(json)
-                console.log(json)
                 const resultOrder = await petitionWithToken(`/productosPedidos/create`, "post", json)
                 console.log(resultOrder)
             }

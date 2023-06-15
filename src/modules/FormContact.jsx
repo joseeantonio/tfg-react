@@ -76,7 +76,6 @@ const FormContact = ({margin,width}) => {
         }
 
         if (ready){
-            console.log("yes")
             // Envía el correo electrónico utilizando EmailJS
             emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams, USER_ID)
                 .then((response) => {
@@ -87,7 +86,6 @@ const FormContact = ({margin,width}) => {
                 });
         }else{
             setErrors(errors)
-            console.log("no")
         }
     }
 

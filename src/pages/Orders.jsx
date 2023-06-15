@@ -23,7 +23,6 @@ const Orders = () => {
             const ordersResponse = await petitionWithToken(`/clientes/${user.id}`,"get")
             for (let i = 0;i < ordersResponse.pedidos.length;i++) {
                 try {
-                    console.log(ordersResponse[i])
                     const result = await petitionWithToken(`/pedidos/${ordersResponse.pedidos[i]}`, "get")
                     list.push(result)
                 } catch (error) {

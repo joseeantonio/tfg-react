@@ -149,7 +149,6 @@ const FormRegister = ({width, margin}) => {
 
         try {
             const result = await petitionPost(`/clientes/create`,finallyData)
-            console.log(result)
         } catch (error) {
             console.log(error)
         }

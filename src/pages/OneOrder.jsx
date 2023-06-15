@@ -28,14 +28,12 @@ const OneOrder = () => {
                 for (let i = 0; i < resultOrder.productos.length; i++) {
                     try {
                         const resultProducts = await petitionWithToken(`/productos/${resultOrder.productos[i].id}`, "get")
-                        console.log(resultProducts)
                         resultProducts.cantidad = resultOrder.productos[i].cantidad
                         list.push(resultProducts)
                     } catch (error) {
                         console.log(error)
                     }
                 }
-                console.log(list)
                 setProducts(list)
                 setLoading(false)
             } catch (error) {
