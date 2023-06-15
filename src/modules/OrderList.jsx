@@ -22,8 +22,15 @@ const OrderList = ({pedidos,padding,all}) => {
 }
 
 const Sdiv = styled.div`
-    padding: ${(props) => props.padding && props.padding};
-    border-bottom: ${(props) => props.padding && "1px solid black"};
+  padding: ${(props) => props.padding && props.padding};
+  border-bottom: ${(props) => props.padding && "1px solid black"};
+
+  @media (width <= 1222px){
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: flex-start;
+  }
 `
 
 export default OrderList

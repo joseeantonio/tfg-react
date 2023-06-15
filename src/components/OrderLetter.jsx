@@ -94,6 +94,8 @@ const Sdiv = styled.div`
   @media (width <= 1222px){
     flex-direction: column;
     max-width: 300px;
+    margin-right: 20px;
+    margin-left: 20px;
   }
 `
 
