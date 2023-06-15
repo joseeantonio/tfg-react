@@ -73,6 +73,11 @@ const Sh1 = styled.h1`
     margin-top: 10px;
     margin-bottom: 10px;
     flex-direction: column;
+    
+    @media (width <= 1222px){
+      flex-direction: column;
+      max-width: 100%;
+    }
   }
 `
 
@@ -80,11 +85,16 @@ const Sdiv = styled.div`
   display: flex;
   justify-content: space-around;
   align-items: center;
-  height: 100px;
+  min-height: 100px;
   background-color:white;
-  width: ${(props) => props.width && props.width};
+  max-width: ${(props) => props.width && props.width};
   margin: ${(props) => props.margin && props.margin};
   border-radius:5px;
+
+  @media (width <= 1222px){
+    flex-direction: column;
+    max-width: 300px;
+  }
 `
 
 export default OrderLetter
