@@ -8,11 +8,25 @@ import {useTranslation} from "react-i18next";
 import axios from "axios";
 import {useUserContext} from "../context/UserContext";
 import {petitionWithToken} from "../services/api";
+import {toast, ToastContainer} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const FormLogin = ({margin,width}) => {
 
     const { t } = useTranslation();
     const navigate = useNavigate()
+
+    // alerta con toast
+    const showAlert = () => {
+        toast.success('¡Se ha iniciado sesion correctamente!', {
+            position: toast.POSITION.TOP_RIGHT,
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: false,
+            draggable: true,
+        })
+    }
 
     // Recogemos datos de los input
     const [data,setData] = useState({
@@ -80,7 +94,10 @@ const FormLogin = ({margin,width}) => {
 
             await fetchDataApiWithToken()
 
-            navigate("/")
+            showAlert()
+            setTimeout(() => {
+                navigate("/")
+            }, 3000)
 
         } catch (error) {
             throw new Error('No estas autorizado')
@@ -99,6 +116,7 @@ const FormLogin = ({margin,width}) => {
     return(
         <Sdiv margin={margin} width={width}>
             <TitleForm name={t("ENTRAR_CON_SU_CUENTA")} />
+            <ToastContainer />
             <Input
                 name={"email"}
                 label={t("Correo_electronico")}

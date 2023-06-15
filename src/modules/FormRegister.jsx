@@ -6,7 +6,9 @@ import Checkbox from "../components/Checkbox";
 import {Link, useNavigate} from "react-router-dom";
 import ButtonSubmit from "../components/ButtonSubmit";
 import {useTranslation} from "react-i18next";
-import {petitionPost, petitionWithToken} from "../services/api";
+import {petitionPost} from "../services/api";
+import {toast, ToastContainer} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const FormRegister = ({width, margin}) => {
 
@@ -44,6 +46,18 @@ const FormRegister = ({width, margin}) => {
         setData({
             ...data,
             [e.target.name]: e.target.value,
+        })
+    }
+
+    // alerta con toast
+    const showAlert = () => {
+        toast.success('¡Se ha registrado correctamente!', {
+            position: toast.POSITION.TOP_RIGHT,
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: false,
+            draggable: true,
         })
     }
 
@@ -115,6 +129,10 @@ const FormRegister = ({width, margin}) => {
         setErrors(errors);
         if (Object.keys(errors).length === 0) {
             addUser()
+            showAlert()
+            setTimeout(() => {
+                navigate("/login")
+            }, 3000)
         }
     };
 
@@ -132,7 +150,6 @@ const FormRegister = ({width, margin}) => {
         try {
             const result = await petitionPost(`/clientes/create`,finallyData)
             console.log(result)
-            navigate("/login")
         } catch (error) {
             console.log(error)
         }
@@ -150,6 +167,7 @@ const FormRegister = ({width, margin}) => {
 
     return(
         <Sdiv className="container" margin={margin} width={width}>
+            <ToastContainer />
             <TitleForm name={"INFORMACION PERSONAL"} />
             <Sdiv className="nameAndSurname">
                 <Input
