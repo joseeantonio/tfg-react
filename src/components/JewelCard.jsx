@@ -108,7 +108,7 @@ const Sh1 = styled.h1`
 
 const Sdiv = styled.div`
   width: 250px;
-  min-height: 399px;
+  min-height: 366px;
   background-color: white;
   display: flex;
   justify-content: center;

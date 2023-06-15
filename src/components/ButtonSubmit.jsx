@@ -38,6 +38,7 @@ const Sbutton = styled.button`
   margin: ${(props) => props.margin ? props.margin : "0 auto"};
   border-radius: ${(props) => props.borderRadius ? props.borderRadius : "5px"};
   border: ${(props) => props.border && props.border};
+  padding: ${(props) => props.padding && props.padding};
   cursor: pointer;
 `
 
