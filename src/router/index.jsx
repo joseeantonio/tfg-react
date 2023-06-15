@@ -13,6 +13,7 @@ import TypeJewel from "../pages/TypeJewel";
 import Orders from "../pages/Orders";
 import OneOrder from "../pages/OneOrder";
 import LayoutPrivate from "../layouts/LayoutPrivate";
+import AllOrders from "../pages/AllOrders";
 
 
 export const router = createBrowserRouter([
@@ -69,6 +70,10 @@ export const router = createBrowserRouter([
                         path: '/oneOrder/:id',
                         index: true,
                         element: <OneOrder />,
+                    },{
+                        path: '/allOrders',
+                        index: true,
+                        element: <AllOrders />,
                     },
                 ]
             }

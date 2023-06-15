@@ -4,7 +4,7 @@ import {Link} from "react-router-dom";
 import {petitionWithToken} from "../services/api";
 
 // Este componente lo utilizamos para la carta de un pedido
-const OrderLetter = ({width,margin,pedido}) => {
+const OrderLetter = ({width,margin,pedido,all}) => {
 
     const calculateQuantityProducts = (productos) => {
         let quantity = 0
@@ -18,6 +18,7 @@ const OrderLetter = ({width,margin,pedido}) => {
         <SLink to={`/oneOrder/${pedido.id}`}>
             <Sdiv width={width} margin={margin}>
                 <Sh1 className={"id"}><Slabel>ID :</Slabel> <Sp>{pedido.id}</Sp></Sh1>
+                <Sh1 className={"id"}><Slabel>ID cliente :</Slabel> <Sp>{pedido.clienteId}</Sp></Sh1>
                 <Sh1 className={"information"}><Slabel>Informacion :</Slabel> <Sp>{pedido.informacion}</Sp></Sh1>
                 <Sh1><Slabel>Entrega del pedido</Slabel> : <Sp>{pedido.fech_pedido}</Sp></Sh1>
                 <Sh1><Slabel>Productos</Slabel> : <Sp>{calculateQuantityProducts(pedido.productos)}</Sp></Sh1>

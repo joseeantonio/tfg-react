@@ -40,6 +40,11 @@ const PersonalInformation = ({cliente,width, functionModify}) => {
             <ShowInformation name={t("Fecha_de_nacimiento")} value={user.fecha_nac} />
             <ShowInformation name={t("Contraseña")} value={"******"} />
             <SLink to={"/orders"}>Mis pedidos</SLink>
+            {
+                user.admin && (
+                    <SLink to={"/allOrders"}>Todos los pedidos</SLink>
+                )
+            }
             <ButtonSubmit
                 label={<SFiSettings />}
                 width={"145px"}

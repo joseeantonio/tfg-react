@@ -3,13 +3,14 @@ import OrderLetter from "../components/OrderLetter";
 import styled from "styled-components";
 
 // Le pasamos una lista de pedidos y por cada uno utiliza el componente OrderLetter
-const OrderList = ({pedidos,padding}) => {
+const OrderList = ({pedidos,padding,all}) => {
 
     return(
         <Sdiv padding={padding}>
             {
                 pedidos.map((pedido,index) => (
                     <OrderLetter
+                        all={all}
                         width={"1200px"}
                         pedido={pedido}
                         margin={index === pedidos.length - 1 ? "0 auto" : "0 auto 40px"}
