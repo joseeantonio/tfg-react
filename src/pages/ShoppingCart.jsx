@@ -54,43 +54,61 @@ const ShoppingCart = () => {
 
 
     const sendOrder = async () => {
-        const date = new Date();
-        const finallyDate = date.toLocaleDateString();
-        const dataBody = {
-            fech_pedido : finallyDate,
-            clienteId : user.id
-        }
-        if (data.information !== "") {
-            dataBody.informacion = data.information
-        }
-        try {
-            const resultOrder = await petitionWithToken(`/pedidos/create`, "post", dataBody)
-            setOrderSent(resultOrder)
-            await sendProducts()
-        } catch (error) {
-            console.log(error)
+        if (data.information.length > 25){
+            const errors = {}
+            errors.information = "No debe de tener mas de 35 caracteres."
+            setErrors(errors)
+        }else{
+            const date = new Date();
+            const finallyDate = date.toLocaleDateString();
+            const dataBody = {
+                fech_pedido : finallyDate,
+                clienteId : user.id
+            }
+            if (data.information !== "") {
+                dataBody.informacion = data.information
+            }
+            try {
+                const resultOrder = await petitionWithToken(`/pedidos/create`, "post", dataBody)
+                try {
+                    for (let i = 0; i < order.length; i++) {
+                        const json = {
+                            cantidad: order[i].cantidad,
+                            productoId: order[i].id,
+                            pedidoId: resultOrder.id
+                        }
+                        const resultProducts = await petitionWithToken(`/productosPedidos/create`, "post", json)
+                    }
+                    showAlert()
+                    localStorage.removeItem("order");
+                    setShoppingCart(0)
+                    setOrder([])
+                }catch (e){
+                    console.log(e)
+                }
+            } catch (error) {
+                console.log(error)
+            }
         }
     }
 
-    const sendProducts = async () => {
-        try {
-            for (let i = 0; i < order.length; i++) {
-                const json = {
-                    cantidad: order[i].cantidad,
-                    productoId: order[i].cantidad,
-                    pedidoId: orderSent.id
-                }
-                const resultOrder = await petitionWithToken(`/productosPedidos/create`, "post", json)
-                showAlert()
-            }
-        } catch (error) {
-            console.error()
-        }finally {
-            localStorage.removeItem("order");
-            setShoppingCart(0)
-            setOrder([])
-        }
-    }
+    // const sendProducts = async (resultOrder) => {
+    //     try {
+    //         for (let i = 0; i < order.length; i++) {
+    //             const json = {
+    //                 cantidad: order[i].cantidad,
+    //                 productoId: order[i].id,
+    //                 pedidoId: resultOrder.id
+    //             }
+    //             const resultOrder = await petitionWithToken(`/productosPedidos/create`, "post", json)
+    //             showAlert()
+    //         }
+    //     } catch (error) {
+    //         console.error()
+    //     }finally {
+    //
+    //     }
+    // }
 
 
     // alerta con toast
