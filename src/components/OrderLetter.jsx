@@ -18,7 +18,11 @@ const OrderLetter = ({width,margin,pedido,all}) => {
         <SLink to={`/oneOrder/${pedido.id}`}>
             <Sdiv width={width} margin={margin}>
                 <Sh1 className={"id"}><Slabel>ID :</Slabel> <Sp>{pedido.id}</Sp></Sh1>
-                <Sh1 className={"id"}><Slabel>ID cliente :</Slabel> <Sp>{pedido.clienteId}</Sp></Sh1>
+                {
+                    all && (
+                        <Sh1 className={"id"}><Slabel>ID cliente :</Slabel> <Sp>{pedido.clienteId}</Sp></Sh1>
+                    )
+                }
                 <Sh1 className={"information"}><Slabel>Informacion :</Slabel> <Sp>{pedido.informacion}</Sp></Sh1>
                 <Sh1><Slabel>Entrega del pedido</Slabel> : <Sp>{pedido.fech_pedido}</Sp></Sh1>
                 <Sh1><Slabel>Productos</Slabel> : <Sp>{calculateQuantityProducts(pedido.productos)}</Sp></Sh1>

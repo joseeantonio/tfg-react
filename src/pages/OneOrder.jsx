@@ -7,6 +7,7 @@ import OneOrderList from "../modules/OneOrderList";
 import {useParams} from "react-router-dom";
 import {petition, petitionWithToken} from "../services/api";
 import {FadeLoader} from "react-spinners";
+import {useUserContext} from "../context/UserContext";
 
 // Pagina de Un pedido en concreto y utilizamos modulos y componentes
 const OneOrder = () => {
@@ -17,6 +18,8 @@ const OneOrder = () => {
     const [loading, setLoading] = useState(true)
     const [order,setOrder] = useState([])
     const [products,setProducts] = useState([])
+    // Cogemos el user y set user del context para almacenar lo que queramos
+    const { user, setUser } = useUserContext()
     const fetchDataOrders = async () => {
         try {
             const resultOrder = await petitionWithToken(`/pedidos/${id}`,"get")
@@ -54,6 +57,11 @@ const OneOrder = () => {
         <Sbody>
             <TitlePage name={`PEDIDO : ${id}`} />
             {
+                user.admin && (
+                    <Sh1>(Relizado por ti)</Sh1>
+                )
+            }
+            {
                 loading ? (
                     <Sdiv className={"loading"}>
                         <SFadeLoader
@@ -77,6 +85,15 @@ const Sbody = styled.body`
   background-repeat: no-repeat;
   background-position: center;
   min-height: 700px;
+`
+
+const Sh1 = styled.h1`
+  font-size: 17px;
+  font-family: 'Inter';
+  font-style: normal;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `
 
 const Sdiv = styled.div`
