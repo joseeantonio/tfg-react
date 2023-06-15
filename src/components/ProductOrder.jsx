@@ -3,18 +3,18 @@ import styled from "styled-components";
 import {Link} from "react-router-dom";
 
 // Componente para carta del producto al ver los productos que he pedido en un producto
-const ProductOrder = ({width,producto,margin}) => {
+const ProductOrder = ({width,product,margin}) => {
 
     useEffect(()=>{
     },[])
     return(
-        <SLink to={`/jewel/${producto.id}`}>
+        <SLink to={`/jewel/${product.id}`}>
             <Sdiv width={width} margin={margin}>
-                <Simg src={producto.url_img}/>
-                <Sh1>{producto.nombre}</Sh1>
-                <Sh2>{producto.precio} €</Sh2>
-                <Sh3>{producto.sexo}</Sh3>
-                <Sh3>Cantidad : {producto.cantidad}</Sh3>
+                <Simg src={product.url_img}/>
+                <Sh1>{product.nombre}</Sh1>
+                <Sh2>{product.precio} €</Sh2>
+                <Sh3>{product.sexo}</Sh3>
+                <Sh3>Cantidad : {product.cantidad}</Sh3>
             </Sdiv>
         </SLink>
     )
@@ -27,6 +27,7 @@ const Simg = styled.img`
 
 const SLink = styled(Link)`
   all: unset;
+  cursor: pointer;
 `
 
 const Sh3 = styled.h3`

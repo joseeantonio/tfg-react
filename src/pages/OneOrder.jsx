@@ -6,12 +6,15 @@ import styled from "styled-components";
 import OneOrderList from "../modules/OneOrderList";
 import {useParams} from "react-router-dom";
 import {petition, petitionWithToken} from "../services/api";
+import {FadeLoader} from "react-spinners";
 
 // Pagina de Un pedido en concreto y utilizamos modulos y componentes
 const OneOrder = () => {
 
     // Recogemos el id por la url
     const {id} = useParams()
+    // cargando
+    const [loading, setLoading] = useState(true)
     const [order,setOrder] = useState([])
     const [products,setProducts] = useState([])
     const fetchDataOrders = async () => {
@@ -31,6 +34,7 @@ const OneOrder = () => {
                 }
                 console.log(list)
                 setProducts(list)
+                setLoading(false)
             } catch (error) {
                 console.log(error)
             }
@@ -49,7 +53,20 @@ const OneOrder = () => {
     return(
         <Sbody>
             <TitlePage name={`PEDIDO : ${id}`} />
-            <OneOrderList pedido={products} />
+            {
+                loading ? (
+                    <Sdiv className={"loading"}>
+                        <SFadeLoader
+                            color="#000000"
+                            margin={16}
+                            height={42}
+                            width={8}
+                        />
+                    </Sdiv>
+                ) : (
+                    <OneOrderList products={products} />
+                )
+            }
         </Sbody>
     )
 }
@@ -60,6 +77,20 @@ const Sbody = styled.body`
   background-repeat: no-repeat;
   background-position: center;
   min-height: 700px;
+`
+
+const Sdiv = styled.div`
+  &.loading{
+    height: 300px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+`
+
+const SFadeLoader = styled(FadeLoader)`
+  margin: 0 auto;
 `
 
 export default OneOrder
