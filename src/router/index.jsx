@@ -14,13 +14,14 @@ import Orders from "../pages/Orders";
 import OneOrder from "../pages/OneOrder";
 import LayoutPrivate from "../layouts/LayoutPrivate";
 import AllOrders from "../pages/AllOrders";
+import NotFound from "../pages/NotFound";
 
 
 export const router = createBrowserRouter([
     {
         path: '/',
         element: <LayoutPublic />,
-        // errorElement: <Error />,
+        errorElement: <NotFound />,
         children: [
             {
                 path: '/',
