@@ -8,6 +8,7 @@ import JewelryList from "../modules/JewelryList";
 import {petition} from "../services/api";
 import {useTranslation} from "react-i18next";
 import ButtonSubmit from "../components/ButtonSubmit";
+import {FadeLoader} from "react-spinners";
 
 // Pagina de Todos los productos y utilizamos modulos y componentes
 const Jewelry = () => {
@@ -26,6 +27,8 @@ const Jewelry = () => {
     const [filteredJewels,setFilteredJewels] = useState([])
     //traduccion
     const { t } = useTranslation()
+    // cargando
+    const [loading, setLoading] = useState(true)
 
     const [pagination,setPagination] = useState(12)
 
@@ -34,6 +37,7 @@ const Jewelry = () => {
         try {
             const result = await petition(`/productos/paginacion/${pagination}`)
             setJewerly(result)
+            setLoading(false)
         } catch (error) {
             console.log(error)
         }
@@ -143,28 +147,50 @@ const Jewelry = () => {
                     {
                             // Ponemos las posibilidades que hay para mostrar una u otra.
                             filters.length === 0 && !isSearch ? (
-                            <>
-                                <JewelryList
-                                    productos={jewerly}
-                                    width={"930px"}
-                                    margin={"15px 5px 30px 15px"}
-                                />
-                                <ButtonSubmit
-                                    label={"CARGAR MAS"}
-                                    fontSize={"20px"}
-                                    padding={"20px"}
-                                    onclick={loadMore}
-                                    margin={"30px auto"}
-                                    color={"white"} width={"20%"}
-                                    backgroundColor={"#5A5A5A"}
-                                />
-                            </>
+                                    loading ? (
+                                        <Sdiv className={"loading"}>
+                                            <SFadeLoader
+                                                color="#000000"
+                                                margin={16}
+                                                height={42}
+                                                width={8}
+                                            />
+                                        </Sdiv>
+                                    ) : (
+                                        <>
+                                            <JewelryList
+                                                productos={jewerly}
+                                                width={"930px"}
+                                                margin={"15px 5px 30px 15px"}
+                                            />
+                                            <ButtonSubmit
+                                                label={"CARGAR MAS"}
+                                                fontSize={"20px"}
+                                                padding={"20px"}
+                                                onclick={loadMore}
+                                                margin={"30px auto"}
+                                                color={"white"} width={"20%"}
+                                                backgroundColor={"#5A5A5A"}
+                                            />
+                                        </>
+                                        )
                         ) : (
-                            <JewelryList
-                                productos={filteredJewels}
-                                width={"930px"}
-                                margin={"15px 5px 30px 15px"}
-                            />
+                            loading ? (
+                                    <Sdiv className={"loading"}>
+                                        <SFadeLoader
+                                            color="#000000"
+                                            margin={16}
+                                            height={42}
+                                            width={8}
+                                        />
+                                    </Sdiv>
+                                ) : (
+                                    <JewelryList
+                                        productos={filteredJewels}
+                                        width={"930px"}
+                                        margin={"15px 5px 30px 15px"}
+                                    />
+                                )
                         )
                     }
                 </div>
@@ -186,6 +212,19 @@ const Sdiv = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    &.loading{
+      height: 300px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
   }
 `
+
+const SFadeLoader = styled(FadeLoader)`
+  margin: 0 auto;
+`
+
 export default Jewelry
