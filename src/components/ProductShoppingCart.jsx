@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { FaTrash } from "react-icons/fa";
 import Quantity from "./Quantity";
 import {useShoppingCartContext} from "../context/ShoppingCartContext";
+import {use} from "i18next";
 
 // Carta producto que utilizamos en el carrito que todavia no hemos pedido
 const ProductShoppingCart = ({width,producto,margin,updateOrder}) => {
@@ -49,7 +50,9 @@ const ProductShoppingCart = ({width,producto,margin,updateOrder}) => {
     // Cada vez que se modifique la cantidad, se actualizara el componente
     useEffect(()=>{
         updatedQuantity()
+        updateOrder()
     },[quantity])
+
 
     return(
         <Sdiv width={width} margin={margin}>
