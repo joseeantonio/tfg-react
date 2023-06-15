@@ -6,11 +6,15 @@ import Description from "../components/Description";
 import styled from "styled-components";
 import TechnicalInformation from "../modules/TechnicalInformation";
 import {useShoppingCartContext} from "../context/ShoppingCartContext";
+import {FadeLoader} from "react-spinners";
 
 // Pagina de contacto y utilizamos modulos y componentes
 const Jewel = () => {
     // Recogemos el id por la url
     const {id} = useParams()
+
+    // cargando
+    const [loading, setLoading] = useState(true)
 
     // Definimos el context de la cantidad para el NavBar
     const { shoppingCart, setShoppingCart } = useShoppingCartContext()
@@ -23,6 +27,7 @@ const Jewel = () => {
         try {
             const result = await petition(`/productos/${id}`)
             setJewel(result)
+            setLoading(false)
         } catch (error) {
             console.log(error)
         }
@@ -59,22 +64,41 @@ const Jewel = () => {
     },[])
 
     return(
-        <body>
+        <Sbody>
             <TitlePage name={jewel.nombre} />
-            <Sdiv>
-                <Simg src={jewel.url_img}/>
-                <Description
-                    description={jewel.descripcion}
-                    width={"500px"}
-                    onClick={addOrder}
-                    setQuantity={setQuantity}
-                    quantity={quantity}
-                />
-            </Sdiv>
-            <TechnicalInformation jewel={jewel} margin={"40px auto"} width={"90%"} />
-        </body>
+            {
+                loading ? (
+                    <Sdiv className={"loading"}>
+                        <SFadeLoader
+                            color="#000000"
+                            margin={16}
+                            height={42}
+                            width={8}
+                        />
+                    </Sdiv>
+                ) : (
+                    <>
+                        <Sdiv>
+                            <Simg src={jewel.url_img}/>
+                            <Description
+                                description={jewel.descripcion}
+                                width={"500px"}
+                                onClick={addOrder}
+                                setQuantity={setQuantity}
+                                quantity={quantity}
+                            />
+                        </Sdiv>
+                        <TechnicalInformation jewel={jewel} margin={"40px auto"} width={"90%"} />
+                    </>
+                )
+            }
+        </Sbody>
     )
 }
+
+const Sbody = styled.body`
+  min-height: 700px;
+`
 
 const Sdiv = styled.div`
   display: flex;
@@ -87,7 +111,21 @@ const Sdiv = styled.div`
     justify-content:center;
     align-items:center;
   }
+  
+  &.loading{
+    all: unset;
+    height: 300px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 `
+
+const SFadeLoader = styled(FadeLoader)`
+  margin: 0 auto;
+`
+
 
 const Simg = styled.img`
   max-width:532px;
@@ -97,7 +135,7 @@ const Simg = styled.img`
     max-width:500px;
   }
   @media (width <= 600px){
-    max-width:30px;
+    max-width:300px;
   }
 `
 

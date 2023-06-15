@@ -204,6 +204,7 @@ const Jewelry = () => {
 // Estilos
 const Sbody = styled.body`
   background-color: #DFDFDF;
+  min-height: 700px;
 `
 
 const Sdiv = styled.div`
