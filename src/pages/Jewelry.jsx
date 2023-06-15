@@ -167,7 +167,6 @@ const Jewelry = () => {
                                             <ButtonSubmit
                                                 label={"CARGAR MAS"}
                                                 fontSize={"20px"}
-                                                padding={"20px"}
                                                 onclick={loadMore}
                                                 margin={"30px auto"}
                                                 color={"white"} width={"20%"}
