@@ -132,7 +132,7 @@ const Sdiv = styled.div`
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  margin: 25px 10px 10px 10px;
+  margin: 0px 10px 35px 10px;
   border-radius: 5px;
 `
 

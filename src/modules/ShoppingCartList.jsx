@@ -25,7 +25,6 @@ const Sdiv = styled.div`
   flex-wrap: wrap;
   justify-content: space-evenly;
   align-items: flex-start;
-  margin-top: 20px;
   width: ${(props) => props.width};
   margin: ${(props) => props.margin};
   @media (width <= 815px) {

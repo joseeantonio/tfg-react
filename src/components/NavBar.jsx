@@ -103,7 +103,8 @@ const SNavLink = styled(NavLink)`
   }
   
   &.active{
-    color: #FF8C00;
+    color: rgb(34, 116, 127);
+    //background-color: rgb(147, 206, 214);
   }
 `
 
