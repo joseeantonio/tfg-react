@@ -164,6 +164,7 @@ const Sul = styled.ul`
 
 const Sli = styled.li`
   text-align: center;
+  font-family: Inter;
   padding-right: 35px;
   padding-left: 35px;
   font-size: 16px;

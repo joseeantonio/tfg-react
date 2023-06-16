@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from "react";
 import TitlePage from "../components/TitlePage";
-import productos from "../assets/json/productosPrueba.json"
 import img_fondo from "../assets/images/img_fondo_carrito.png"
 import styled from "styled-components";
 import OneOrderList from "../modules/OneOrderList";

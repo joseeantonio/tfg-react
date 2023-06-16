@@ -6,7 +6,7 @@ import {useTranslation} from "react-i18next";
 import {useUserContext} from "../context/UserContext";
 import {petitionWithToken} from "../services/api";
 
-const FormModify = ({cliente, width, functionModify}) => {
+const FormModify = ({ width, functionModify}) => {
 
     // Cogemos el user y set user del context para almacenar lo que queramos
     const { user, setUser } = useUserContext()
@@ -44,11 +44,11 @@ const FormModify = ({cliente, width, functionModify}) => {
         const errors = {};
         const regExpEmail = /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/;
 
-        if (!isNaN(data.name) && !data.name.trim()) {
+        if (!isNaN(data.name) && data.name.trim()) {
             errors.name = "El nombre no debe de tener numeros";
         }
 
-        if (!isNaN(data.name) && !data.surname.trim()) {
+        if (!isNaN(data.surname) && data.surname.trim()) {
             errors.surname = "Los apellidos no deben de tener numeros";
         }
 
@@ -56,7 +56,7 @@ const FormModify = ({cliente, width, functionModify}) => {
             errors.email = "El correo electronico incorrecto";
         }
 
-        if (data.birthdate && data.birthdate.trim()) {
+        if (data.birthdate.trim()) {
             const today = new Date()
             const birthdate = new Date(data.birthdate)
 
@@ -99,6 +99,7 @@ const FormModify = ({cliente, width, functionModify}) => {
                 finallyData.username = data.username
             }
             try {
+                console.log(finallyData)
                 const result = await petitionWithToken(`/clientes/${user.id}`, "put", finallyData)
                 setUser(result)
             } catch (error) {
@@ -145,7 +146,6 @@ const FormModify = ({cliente, width, functionModify}) => {
                 width="50%"
                 borderRadius={"5px"}
                 margin={"20px 0px 0px 0px"}
-                defaultValue={cliente.fecha_nac}
                 error={errors.birthdate}
             />
             <Input

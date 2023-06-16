@@ -1,7 +1,6 @@
 import React, {useEffect, useState, useTransition} from "react";
 import TitlePage from "../components/TitlePage";
 import PersonalInformation from "../modules/PersonalInformation";
-import cliente from "../../src/assets/json/productosPrueba.json"
 import {FaUserAlt} from "react-icons/fa";
 import styled from "styled-components";
 import FormModify from "../modules/FormModify";
@@ -33,13 +32,11 @@ const Profile = () => {
                 user && (
                     !modify ? (
                         <PersonalInformation
-                            cliente={cliente.cliente}
                             width={"90%"}
                             functionModify={functionModify}
                         />
                     ) : (
                         <FormModify
-                            cliente={cliente.cliente}
                             width={"90%"}
                             functionModify={functionModify}
                         />

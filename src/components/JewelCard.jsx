@@ -79,6 +79,7 @@ const SLink = styled(Link)`
   background-color: #283747;
   margin: 10px;
   display: flex;
+  font-family: Inter;
   justify-content: center;
   align-items: center;
   margin: 0px 10px 10px 10px;
