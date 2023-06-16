@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from "react";
 import TitlePage from "../components/TitlePage";
 import styled from "styled-components";
-import img_fondo from "../assets/images/img_fondo_carrito.png"
 import {useTranslation} from "react-i18next";
 import ShoppingCartList from "../modules/ShoppingCartList";
 import {useUserContext} from "../context/UserContext";
@@ -28,10 +27,9 @@ const ShoppingCart = () => {
     const [price,setPrice] = useState(0)
     const { t } = useTranslation();
     // Cogemos el user y set user del context para almacenar lo que queramos
-    const { user, setUser } = useUserContext()
+    const { user} = useUserContext()
     // Definimos el context de la cantidad para el NavBar
-    const { shoppingCart, setShoppingCart } = useShoppingCartContext()
-    const [orderSent,setOrderSent] = useState([])
+    const {setShoppingCart} = useShoppingCartContext()
 
     // Cogemos los datos del localStorage
     const getData = () => {
@@ -77,7 +75,7 @@ const ShoppingCart = () => {
                             productoId: order[i].id,
                             pedidoId: resultOrder.id
                         }
-                        const resultProducts = await petitionWithToken(`/productosPedidos/create`, "post", json)
+                        await petitionWithToken(`/productosPedidos/create`, "post", json)
                     }
                     showAlert()
                     localStorage.removeItem("order");
