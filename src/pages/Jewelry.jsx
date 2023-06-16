@@ -141,7 +141,7 @@ const Jewelry = () => {
                 onKeyPress={enter}
             />
             <Sdiv>
-                <Filters margin={"0px 20px 40px 20px"} filters={filters} setFilters={setFilters} />
+                <Filters margin={"15px 20px 40px 20px"} filters={filters} setFilters={setFilters} />
                 <div>
                     <LinkSectionGroup width={"900px"} margin={"15px 5px 0px 15px"} />
                     {

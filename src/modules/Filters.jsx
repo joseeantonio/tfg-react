@@ -126,7 +126,7 @@ const Sdiv = styled.div`
   margin: ${(props) => props.margin && props.margin};
   width: ${(props) => props.width && props.width};
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   flex-direction: column;
   align-items: center;
 `
