@@ -80,7 +80,7 @@ const FormLogin = ({margin,width}) => {
     const authenticatedPetition = async (email, password) => {
         try {
             const response = await axios.post(
-                'http://localhost:8080/token',
+                'https://tfg-backend-production-1acd.up.railway.app/token',
                 {},
                 {
                     auth: {

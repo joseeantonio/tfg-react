@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export const petition = (url) => {
-    return axios.get("http://localhost:8080"+url)
+    return axios.get("https://tfg-backend-production-1acd.up.railway.app"+url)
         .then((response) => {
             return response.data;
         })
@@ -11,7 +11,7 @@ export const petition = (url) => {
 };
 
 export const petitionPost = (url,data) => {
-    return axios.post("http://localhost:8080"+url,data)
+    return axios.post("https://tfg-backend-production-1acd.up.railway.app"+url,data)
         .then((response) => {
             return response.data;
         })
@@ -25,7 +25,7 @@ export const petitionWithToken = (url, method, data) => {
 
     return axios({
         method: method,
-        url: "http://localhost:8080" + url,
+        url: "https://tfg-backend-production-1acd.up.railway.app" + url,
         headers: {
             Authorization: `Bearer ${token}`
         },
