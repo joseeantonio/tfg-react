@@ -92,25 +92,6 @@ const ShoppingCart = () => {
         }
     }
 
-    // const sendProducts = async (resultOrder) => {
-    //     try {
-    //         for (let i = 0; i < order.length; i++) {
-    //             const json = {
-    //                 cantidad: order[i].cantidad,
-    //                 productoId: order[i].id,
-    //                 pedidoId: resultOrder.id
-    //             }
-    //             const resultOrder = await petitionWithToken(`/productosPedidos/create`, "post", json)
-    //             showAlert()
-    //         }
-    //     } catch (error) {
-    //         console.error()
-    //     }finally {
-    //
-    //     }
-    // }
-
-
     // alerta con toast
     const showAlert = () => {
         toast.success('¡Pedido realizado!', {
