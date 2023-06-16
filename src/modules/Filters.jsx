@@ -125,6 +125,10 @@ const Filters = ({margin, filters, setFilters,width, type}) => {
 const Sdiv = styled.div`
   margin: ${(props) => props.margin && props.margin};
   width: ${(props) => props.width && props.width};
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 `
 
 export default Filters
