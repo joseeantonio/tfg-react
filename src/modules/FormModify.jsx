@@ -160,7 +160,7 @@ const FormModify = ({ width, functionModify}) => {
             />
             <Input
                 name={"username"}
-                placeholder={t("Correo_electronico")}
+                placeholder={t("Nombre de usuario")}
                 height="37px"
                 width="50%"
                 borderRadius={"5px"}
