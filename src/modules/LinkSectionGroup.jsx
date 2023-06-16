@@ -23,9 +23,6 @@ const Sdiv = styled.div`
   justify-content: space-evenly;
   align-items: flex-start;
   margin: ${(props) => props.margin && props.margin};
-  @media (width <= 934px) {
-    width: 80%;
-  }
 `
 
 export default LinkSectionGroup

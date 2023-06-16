@@ -143,7 +143,7 @@ const Jewelry = () => {
             <Sdiv>
                 <Filters margin={"0px 20px 40px 20px"} filters={filters} setFilters={setFilters} />
                 <div>
-                    <LinkSectionGroup width={"900px"} margin={"15px 0px 0px 15px"} />
+                    <LinkSectionGroup width={"900px"} margin={"15px 5px 0px 15px"} />
                     {
                             // Ponemos las posibilidades que hay para mostrar una u otra.
                             filters.length === 0 && !isSearch ? (
