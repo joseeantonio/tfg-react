@@ -99,7 +99,6 @@ const FormModify = ({ width, functionModify}) => {
                 finallyData.username = data.username
             }
             try {
-                console.log(finallyData)
                 const result = await petitionWithToken(`/clientes/${user.id}`, "put", finallyData)
                 setUser(result)
             } catch (error) {
