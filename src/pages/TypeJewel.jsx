@@ -7,10 +7,13 @@ import JewelryList from "../modules/JewelryList";
 import styled from "styled-components";
 import {useTranslation} from "react-i18next";
 import {petition} from "../services/api";
+import {FadeLoader} from "react-spinners";
 
 // Pagina de Un tipo de producto y utilizamos modulos y componentes
 const TypeJewel = () => {
 
+    // cargando
+    const [loading, setLoading] = useState(true)
     //Cogemos el tipo a traves de la url
     const {type} = useParams()
     // Titulo de la pagina
@@ -149,6 +152,7 @@ const TypeJewel = () => {
         try {
             const result = await petition(`/productos/tipo/${type}`)
             setJewerly(result)
+            setLoading(false)
         } catch (error) {
             console.log(error)
         }
@@ -191,21 +195,32 @@ const TypeJewel = () => {
                     setFilters={setFilters}
                 />
                 {
-                    // Ponemos las posibilidades que hay para mostrar una u otra.
-                    filters.length === 0 && !isSearch ? (
-                        <>
+                    loading ? (
+                        <Sdiv className={"loading"}>
+                            <SFadeLoader
+                                color="#000000"
+                                margin={16}
+                                height={42}
+                                width={8}
+                            />
+                        </Sdiv>
+                    ) : (
+                        // Ponemos las posibilidades que hay para mostrar una u otra.
+                        filters.length === 0 && !isSearch ? (
+                            <>
+                                <JewelryList
+                                    productos={jewerly}
+                                    width={"930px"}
+                                    margin={"15px 5px 30px 15px"}
+                                />
+                            </>
+                        ) : (
                             <JewelryList
-                                productos={jewerly}
+                                productos={filteredJewels}
                                 width={"930px"}
                                 margin={"15px 5px 30px 15px"}
                             />
-                        </>
-                    ) : (
-                        <JewelryList
-                            productos={filteredJewels}
-                            width={"930px"}
-                            margin={"15px 5px 30px 15px"}
-                        />
+                        )
                     )
                 }
             </Sdiv>
@@ -224,6 +239,17 @@ const Sdiv = styled.div`
   @media (width <= 815px) {
     flex-direction: column;
   }
+  &.loading{
+    height: 300px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+`
+
+const SFadeLoader = styled(FadeLoader)`
+  margin: 0 auto;
 `
 
 export default TypeJewel
